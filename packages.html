@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Safari Packages | Uganda Gorilla Trekking, Wildlife Safaris & More | Roamblr Safaris</title>
+    <meta name="description" content="Browse our Uganda safari packages — gorilla trekking in Bwindi, Murchison Falls safaris, Lake Bunyonyi honeymoons, family adventures, corporate retreats. International and local pricing available.">
+
+    <meta property="og:title" content="Uganda Safari Packages | Roamblr Safaris">
+    <meta property="og:description" content="Gorilla trekking, wildlife safaris, honeymoons, family getaways, and corporate retreats — browse our complete collection of Uganda experiences.">
+    <meta property="og:url" content="https://roamblr.com/packages.html">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'roamblr-green': {
+                            50: '#e8f5e9',
+                            100: '#c8e6c9',
+                            200: '#a5d6a7',
+                            500: '#1B5E20',
+                            600: '#164d1a',
+                            700: '#113d15',
+                        },
+                        'roamblr-amber': {
+                            400: '#ffca28',
+                            500: '#FF8F00',
+                            600: '#e67e00',
+                        },
+                        'roamblr-earth': {
+                            50: '#faf7f4',
+                            100: '#f5f0eb',
+                            200: '#e8ddd3',
+                            700: '#5c4a37',
+                            800: '#4A3728',
+                            900: '#2c1f15',
+                        },
+                    },
+                    fontFamily: {
+                        'display': ['"Playfair Display"', 'serif'],
+                        'body': ['"Inter"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .text-balance { text-wrap: balance; }
+        .package-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .package-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+        }
+        .filter-btn.active {
+            background: #1B5E20;
+            color: white;
+            border-color: #1B5E20;
+        }
+    </style>
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231B5E20'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='52' font-weight='700' fill='%23FF8F00'>R</text></svg>">
+</head>
+<body class="font-body antialiased text-roamblr-earth-900 bg-roamblr-earth-50">
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <a href="index.html" class="flex items-center gap-2">
+                    <div class="w-10 h-10 bg-roamblr-green-500 rounded-lg flex items-center justify-center">
+                        <span class="font-display text-2xl font-bold text-roamblr-amber-500">R</span>
+                    </div>
+                    <div class="hidden sm:block">
+                        <div class="font-display text-xl font-bold text-roamblr-green-500 leading-none">Roamblr</div>
+                        <div class="text-xs text-roamblr-earth-700 tracking-widest">SAFARIS</div>
+                    </div>
+                </a>
+                <div class="hidden lg:flex items-center gap-6">
+                    <a href="index.html" class="text-sm font-medium text-roamblr-earth-700 hover:text-roamblr-green-500 transition-colors">Home</a>
+                    <a href="about.html" class="text-sm font-medium text-roamblr-earth-700 hover:text-roamblr-green-500 transition-colors">About</a>
+                    <a href="packages.html" class="text-sm font-medium text-roamblr-green-500 bg-roamblr-green-50 px-3 py-1.5 rounded-lg">Packages</a>
+                    <a href="for-agents.html" class="text-sm font-medium text-roamblr-earth-700 hover:text-roamblr-green-500 transition-colors">For Agents</a>
+                    <a href="travel-guide.html" class="text-sm font-medium text-roamblr-earth-700 hover:text-roamblr-green-500 transition-colors">Travel Guide</a>
+                    <a href="contact.html" class="px-4 py-2 text-sm font-semibold text-white bg-roamblr-green-500 rounded-lg hover:bg-roamblr-green-600 transition-colors">Contact</a>
+                </div>
+                <button id="mobileMenuBtn" class="lg:hidden p-2" aria-label="Toggle menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobileMenu" class="lg:hidden hidden bg-white border-t shadow-lg">
+            <div class="px-4 py-3 space-y-2">
+                <a href="index.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-roamblr-earth-700 hover:bg-roamblr-earth-50">Home</a>
+                <a href="about.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-roamblr-earth-700 hover:bg-roamblr-earth-50">About</a>
+                <a href="packages.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium bg-roamblr-green-50 text-roamblr-green-500">Packages</a>
+                <a href="for-agents.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-roamblr-earth-700 hover:bg-roamblr-earth-50">For Agents</a>
+                <a href="travel-guide.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-roamblr-earth-700 hover:bg-roamblr-earth-50">Travel Guide</a>
+                <a href="contact.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-roamblr-earth-700 hover:bg-roamblr-earth-50">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="pt-28 pb-12 lg:pt-36 lg:pb-16 bg-roamblr-green-500 text-white text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-0 right-1/4 w-96 h-96 border border-white rounded-full"></div>
+        </div>
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h1 class="font-display text-4xl sm:text-5xl font-bold mb-4 text-balance">Our Safari Packages</h1>
+            <p class="text-lg text-white/80 max-w-xl mx-auto">
+                From bucket-list gorilla treks to weekend family getaways — every package is built on genuine local knowledge and transparent pricing.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== FILTER BAR ===== -->
+    <section class="py-8 bg-white border-b border-roamblr-earth-100 sticky top-16 lg:top-20 z-30 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap items-center justify-center gap-3">
+                <button onclick="filterPackages('all')" id="filter-all" class="filter-btn active px-5 py-2.5 rounded-xl border-2 border-roamblr-green-500 text-sm font-semibold transition-colors">
+                    All Packages
+                </button>
+                <button onclick="filterPackages('international')" id="filter-international" class="filter-btn px-5 py-2.5 rounded-xl border-2 border-roamblr-earth-200 text-roamblr-earth-700 text-sm font-semibold hover:border-roamblr-green-300 transition-colors">
+                    🌍 International
+                </button>
+                <button onclick="filterPackages('local')" id="filter-local" class="filter-btn px-5 py-2.5 rounded-xl border-2 border-roamblr-earth-200 text-roamblr-earth-700 text-sm font-semibold hover:border-roamblr-green-300 transition-colors">
+                    🇺🇬 Local
+                </button>
+                <button onclick="filterPackages('corporate')" id="filter-corporate" class="filter-btn px-5 py-2.5 rounded-xl border-2 border-roamblr-earth-200 text-roamblr-earth-700 text-sm font-semibold hover:border-roamblr-green-300 transition-colors">
+                    💼 Corporate
+                </button>
+                <button onclick="filterPackages('honeymoon')" id="filter-honeymoon" class="filter-btn px-5 py-2.5 rounded-xl border-2 border-roamblr-earth-200 text-roamblr-earth-700 text-sm font-semibold hover:border-roamblr-green-300 transition-colors">
+                    💑 Honeymoon
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PACKAGES GRID ===== -->
+    <section class="py-12 lg:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="packagesGrid">
+
+                <!-- === GORILLA EXPRESS (International, Honeymoon) === -->
+                <article class="package-card bg-white rounded-2xl overflow-hidden shadow-md" data-categories="international honeymoon">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1587017539822-48b05f3ff203?q=80&w=800" alt="Mountain gorilla in Bwindi" class="w-full h-full object-cover" loading="lazy">
+                        <div class="absolute top-4 left-4 px-3 py-1 bg-roamblr-amber-500 text-white text-xs font-bold rounded-full">Best Seller</div>
+                        <div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-roamblr-green-500 text-xs font-bold rounded-full">3 Days</div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs text-roamblr-amber-500 font-semibold uppercase tracking-wider">Gorilla Trekking</span>
+                        <h3 class="font-display text-xl font-bold text-roamblr-green-500 mt-1 mb-2">Gorilla Express</h3>
+                        <p class="text-sm text-roamblr-earth-700 leading-relaxed mb-4 line-clamp-2">
+                            Trek through Bwindi Impenetrable Forest for one life-changing hour with a mountain gorilla family. Permits, mid-range lodge, and private guide included.
+                        </p>
+                        <div class="flex items-center gap-2 text-sm text-roamblr-earth-500 mb-4">
+                            <span>🦍 Bwindi</span>
+                            <span>·</span>
+                            <span>🏨 Mid-Range</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-roamblr-earth-100">
+                            <div>
+                                <div class="text-xs text-roamblr-earth-500">From</div>
+                                <div class="text-2xl font-bold text-roamblr-green-500">$1,590 <span class="text-sm font-normal text-roamblr-earth-500">/pp</span></div>
+                            </div>
+                            <a href="contact.html?package=Gorilla+Express" class="px-4 py-2 bg-roamblr-green-500 hover:bg-roamblr-green-600 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm">
+                                Get Quote
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- === MURCHISON FALLS EXPLORER (International) === -->
+                <article class="package-card bg-white rounded-2xl overflow-hidden shadow-md" data-categories="international">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1621849400072-f281c7e2c1f1?q=80&w=800" alt="Murchison Falls" class="w-full h-full object-cover" loading="lazy">
+                        <div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-roamblr-green-500 text-xs font-bold rounded-full">4 Days</div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs text-roamblr-amber-500 font-semibold uppercase tracking-wider">Wildlife Safari</span>
+                        <h3 class="font-display text-xl font-bold text-roamblr-green-500 mt-1 mb-2">Murchison Falls Explorer</h3>
+                        <p class="text-sm text-roamblr-earth-700 leading-relaxed mb-4 line-clamp-2">
+                            Game drives, Nile boat cruise to the base of the falls, and the hike to the top of the world's most powerful waterfall.
+                        </p>
+                        <div class="flex items-center gap-2 text-sm text-roamblr-earth-500 mb-4">
+                            <span>🌊 Murchison Falls NP</span>
+                            <span>·</span>
+                            <span>🏨 Mid-Range</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-roamblr-earth-100">
+                            <div>
+                                <div class="text-xs text-roamblr-earth-500">From</div>
+                                <div class="text-2xl font-bold text-roamblr-green-500">$980 <span class="text-sm font-normal text-roamblr-earth-500">/pp</span></div>
+                            </div>
+                            <a href="contact.html?package=Murchison+Falls+Explorer" class="px-4 py-2 bg-roamblr-green-500 hover:bg-roamblr-green-600 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm">
+                                Get Quote
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- === UGANDA GRAND CIRCUIT (International) === -->
+                <article class="package-card bg-white rounded-2xl overflow-hidden shadow-md" data-categories="international">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?q=80&w=800" alt="Uganda wildlife" class="w-full h-full object-cover" loading="lazy">
+                        <div class="absolute top-4 left-4 px-3 py-1 bg-roamblr-green-500 text-white text-xs font-bold rounded-full">Premium</div>
+                        <div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-roamblr-green-500 text-xs font-bold rounded-full">10 Days</div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs text-roamblr-amber-500 font-semibold uppercase tracking-wider">Multi-Park Safari</span>
+                        <h3 class="font-display text-xl font-bold text-roamblr-green-500 mt-1 mb-2">Uganda Grand Circuit</h3>
+                        <p class="text-sm text-roamblr-earth-700 leading-relaxed mb-4 line-clamp-2">
+                            The complete Uganda experience. Murchison, Kibale chimpanzees, Queen Elizabeth, Bwindi gorillas, and Lake Bunyonyi in one epic journey.
+                        </p>
+                        <div class="flex items-center gap-2 text-sm text-roamblr-earth-500 mb-4">
+                            <span>🦍🦁🐘 5 Parks</span>
+                            <span>·</span>
+                            <span>🏨 Mid/Luxury</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-roamblr-earth-100">
+                            <div>
+                                <div class="text-xs text-roamblr-earth-500">From</div>
+                                <div class="text-2xl font-bold text-roamblr-green-500">$3,200 <span class="text-sm font-normal text-roamblr-earth-500">/pp</span></div>
+                            </div>
+                            <a href="contact.html?package=Uganda+Grand+Circuit" class="px-4 py-2 bg-roamblr-green-500 hover:bg-roamblr-green-600 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm">
+                                Get Quote
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- === QUEEN ELIZABETH SAFARI (International) === -->
+                <article class="package-card bg-white rounded-2xl overflow-hidden shadow-md" data-categories="international">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1547970810-dc1eac37d174?q=80&w=800" alt="Queen Elizabeth National Park" class="w-full h-full object-cover" loading="lazy">
+                        <div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-roamblr-green-500 text-xs font-bold rounded-full">4 Days</div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs text-roamblr-amber-500 font-semibold uppercase tracking-wider">Wildlife & Birds</span>
+                        <h3 class="font-display text-xl font-bold text-roamblr-green-500 mt-1 mb-2">Queen Elizabeth Safari</h3>
+                        <p class="text-sm text-roamblr-earth-700 leading-relaxed mb-4 line-clamp-2">
+                            Tree-climbing lions in Ishasha, Kazinga Channel boat cruise, crater lakes, and over 600 bird species in Uganda's most biodiverse park.
+                        </p>
+                        <div class="flex items-center gap-2 text-sm text-roamblr-earth-500 mb-4">
+                            <span>🦁 Queen Elizabeth NP</span>
+                            <span>·</span>
+                            <span>🏨 Mid-Range</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-roamblr-earth-100">
+                            <div>
+                                <div class="text-xs text-roamblr-earth-500">From</div>
+                                <div class="text-2xl font-bold text-roamblr-green-500">$1,100 <span class="text-sm font-normal text-roamblr-earth-500">/pp</span></div>
+                            </div>
+                            <a href="contact.html?package=Queen+Elizabeth+Safari" class="px-4 py-2 bg-roamblr-green-500 hover:bg-roamblr-green-600 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm">
+                                Get Quote
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- === KIBALE CHIMPANZEE TREK (International) === -->
+                <article class="package-card bg-white rounded-2xl overflow-hidden shadow-md" data-categories="international">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1567095761054-7a6e773aac40?q=80&w=800" alt="Chimpanzee in Kibale" class="w-full h-full object-cover" loading="lazy">
+                        <div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-roamblr-green-500 text-xs font-bold rounded-full">3 Days</div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs text-roamblr-amber-500 font-semibold uppercase tracking-wider">Primate Tracking</span>
+                        <h3 class="font-display text-xl font-bold text-roamblr-green-500 mt-1 mb-2">Kibale Chimp Trek</h3>
+                        <p class="text-sm text-roamblr-earth-700 leading-relaxed mb-4 line-clamp-2">
+                            Track habituated chimpanzees through Kibale's tropical forest. Optional Bigodi Wetland walk for birds and monkeys.
+                        </p>
+                        <div class="flex items-center gap-2 text-sm text-roamblr-earth-500 mb-4">
+                            <span>🐵 Kibale Forest</span>
+                            <span>·</span>
+                            <span>🏨 Mid-Range</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-roamblr-earth-100">
+                            <div>
+                                <div class="text-xs text-roamblr-earth-500">From</div>
+                                <div class="text-2xl font-bold text-roamblr-green-500">$850 <span class="text-sm font-normal text-roamblr-earth-500">/pp</span></div>
+                            </div>
+                            <a href="contact.html?package=Kibale+Chimp+Trek" class="px-4 py-2 bg-roamblr-green-500 hover:bg-roamblr-green-600 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm">
+                                Get Quote
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- === LAKE MBURO FAMILY SAFARI (Local, International) === -->
+                <article class="package-card bg-white rounded-2xl overflow-hidden shadow-md" data-categories="local international">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1549366021-9f761d450615?q=80&w=800" alt="Zebras at Lake Mburo" class="w-full h-full object-cover" loading="lazy">
+                        <div class="absolute top-4 left-4 px-3 py-1 bg-roamblr-amber-500 text-white text-xs font-bold rounded-full">Family Friendly</div>
+                        <div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-roamblr-green-500 text-xs font-bold rounded-full">3 Days</div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs text-roamblr-amber-500 font-semibold uppercase tracking-wider">Family Safari</span>
+                        <h3 class="font-display text-xl font-bold text-roamblr-green-500 mt-1 mb-2">Lake Mburo Family Safari</h3>
+                        <p class="text-sm text-roamblr-earth-700 leading-relaxed mb-4 line-clamp-2">
+                            Perfect for children 5+. Zebras, giraffes, boat cruise, nature walks, and Uganda's most accessible national park — just 4 hours from Kampala.
+                        </p>
+                        <div class="flex items-center gap-2 text-sm text-roamblr-earth-500 mb-4">
+                            <span>🦓 Lake Mburo NP</span>
+                            <span>·</span>
+                            <span>🏨 Mid-Range</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-roamblr-earth-100">
+                            <div>
+                                <div class="text-xs text-roamblr-earth-500">From</div>
+                                <div class="text-2xl font-bold text-roamblr-green-500">$450</div>
+                                <div class="text-xs text-roamblr-earth-500">UGX 900K / pp</div>
+                            </div>
+                            <a href="contact.html?package=Lake+Mburo+Family" class="px-4 py-2 bg-roamblr-green-500 hover:bg-roamblr-green-600 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm">
+                                Get Quote
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- === LAKE BUNYONYI HONEYMOON (Honeymoon, Local) === -->
+                <article class="package-card bg-white rounded-2xl overflow-hidden shadow-md" data-categories="honeymoon local">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800" alt="Lake Bunyonyi" class="w-full h-full object-cover" loading="lazy">
+                        <div class="absolute top-4 left-4 px-3 py-1 bg-pink-500 text-white text-xs font-bold rounded-full">Honeymoon</div>
+                        <div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-roamblr-green-500 text-xs font-bold rounded-full">3 Nights</div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs text-roamblr-amber-500 font-semibold uppercase tracking-wider">Romantic Getaway</span>
+                        <h3 class="font-display text-xl font-bold text-roamblr-green-500 mt-1 mb-2">Lake Bunyonyi Honeymoon</h3>
+                        <p class="text-sm text-roamblr-earth-700 leading-relaxed mb-4 line-clamp-2">
+                            Private island cottage, sunset canoe rides, candlelit dinners, and flower arrangements. Uganda's most romantic destination, curated for two.
+                        </p>
+                        <div class="flex items-center gap-2 text-sm text-roamblr-earth-500 mb-4">
+                            <span>🏝️ Lake Bunyonyi</span>
+                            <span>·</span>
+                            <span>🏨 Luxury</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-roamblr-earth-100">
+                            <div>
+                                <div class="text-xs text-roamblr-earth-500">From</div>
+                                <div class="text-2xl font-bold text-roamblr-green-500">$750</div>
+                                <div class="text-xs text-roamblr-earth-500">UGX 2.8M / couple</div>
+                            </div>
+                            <a href="contact.html?package=Lake+Bunyonyi+Honeymoon" class="px-4 py-2 bg-roamblr-green-500 hover:bg-roamblr-green-600 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm">
+                                Get Quote
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- === JINJA ADVENTURE DAY (Local) === -->
+                <article class="package-card bg-white rounded-2xl overflow-hidden shadow-md" data-categories="local">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1505159940484-6c92934b048b?q=80&w=800" alt="Source of the Nile Jinja" class="w-full h-full object-cover" loading="lazy">
+                        <div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-roamblr-green-500 text-xs font-bold rounded-full">1 Day</div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs text-roamblr-amber-500 font-semibold uppercase tracking-wider">Day Trip</span>
+                        <h3 class="font-display text-xl font-bold text-roamblr-green-500 mt-1 mb-2">Jinja Adventure Day</h3>
+                        <p class="text-sm text-roamblr-earth-700 leading-relaxed mb-4 line-clamp-2">
+                            Source of the Nile, white water rafting, boat cruise, and the perfect weekend escape from Kampala for families and groups.
+                        </p>
+                        <div class="flex items-center gap-2 text-sm text-roamblr-earth-500 mb-4">
+                            <span>🌊 Jinja</span>
+                            <span>·</span>
+                            <span>🚗 From Kampala</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-roamblr-earth-100">
+                            <div>
+                                <div class="text-xs text-roamblr-earth-500">From</div>
+                                <div class="text-2xl font-bold text-roamblr-green-500">UGX 180K <span class="text-sm font-normal text-roamblr-earth-500">/pp</span></div>
+                            </div>
+                            <a href="contact.html?package=Jinja+Adventure+Day" class="px-4 py-2 bg-roamblr-green-500 hover:bg-roamblr-green-600 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm">
+                                Get Quote
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- === CORPORATE TEAM BUILDING (Corporate) === -->
+                <article class="package-card bg-white rounded-2xl overflow-hidden shadow-md" data-categories="corporate">
+                    <div class="relative h-56 overflow-hidden bg-roamblr-green-100 flex items-center justify-center">
+                        <div class="text-center p-8">
+                            <div class="text-6xl mb-3">🏕️</div>
+                            <p class="text-roamblr-green-500 font-semibold">Team Building</p>
+                        </div>
+                        <div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-roamblr-green-500 text-xs font-bold rounded-full">Half / Full Day</div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs text-roamblr-amber-500 font-semibold uppercase tracking-wider">Corporate</span>
+                        <h3 class="font-display text-xl font-bold text-roamblr-green-500 mt-1 mb-2">Kampala Team Building</h3>
+                        <p class="text-sm text-roamblr-earth-700 leading-relaxed mb-4 line-clamp-2">
+                            Facilitated team experiences within Kampala. Activities, catering, and transport included. For teams of 10–80 people.
+                        </p>
+                        <div class="flex items-center gap-2 text-sm text-roamblr-earth-500 mb-4">
+                            <span>💼 Kampala</span>
+                            <span>·</span>
+                            <span>👥 10-80 pax</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-roamblr-earth-100">
+                            <div>
+                                <div class="text-xs text-roamblr-earth-500">From</div>
+                                <div class="text-2xl font-bold text-roamblr-green-500">UGX 80K <span class="text-sm font-normal text-roamblr-earth-500">/pp</span></div>
+                            </div>
+                            <a href="contact.html?package=Corporate+Team+Building" class="px-4 py-2 bg-roamblr-green-500 hover:bg-roamblr-green-600 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm">
+                                Get Quote
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- === CORPORATE RETREAT (Corporate) === -->
+                <article class="package-card bg-white rounded-2xl overflow-hidden shadow-md" data-categories="corporate">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1601972593653-2f5e45f541df?q=80&w=800" alt="Corporate retreat" class="w-full h-full object-cover" loading="lazy">
+                        <div class="absolute top-4 left-4 px-3 py-1 bg-roamblr-amber-500 text-white text-xs font-bold rounded-full">Popular</div>
+                        <div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-roamblr-green-500 text-xs font-bold rounded-full">2-3 Nights</div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs text-roamblr-amber-500 font-semibold uppercase tracking-wider">Corporate Retreat</span>
+                        <h3 class="font-display text-xl font-bold text-roamblr-green-500 mt-1 mb-2">Lake Mburo Corporate Retreat</h3>
+                        <p class="text-sm text-roamblr-earth-700 leading-relaxed mb-4 line-clamp-2">
+                            Leadership retreats and incentive trips. Strategy sessions with game drives, boat cruises, and bush dinners. Full board, all logistics.
+                        </p>
+                        <div class="flex items-center gap-2 text-sm text-roamblr-earth-500 mb-4">
+                            <span>🦓 Lake Mburo NP</span>
+                            <span>·</span>
+                            <span>🏨 Full Board</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-roamblr-earth-100">
+                            <div>
+                                <div class="text-xs text-roamblr-earth-500">From</div>
+                                <div class="text-2xl font-bold text-roamblr-green-500">UGX 600K <span class="text-sm font-normal text-roamblr-earth-500">/pp</span></div>
+                            </div>
+                            <a href="contact.html?package=Corporate+Retreat" class="px-4 py-2 bg-roamblr-green-500 hover:bg-roamblr-green-600 text-white text-sm font-semibold rounded-lg transition-colors shadow-sm">
+                                Get Quote
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- === CUSTOM SAFARI CARD === -->
+                <article class="package-card bg-gradient-to-br from-roamblr-green-500 to-roamblr-green-700 rounded-2xl overflow-hidden shadow-lg flex flex-col justify-center p-8 text-center text-white">
+                    <div class="text-5xl mb-4">✨</div>
+                    <h3 class="font-display text-2xl font-bold mb-3">Something Different?</h3>
+                    <p class="text-white/80 text-sm mb-6">
+                        Tell us your dream Uganda experience. We'll build a personalized itinerary within 24 hours — no obligation.
+                    </p>
+                    <a href="contact.html?package=Custom+Safari" class="inline-block px-6 py-3 bg-roamblr-amber-500 hover:bg-roamblr-amber-600 text-white font-bold rounded-xl transition-colors shadow-md mx-auto">
+                        Design Your Safari
+                    </a>
+                </article>
+
+            </div>
+
+            <!-- No results message (hidden by default) -->
+            <div id="noResults" class="hidden text-center py-16">
+                <div class="text-5xl mb-4">🔍</div>
+                <h3 class="font-display text-2xl font-bold text-roamblr-green-500 mb-2">No packages match this filter</h3>
+                <p class="text-roamblr-earth-700 mb-6">Try a different category or browse all packages.</p>
+                <button onclick="filterPackages('all')" class="px-6 py-3 bg-roamblr-green-500 text-white font-semibold rounded-xl">Show All Packages</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CUSTOM SAFARI CTA ===== -->
+    <section class="py-16 bg-roamblr-green-500 text-white text-center">
+        <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4">Don't See Exactly What You Want?</h2>
+            <p class="text-white/80 mb-8">Most of our clients customize their trips. Tell us your vision and we'll handle every detail.</p>
+            <a href="contact.html" class="inline-block px-8 py-4 bg-roamblr-amber-500 hover:bg-roamblr-amber-600 text-white font-bold rounded-xl shadow-lg transition">
+                Request a Custom Itinerary
+            </a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-roamblr-earth-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-10 h-10 bg-roamblr-amber-500 rounded-lg flex items-center justify-center font-display font-bold text-2xl">R</div>
+                        <span class="font-display text-xl font-bold">Roamblr Safaris</span>
+                    </div>
+                    <p class="text-roamblr-earth-300 text-sm">Uganda Ground Handling & Safari Experiences</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-3">Navigate</h4>
+                    <ul class="space-y-2 text-sm text-roamblr-earth-300">
+                        <li><a href="index.html" class="hover:text-roamblr-amber-400 transition-colors">Home</a></li>
+                        <li><a href="about.html" class="hover:text-roamblr-amber-400 transition-colors">About</a></li>
+                        <li><a href="packages.html" class="hover:text-roamblr-amber-400 transition-colors">Packages</a></li>
+                        <li><a href="for-agents.html" class="hover:text-roamblr-amber-400 transition-colors">For Agents</a></li>
+                        <li><a href="contact.html" class="hover:text-roamblr-amber-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-3">Contact</h4>
+                    <ul class="space-y-2 text-sm text-roamblr-earth-300">
+                        <li>jeff@roamblr.com</li>
+                        <li>+256 7XX XXX XXX</li>
+                        <li>Kampala, Uganda</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-3">Trip Support</h4>
+                    <p class="text-sm text-roamblr-earth-300 mb-3">For active clients</p>
+                    <a href="https://wa.me/256XXXXXXXXX" class="inline-block px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm font-semibold transition-colors">WhatsApp</a>
+                </div>
+            </div>
+            <div class="border-t border-roamblr-earth-800 pt-6 text-center text-sm text-roamblr-earth-400">
+                <p>&copy; <span id="year"></span> Roamblr Safaris. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        let menuOpen = false;
+        mobileMenuBtn.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            mobileMenu.classList.toggle('hidden', !menuOpen);
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuOpen = false;
+            });
+        });
+
+        // Dynamic year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Package filtering
+        function filterPackages(category) {
+            // Update active filter button
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById('filter-' + category);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            // Show/hide packages
+            const packages = document.querySelectorAll('#packagesGrid > article');
+            let visibleCount = 0;
+
+            packages.forEach(pkg => {
+                if (category === 'all' || pkg.dataset.categories.includes(category)) {
+                    pkg.style.display = '';
+                    visibleCount++;
+                } else {
+                    pkg.style.display = 'none';
+                }
+            });
+
+            // Show/hide no results message
+            const noResults = document.getElementById('noResults');
+            if (visibleCount === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
