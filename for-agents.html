@@ -408,31 +408,43 @@
     </footer>
 
     <script>
-        // Mobile menu
+        // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         let menuOpen = false;
-        mobileMenuBtn.addEventListener('click', () => {
+
+        mobileMenuBtn.addEventListener('click', function() {
             menuOpen = !menuOpen;
-            mobileMenu.classList.toggle('hidden', !menuOpen);
+            if (menuOpen) {
+                mobileMenu.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+            }
         });
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
+
+        // Close mobile menu when any link inside it is clicked
+        var menuLinks = mobileMenu.querySelectorAll('a');
+        for (var i = 0; i < menuLinks.length; i++) {
+            menuLinks[i].addEventListener('click', function() {
                 mobileMenu.classList.add('hidden');
                 menuOpen = false;
             });
-        });
+        }
 
         // Dynamic year
         document.getElementById('year').textContent = new Date().getFullYear();
 
         // Toggle rate sheet access form
         function toggleAccessForm() {
-            const form = document.getElementById('accessForm');
-            const btn = document.getElementById('accessBtn');
-            const isHidden = form.classList.contains('hidden');
-            form.classList.toggle('hidden');
-            btn.textContent = isHidden ? 'Cancel Request' : 'Request Access';
+            var form = document.getElementById('accessForm');
+            var btn = document.getElementById('accessBtn');
+            if (form.classList.contains('hidden')) {
+                form.classList.remove('hidden');
+                btn.textContent = 'Cancel Request';
+            } else {
+                form.classList.add('hidden');
+                btn.textContent = 'Request Access';
+            }
         }
 
         // Handle access request
@@ -446,81 +458,17 @@
         // Handle partnership form
         function handlePartnershipSubmit(e) {
             e.preventDefault();
-            const btn = e.target.querySelector('button[type="submit"]');
-            const originalText = btn.textContent;
+            var btn = e.target.querySelector('button[type="submit"]');
+            var originalText = btn.textContent;
             btn.disabled = true;
             btn.textContent = 'Sending...';
-            setTimeout(() => {
+            setTimeout(function() {
                 alert('Thank you! Your partnership inquiry has been received. Jeff will respond within 24 hours.');
                 btn.disabled = false;
                 btn.textContent = originalText;
                 e.target.reset();
             }, 1500);
-        
         }
-        <script>
-    // Mobile menu toggle
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    let menuOpen = false;
-
-    mobileMenuBtn.addEventListener('click', () => {
-        menuOpen = !menuOpen;
-        if (menuOpen) {
-            mobileMenu.classList.remove('hidden');
-        } else {
-            mobileMenu.classList.add('hidden');
-        }
-    });
-
-    // Close mobile menu when any link inside it is clicked
-    mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            menuOpen = false;
-        });
-    });
-
-    // Dynamic year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Toggle rate sheet access form
-    function toggleAccessForm() {
-        const form = document.getElementById('accessForm');
-        const btn = document.getElementById('accessBtn');
-        const isHidden = form.classList.contains('hidden');
-        if (isHidden) {
-            form.classList.remove('hidden');
-            btn.textContent = 'Cancel Request';
-        } else {
-            form.classList.add('hidden');
-            btn.textContent = 'Request Access';
-        }
-    }
-
-    // Handle access request
-    function handleAccessRequest(e) {
-        e.preventDefault();
-        alert('Thank you! Your request has been received. We\'ll send net rate sheet access to your email within 24 hours.');
-        document.getElementById('accessForm').classList.add('hidden');
-        document.getElementById('accessBtn').textContent = 'Request Access';
-    }
-
-    // Handle partnership form
-    function handlePartnershipSubmit(e) {
-        e.preventDefault();
-        const btn = e.target.querySelector('button[type="submit"]');
-        const originalText = btn.textContent;
-        btn.disabled = true;
-        btn.textContent = 'Sending...';
-        setTimeout(() => {
-            alert('Thank you! Your partnership inquiry has been received. Jeff will respond within 24 hours.');
-            btn.disabled = false;
-            btn.textContent = originalText;
-            e.target.reset();
-        }, 1500);
-    }
-</script>
     </script>
 </body>
 </html>
