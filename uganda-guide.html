@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uganda Travel Guide — Roamblr Safaris | Parks, Wildlife & Planning</title>
+<meta name="description" content="The complete Uganda travel guide from Roamblr Safaris. Gorilla trekking, national parks, best time to visit, visa information, packing lists, and practical travel advice from Kampala-based experts.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          forest: { 950:'#030E04', 900:'#0A1F0C', 800:'#122B14', 700:'#1B5E20', 600:'#2E7D32', 500:'#388E3C', 400:'#4CAF50', 300:'#81C784', 200:'#C8E6C9', 100:'#E8F5E9' },
+          amber: { 900:'#E65100', 800:'#EF6C00', 700:'#F57C00', 600:'#FB8C00', 500:'#FF8F00', 400:'#FFA000', 300:'#FFB300', 200:'#FFD54F', 100:'#FFF8E1' },
+          earth: { 900:'#1C1208', 800:'#3D2B1F', 700:'#5D4037', 600:'#6D4C41', 500:'#8D6E63', 400:'#A1887F', 300:'#BCAAA4', 200:'#D7CCC8', 100:'#EFEBE9' },
+          cream: '#FAFAF5', parchment: '#F5F0E8',
+        },
+        fontFamily: {
+          serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+          sans: ['Outfit', 'system-ui', 'sans-serif'],
+          mono: ['DM Mono', 'monospace'],
+        },
+      }
+    }
+  }
+</script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Outfit',sans-serif; background:#FAFAF5; color:#1C1208; overflow-x:hidden; }
+  .serif { font-family:'Cormorant Garamond',Georgia,serif; }
+  .mono { font-family:'DM Mono',monospace; }
+
+  body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.4; }
+
+  .nav-scrolled { background:rgba(10,31,12,0.95) !important; backdrop-filter:blur(20px); box-shadow:0 2px 40px rgba(0,0,0,0.3); }
+
+  .hero-guide {
+    background:
+      linear-gradient(to bottom, rgba(3,14,4,0.85) 0%, rgba(10,31,12,0.6) 40%, rgba(250,250,245,1) 100%),
+      url('https://images.unsplash.com/photo-1502920514313-52581002a659?w=1800&q=80') center/cover no-repeat;
+    min-height: 60vh;
+  }
+
+  .section-label { font-family:'DM Mono',monospace; font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:#FF8F00; }
+  .hr-amber { height:2px; background:linear-gradient(90deg,#FF8F00,#FFB300,transparent); border:none; }
+  .diagonal-top { clip-path:polygon(0 40px,100% 0,100% 100%,0 100%); margin-top:-40px; }
+
+  .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease,transform 0.7s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .reveal-delay-1 { transition-delay:0.1s; }
+  .reveal-delay-2 { transition-delay:0.2s; }
+  .reveal-delay-3 { transition-delay:0.3s; }
+  .reveal-delay-4 { transition-delay:0.4s; }
+
+  /* Article cards */
+  .article-card { border-radius:20px; overflow:hidden; background:white; border:1px solid #EFEBE9; transition:transform 0.35s ease,box-shadow 0.35s ease; }
+  .article-card:hover { transform:translateY(-5px); box-shadow:0 20px 48px rgba(27,94,32,0.12); }
+  .article-card .card-img { position:relative; overflow:hidden; }
+  .article-card .card-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease; }
+  .article-card:hover .card-img img { transform:scale(1.06); }
+
+  /* Park cards */
+  .park-card { position:relative; border-radius:20px; overflow:hidden; transition:transform 0.3s ease; cursor:pointer; }
+  .park-card:hover { transform:translateY(-4px); }
+  .park-card .park-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(3,14,4,0.95) 0%, rgba(3,14,4,0.3) 60%, transparent 100%); transition:background 0.4s ease; }
+  .park-card:hover .park-overlay { background:linear-gradient(to top, rgba(3,14,4,0.98) 0%, rgba(3,14,4,0.6) 70%, rgba(3,14,4,0.1) 100%); }
+  .park-card .park-desc { max-height:0; overflow:hidden; transition:max-height 0.4s ease, opacity 0.3s ease; opacity:0; }
+  .park-card:hover .park-desc { max-height:120px; opacity:1; }
+
+  /* Season calendar */
+  .month-cell { border-radius:8px; padding:6px 4px; text-align:center; font-size:11px; }
+  .peak { background:#1B5E20; color:white; }
+  .good { background:#C8E6C9; color:#1B5E20; }
+  .wet { background:#FFF8E1; color:#E65100; }
+  .shoulder { background:#F5F0E8; color:#6D4C41; }
+
+  /* WA float */
+  .wa-float { position:fixed; bottom:28px; right:28px; width:60px; height:60px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 32px rgba(37,211,102,0.4); z-index:1000; animation:wafloat 4s ease-in-out infinite; }
+  @keyframes wafloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  .wa-float:hover { transform:scale(1.1) !important; animation:none; }
+
+  #mobile-menu { display:none; position:fixed; inset:0; background:rgba(10,31,12,0.98); z-index:500; flex-direction:column; align-items:center; justify-content:center; gap:40px; }
+  #mobile-menu.open { display:flex; }
+
+  /* Table of contents */
+  .toc-link { display:block; padding:8px 0; border-bottom:1px solid #EFEBE9; font-size:13px; color:#6D4C41; transition:color 0.2s; text-decoration:none; }
+  .toc-link:hover { color:#1B5E20; }
+  .toc-link:last-child { border-bottom:none; }
+</style>
+</head>
+<body>
+
+<a href="https://wa.me/256XXXXXXXXX" class="wa-float" target="_blank" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- Nav -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-5 px-6 lg:px-12">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3 group">
+      <div class="w-10 h-10 bg-forest-700 rounded-xl flex items-center justify-center text-xl group-hover:bg-amber-500 transition-colors duration-300">🦍</div>
+      <div><div class="serif text-white text-xl font-medium leading-none">Roamblr</div><div class="mono text-amber-400 text-[9px] tracking-widest uppercase leading-none mt-0.5">Safaris</div></div>
+    </a>
+    <div class="hidden lg:flex items-center gap-8">
+      <a href="packages.html" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Packages</a>
+      <a href="about.html" class="text-white/80 hover:text-white text-sm font-medium transition-colors">About</a>
+      <a href="uganda-guide.html" class="text-white text-sm font-medium border-b border-amber-400 pb-0.5">Uganda Guide</a>
+      <a href="for-agents.html" class="text-white/80 hover:text-white text-sm font-medium transition-colors">For Agents</a>
+      <a href="contact.html" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Contact</a>
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="contact.html" class="hidden lg:flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-forest-950 text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-300">
+        Plan My Trip <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <button id="menu-btn" class="lg:hidden text-white p-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+</nav>
+
+<div id="mobile-menu">
+  <button id="close-menu" class="absolute top-6 right-6 text-white/60 hover:text-white"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+  <a href="packages.html" class="serif text-white text-4xl hover:text-amber-400 transition-colors">Packages</a>
+  <a href="about.html" class="serif text-white text-4xl hover:text-amber-400 transition-colors">About</a>
+  <a href="uganda-guide.html" class="serif text-amber-400 text-4xl">Uganda Guide</a>
+  <a href="for-agents.html" class="serif text-white text-4xl hover:text-amber-400 transition-colors">For Agents</a>
+  <a href="contact.html" class="bg-amber-500 text-forest-950 text-xl font-semibold px-10 py-4 rounded-full">Plan My Trip</a>
+</div>
+
+
+<!-- ═══ HERO ═══ -->
+<section class="hero-guide flex flex-col justify-end">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 pt-36 pb-12 w-full">
+    <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-sm rounded-full px-4 py-1.5 mb-6">
+      <div class="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse"></div>
+      <span class="mono text-amber-300 text-xs tracking-widest uppercase">Written from Kampala</span>
+    </div>
+    <h1 class="serif text-white font-light leading-tight mb-4" style="font-size:clamp(2.5rem,5vw,4.5rem);">
+      The Uganda<br><em class="text-amber-400">Travel Guide</em>
+    </h1>
+    <p class="text-white/70 text-lg max-w-xl leading-relaxed mb-6">Everything you need to know about Uganda — from gorilla trekking permits to the best time to visit, national parks, packing lists, and practical travel advice from people who live here.</p>
+    <div class="flex flex-wrap gap-3">
+      <a href="#parks" class="bg-white/15 hover:bg-white/25 text-white text-sm px-4 py-2 rounded-full backdrop-blur-sm transition-all duration-300">National Parks →</a>
+      <a href="#when-to-go" class="bg-white/15 hover:bg-white/25 text-white text-sm px-4 py-2 rounded-full backdrop-blur-sm transition-all duration-300">When to Go →</a>
+      <a href="#gorillas" class="bg-amber-500/80 hover:bg-amber-500 text-forest-950 text-sm font-medium px-4 py-2 rounded-full transition-all duration-300">Gorilla Guide →</a>
+      <a href="#practical" class="bg-white/15 hover:bg-white/25 text-white text-sm px-4 py-2 rounded-full backdrop-blur-sm transition-all duration-300">Practical Info →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ WHY UGANDA ═══ -->
+<section class="py-20 lg:py-24 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+    <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
+      <div class="reveal">
+        <div class="section-label mb-4">The Case for Uganda</div>
+        <h2 class="serif text-forest-900 font-light leading-tight mb-6" style="font-size:clamp(2rem,3.5vw,3rem);">Why Uganda Is<br><span class="italic text-amber-500">Africa's Best Kept Secret</span></h2>
+        <div class="space-y-4 text-earth-700 leading-relaxed">
+          <p>Uganda has more primate species than any country on earth. More bird species than the entire continent of Europe. The source of the world's longest river. Ancient rainforests that have been continuously forested for over 25,000 years. The most accessible mountain gorilla population in existence.</p>
+          <p>It also has gorilla permits that cost $800 — less than half what Rwanda charges for an experience on the same mountain range, with the same gorilla families, in the same ancient forest. The difference is that fewer people know about Uganda. That is changing. Now is the time to come.</p>
+          <p>Uganda is also one of the safest countries in East Africa for tourists — friendly, English-speaking, politically stable, with a government that has made wildlife tourism a genuine national priority.</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4 reveal reveal-delay-2">
+        <div class="bg-forest-950 rounded-2xl p-6 text-center">
+          <div class="serif text-amber-400 font-light mb-2" style="font-size:2.5rem">1,000+</div>
+          <div class="text-white/60 text-sm">Bird species — more than all of Europe</div>
+        </div>
+        <div class="bg-white border border-earth-100 rounded-2xl p-6 text-center">
+          <div class="serif text-forest-700 font-light mb-2" style="font-size:2.5rem">$800</div>
+          <div class="text-earth-600 text-sm">Gorilla permit — half Rwanda's price</div>
+        </div>
+        <div class="bg-white border border-earth-100 rounded-2xl p-6 text-center">
+          <div class="serif text-forest-700 font-light mb-2" style="font-size:2.5rem">13</div>
+          <div class="text-earth-600 text-sm">National parks and wildlife reserves</div>
+        </div>
+        <div class="bg-amber-500 rounded-2xl p-6 text-center">
+          <div class="serif text-forest-950 font-light mb-2" style="font-size:2.5rem">1,000+</div>
+          <div class="text-forest-900/70 text-sm">Mountain gorillas alive today — and growing</div>
+        </div>
+        <div class="col-span-2 bg-forest-100 border border-forest-200 rounded-2xl p-5">
+          <div class="mono text-forest-700 text-[9px] tracking-widest uppercase mb-2">Conservation Achievement</div>
+          <p class="text-forest-800 text-sm leading-relaxed">In 1989, fewer than 300 mountain gorillas remained alive. Today there are over 1,000 — the only great ape whose population is actively growing. Tourism revenue, directed responsibly, funds the rangers who make this possible.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick facts -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 reveal">
+      <div class="bg-white border border-earth-100 rounded-2xl p-5 shadow-sm">
+        <div class="text-2xl mb-2">✈️</div>
+        <h3 class="serif text-forest-900 text-lg font-medium mb-1">Getting There</h3>
+        <p class="text-earth-600 text-xs leading-relaxed">Entebbe International Airport (EBB). Direct flights from London (8hr), Dubai (5hr), Nairobi (1hr), Addis Ababa (2hr). All international arrivals land at Entebbe, 45 minutes from Kampala.</p>
+      </div>
+      <div class="bg-white border border-earth-100 rounded-2xl p-5 shadow-sm">
+        <div class="text-2xl mb-2">🛂</div>
+        <h3 class="serif text-forest-900 text-lg font-medium mb-1">Visa</h3>
+        <p class="text-earth-600 text-xs leading-relaxed">E-visa available online at visas.immigration.go.ug — $50 USD, apply 2 weeks ahead. East Africa Tourist Visa ($100) covers Uganda, Rwanda, and Kenya. Most nationalities eligible.</p>
+      </div>
+      <div class="bg-white border border-earth-100 rounded-2xl p-5 shadow-sm">
+        <div class="text-2xl mb-2">💉</div>
+        <h3 class="serif text-forest-900 text-lg font-medium mb-1">Health</h3>
+        <p class="text-earth-600 text-xs leading-relaxed">Yellow fever vaccination mandatory — certificate required on entry. Malaria prophylaxis strongly recommended for all park areas. Hepatitis A and typhoid advisable. No altitude sickness risk at Kampala or Bwindi.</p>
+      </div>
+      <div class="bg-white border border-earth-100 rounded-2xl p-5 shadow-sm">
+        <div class="text-2xl mb-2">💵</div>
+        <h3 class="serif text-forest-900 text-lg font-medium mb-1">Money</h3>
+        <p class="text-earth-600 text-xs leading-relaxed">Uganda Shilling (UGX). USD cash accepted widely — crisp notes after 2009 only. ATMs in Kampala/Entebbe, scarce at parks. Exchange rate: approximately UGX 3,700 per USD. Mobile money (MTN MoMo) widely used locally.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ NATIONAL PARKS ═══ -->
+<section class="py-24 lg:py-32 bg-forest-950 diagonal-top" id="parks">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+    <div class="text-center mb-16 reveal">
+      <div class="section-label mb-3 text-amber-400">Uganda's Wild Places</div>
+      <h2 class="serif text-white font-light" style="font-size:clamp(2rem,3.5vw,3rem);">The National Parks<br><span class="italic text-amber-400">Worth Knowing</span></h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <!-- Bwindi -->
+      <div class="park-card reveal reveal-delay-1" style="height:360px">
+        <img src="https://images.unsplash.com/photo-1534476391294-0a87c9f7e3db?w=600&q=80" alt="Bwindi Impenetrable Forest" class="w-full h-full object-cover">
+        <div class="park-overlay"></div>
+        <div class="absolute inset-0 p-6 flex flex-col justify-end">
+          <div class="flex gap-2 mb-3">
+            <span class="bg-amber-500 text-forest-950 mono text-[9px] font-bold px-2.5 py-1 rounded-full uppercase">Must Visit</span>
+            <span class="bg-white/15 text-white mono text-[9px] px-2.5 py-1 rounded-full">UNESCO World Heritage</span>
+          </div>
+          <h3 class="serif text-white text-2xl font-light mb-1">Bwindi Impenetrable Forest</h3>
+          <div class="mono text-amber-400 text-[10px] tracking-wide uppercase mb-2">Gorilla Trekking · Southwest Uganda</div>
+          <p class="park-desc text-white/70 text-sm leading-relaxed mb-3">Home to almost half the world's mountain gorilla population. Four trekking sectors — Buhoma, Rushaga, Ruhija, Nkuringo. Ancient rainforest continuously forested for 25,000 years.</p>
+          <div class="flex items-center justify-between">
+            <div class="mono text-amber-400 text-sm font-medium">Permit: $800/person</div>
+            <a href="gorilla-express.html" class="bg-amber-500 hover:bg-amber-400 text-forest-950 text-xs font-semibold px-4 py-2 rounded-full transition-all duration-300">See Package →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Murchison Falls -->
+      <div class="park-card reveal reveal-delay-2" style="height:360px">
+        <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80" alt="Murchison Falls National Park" class="w-full h-full object-cover">
+        <div class="park-overlay"></div>
+        <div class="absolute inset-0 p-6 flex flex-col justify-end">
+          <div class="flex gap-2 mb-3">
+            <span class="bg-blue-600 text-white mono text-[9px] font-bold px-2.5 py-1 rounded-full uppercase">Largest Park</span>
+          </div>
+          <h3 class="serif text-white text-2xl font-light mb-1">Murchison Falls</h3>
+          <div class="mono text-amber-400 text-[10px] tracking-wide uppercase mb-2">Game Drives + Nile Cruise · Northwest</div>
+          <p class="park-desc text-white/70 text-sm leading-relaxed mb-3">Uganda's largest national park. Game drives for lions, elephants, giraffes. The Nile squeezed through a 7-metre gorge creating the world's most powerful waterfall by flow rate.</p>
+          <div class="flex items-center justify-between">
+            <div class="mono text-amber-400 text-sm font-medium">From $1,100/person</div>
+            <a href="murchison-falls.html" class="bg-white/20 hover:bg-amber-500 text-white hover:text-forest-950 text-xs font-semibold px-4 py-2 rounded-full transition-all duration-300">See Package →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Queen Elizabeth -->
+      <div class="park-card reveal reveal-delay-3" style="height:360px">
+        <img src="https://images.unsplash.com/photo-1502920514313-52581002a659?w=600&q=80" alt="Queen Elizabeth National Park" class="w-full h-full object-cover">
+        <div class="park-overlay"></div>
+        <div class="absolute inset-0 p-6 flex flex-col justify-end">
+          <div class="flex gap-2 mb-3">
+            <span class="bg-forest-600 text-white mono text-[9px] font-bold px-2.5 py-1 rounded-full uppercase">Tree-Climbing Lions</span>
+          </div>
+          <h3 class="serif text-white text-2xl font-light mb-1">Queen Elizabeth NP</h3>
+          <div class="mono text-amber-400 text-[10px] tracking-wide uppercase mb-2">Game Drives + Boat Cruise · West</div>
+          <p class="park-desc text-white/70 text-sm leading-relaxed mb-3">Famous for tree-climbing lions in Ishasha sector and the Kazinga Channel boat cruise — hippos surface alongside the vessel, fish eagles circle overhead. Incredible biodiversity.</p>
+          <div class="flex items-center justify-between">
+            <div class="mono text-amber-400 text-sm font-medium">From $1,050/person</div>
+            <a href="contact.html" class="bg-white/20 hover:bg-amber-500 text-white hover:text-forest-950 text-xs font-semibold px-4 py-2 rounded-full transition-all duration-300">Enquire →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kibale -->
+      <div class="park-card reveal reveal-delay-1" style="height:300px">
+        <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80" alt="Kibale Forest National Park" class="w-full h-full object-cover">
+        <div class="park-overlay"></div>
+        <div class="absolute inset-0 p-6 flex flex-col justify-end">
+          <h3 class="serif text-white text-xl font-light mb-1">Kibale Forest</h3>
+          <div class="mono text-amber-400 text-[9px] tracking-wide uppercase mb-2">Chimpanzee Tracking · West-Central</div>
+          <p class="park-desc text-white/60 text-xs leading-relaxed mb-3">Highest density of primates in Africa. Track chimpanzees on foot through dense tropical forest. 13 primate species in one park.</p>
+          <div class="mono text-amber-400 text-xs">Chimp permit: $150/person</div>
+        </div>
+      </div>
+
+      <!-- Lake Mburo -->
+      <div class="park-card reveal reveal-delay-2" style="height:300px">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Lake Mburo National Park" class="w-full h-full object-cover">
+        <div class="park-overlay"></div>
+        <div class="absolute inset-0 p-6 flex flex-col justify-end">
+          <span class="inline-block bg-forest-700/90 text-white mono text-[9px] px-2.5 py-1 rounded-full mb-2">Closest to Kampala · 3.5hr</span>
+          <h3 class="serif text-white text-xl font-light mb-1">Lake Mburo</h3>
+          <div class="mono text-amber-400 text-[9px] tracking-wide uppercase mb-2">Game Drives + Boat Cruise · Southwest</div>
+          <p class="park-desc text-white/60 text-xs leading-relaxed mb-3">Zebras, hippos, impalas, leopards. Uganda's only park with zebra. Best weekend getaway from Kampala. Perfect for families and first-time visitors.</p>
+          <div class="mono text-amber-400 text-xs">From UGX 900K/person</div>
+        </div>
+      </div>
+
+      <!-- Kidepo -->
+      <div class="park-card reveal reveal-delay-3" style="height:300px">
+        <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80" alt="Kidepo Valley National Park" class="w-full h-full object-cover">
+        <div class="park-overlay"></div>
+        <div class="absolute inset-0 p-6 flex flex-col justify-end">
+          <span class="inline-block bg-purple-700 text-white mono text-[9px] px-2.5 py-1 rounded-full mb-2">Most Remote · Fly-In</span>
+          <h3 class="serif text-white text-xl font-light mb-1">Kidepo Valley</h3>
+          <div class="mono text-amber-400 text-[9px] tracking-wide uppercase mb-2">Wilderness Safari · Northeast Uganda</div>
+          <p class="park-desc text-white/60 text-xs leading-relaxed mb-3">Africa's most dramatic wilderness. Near-total isolation, Karamoja culture, cheetah and ostrich. Every serious safari traveler says the same: Kidepo is unlike anywhere else.</p>
+          <div class="mono text-amber-400 text-xs">Fly-in recommended · From $2,400</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Other parks -->
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 reveal">
+      <div class="bg-white/8 border border-white/12 rounded-2xl p-5">
+        <h3 class="serif text-white text-lg font-medium mb-1">Mgahinga Gorilla NP</h3>
+        <p class="text-white/50 text-xs leading-relaxed">Gorilla trekking + golden monkey. Smaller, less visited than Bwindi. Part of the Virunga Massif shared with Rwanda and DRC.</p>
+      </div>
+      <div class="bg-white/8 border border-white/12 rounded-2xl p-5">
+        <h3 class="serif text-white text-lg font-medium mb-1">Rwenzori Mountains NP</h3>
+        <p class="text-white/50 text-xs leading-relaxed">Mountains of the Moon. Multi-day trekking through afroalpine vegetation to equatorial glaciers. Serious hiking only.</p>
+      </div>
+      <div class="bg-white/8 border border-white/12 rounded-2xl p-5">
+        <h3 class="serif text-white text-lg font-medium mb-1">Semuliki NP</h3>
+        <p class="text-white/50 text-xs leading-relaxed">Extension of the Congo Basin rainforest. Outstanding birding with Central African species not found elsewhere in Uganda.</p>
+      </div>
+      <div class="bg-white/8 border border-white/12 rounded-2xl p-5">
+        <h3 class="serif text-white text-lg font-medium mb-1">Mt Elgon NP</h3>
+        <p class="text-white/50 text-xs leading-relaxed">Africa's largest caldera. Cave-dwelling elephants. Outstanding walking and birding. Eastern Uganda near the Kenya border.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ WHEN TO GO ═══ -->
+<section class="py-24 lg:py-32 bg-cream diagonal-top" id="when-to-go">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+    <div class="text-center mb-16 reveal">
+      <div class="section-label mb-3">Planning Your Visit</div>
+      <h2 class="serif text-forest-900 font-light" style="font-size:clamp(2rem,3.5vw,3rem);">When to Visit<br><span class="italic text-amber-500">Uganda</span></h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12 mb-16">
+
+      <div class="reveal">
+        <h3 class="serif text-forest-900 text-2xl font-medium mb-4">The Uganda Tourism Calendar</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[500px]">
+            <thead>
+              <tr>
+                <th class="text-left pb-3 mono text-earth-500 text-[10px] tracking-wide uppercase font-normal">Month</th>
+                <th class="text-center pb-3 mono text-earth-500 text-[10px] tracking-wide uppercase font-normal">Gorillas</th>
+                <th class="text-center pb-3 mono text-earth-500 text-[10px] tracking-wide uppercase font-normal">Game</th>
+                <th class="text-center pb-3 mono text-earth-500 text-[10px] tracking-wide uppercase font-normal">Birding</th>
+                <th class="text-center pb-3 mono text-earth-500 text-[10px] tracking-wide uppercase font-normal">Roads</th>
+              </tr>
+            </thead>
+            <tbody class="space-y-2">
+              <tr><td class="py-2 font-medium text-sm">January</td><td class="py-2 text-center"><span class="month-cell good px-3">Good</span></td><td class="py-2 text-center"><span class="month-cell good px-3">Good</span></td><td class="py-2 text-center"><span class="month-cell good px-3">Good</span></td><td class="py-2 text-center"><span class="month-cell good px-3">Good</span></td></tr>
+              <tr><td class="py-2 font-medium text-sm">February</td><td class="py-2 text-center"><span class="month-cell good px-3">Good</span></td><td class="py-2 text-center"><span class="month-cell good px-3">Good</span></td><td class="py-2 text-center"><span class="month-cell good px-3">Good</span></td><td class="py-2 text-center"><span class="month-cell good px-3">Good</span></td></tr>
+              <tr><td class="py-2 font-medium text-sm">March</td><td class="py-2 text-center"><span class="month-cell shoulder px-3">OK</span></td><td class="py-2 text-center"><span class="month-cell shoulder px-3">OK</span></td><td class="py-2 text-center"><span class="month-cell good px-3">Good</span></td><td class="py-2 text-center"><span class="month-cell wet px-3">Wet</span></td></tr>
+              <tr><td class="py-2 font-medium text-sm">April</td><td class="py-2 text-center"><span class="month-cell shoulder px-3">OK</span></td><td class="py-2 text-center"><span class="month-cell wet px-3">Wet</span></td><td class="py-2 text-center"><span class="month-cell peak px-3">Best</span></td><td class="py-2 text-center"><span class="month-cell wet px-3">Wet</span></td></tr>
+              <tr><td class="py-2 font-medium text-sm">May</td><td class="py-2 text-center"><span class="month-cell shoulder px-3">OK</span></td><td class="py-2 text-center"><span class="month-cell wet px-3">Wet</span></td><td class="py-2 text-center"><span class="month-cell peak px-3">Best</span></td><td class="py-2 text-center"><span class="month-cell wet px-3">Wet</span></td></tr>
+              <tr><td class="py-2 font-medium text-sm">June</td><td class="py-2 text-center"><span class="month-cell peak px-3">Best</span></td><td class="py-2 text-center"><span class="month-cell peak px-3">Best</span></td><td class="py-2 text-center"><span class="month-cell good px-3">Good</span></td><td class="py-2 text-center"><span class="month-cell peak px-3">Best</span></td></tr>
+              <tr><td class="py-2 font-medium text-sm">July</td><td class="py-2 text-center"><span class="month-cell peak px-3">Best</span></td><td class="py-2 text-center"><span class="month-cell peak px-3">Best</span></td><td class="py-2 text-center"><span class="month-cell good px-3">Good</span></td><td class="py-2 text-center"><span class="month-cell peak px-3">Best</span></td></tr>
+              <tr><td class="py-2 font-medium text-sm">August</td><td class="py-2 text-center"><span class="month-cell peak px-3">Best</span></td><td class="py-2 text-center"><span class="month-cell peak px-3">Best</span></td><td class="py-2 text-center"><span class="month-cell good px-3">Good</span></td><td class="py-2 text-center"><span class="month-cell peak px-3">Best</span></td></tr>
+              <tr><td class="py-2 font-medium text-sm">September</td><td class="py-2 text-center"><span class="month-cell good px-3">Good</span></td><td class="py-2 text-center"><span class="month-cell good px-3">Good</span></td><td class="py-2 text-center"><span class="month-cell good px-3">Good</span></td><td class="py-2 text-center"><span class="month-cell good px-3">Good</span></td></tr>
+              <tr><td class="py-2 font-medium text-sm">October</td><td class="py-2 text-center"><span class="month-cell shoulder px-3">OK</span></td><td class="py-2 text-center"><span class="month-cell wet px-3">Wet</span></td><td class="py-2 text-center"><span class="month-cell peak px-3">Best</span></td><td class="py-2 text-center"><span class="month-cell wet px-3">Wet</span></td></tr>
+              <tr><td class="py-2 font-medium text-sm">November</td><td class="py-2 text-center"><span class="month-cell shoulder px-3">OK</span></td><td class="py-2 text-center"><span class="month-cell wet px-3">Wet</span></td><td class="py-2 text-center"><span class="month-cell peak px-3">Best</span></td><td class="py-2 text-center"><span class="month-cell wet px-3">Wet</span></td></tr>
+              <tr><td class="py-2 font-medium text-sm">December</td><td class="py-2 text-center"><span class="month-cell peak px-3">Best</span></td><td class="py-2 text-center"><span class="month-cell good px-3">Good</span></td><td class="py-2 text-center"><span class="month-cell good px-3">Good</span></td><td class="py-2 text-center"><span class="month-cell good px-3">Good</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="flex flex-wrap gap-3 mt-4">
+          <div class="flex items-center gap-2"><div class="w-6 h-4 rounded peak"></div><span class="text-xs text-earth-600">Best / Peak season</span></div>
+          <div class="flex items-center gap-2"><div class="w-6 h-4 rounded good"></div><span class="text-xs text-earth-600">Good conditions</span></div>
+          <div class="flex items-center gap-2"><div class="w-6 h-4 rounded shoulder"></div><span class="text-xs text-earth-600">Shoulder / OK</span></div>
+          <div class="flex items-center gap-2"><div class="w-6 h-4 rounded wet"></div><span class="text-xs text-earth-600">Rainy / Challenging</span></div>
+        </div>
+      </div>
+
+      <div class="space-y-5 reveal reveal-delay-2">
+        <div class="bg-forest-700 rounded-2xl p-6">
+          <div class="mono text-amber-400 text-[10px] tracking-widest uppercase mb-2">Peak Season</div>
+          <h3 class="serif text-white text-xl font-medium mb-3">June – August</h3>
+          <p class="text-white/70 text-sm leading-relaxed">Uganda's main dry season. Best game viewing — animals concentrate around water sources. Roads dry and accessible. Gorilla permit availability tightest — book 4–6 months ahead. Highest prices of the year.</p>
+        </div>
+        <div class="bg-white border border-earth-100 rounded-2xl p-6 shadow-sm">
+          <div class="mono text-amber-600 text-[10px] tracking-widest uppercase mb-2">Second Peak</div>
+          <h3 class="serif text-forest-900 text-xl font-medium mb-3">December – January</h3>
+          <p class="text-earth-600 text-sm leading-relaxed">Shorter dry season with excellent conditions. Good gorilla permit availability — book 2–3 months ahead. Popular with visitors combining Uganda with a Christmas/New Year holiday. Busy at lodges near Bwindi.</p>
+        </div>
+        <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6">
+          <div class="mono text-amber-700 text-[10px] tracking-widest uppercase mb-2">Best Value</div>
+          <h3 class="serif text-forest-900 text-xl font-medium mb-3">September – November</h3>
+          <p class="text-earth-600 text-sm leading-relaxed">The long rains begin in October. Roads to Bwindi can be challenging. But gorilla permits are readily available, birding is exceptional as migrants arrive, and lodge rates drop. Many experienced Uganda travelers consider October their favourite month to visit.</p>
+        </div>
+        <div class="bg-forest-50 border border-forest-200 rounded-2xl p-5">
+          <p class="text-forest-800 text-sm leading-relaxed"><strong>Jeff's honest advice:</strong> The gorilla trekking experience itself is essentially identical regardless of season — gorillas are habituated to human presence year-round and are encountered every single day. The difference is the road to get there, not the experience when you arrive. If budget matters, travel in the shoulder season.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ GORILLA GUIDE ═══ -->
+<section class="py-24 lg:py-32 bg-forest-950 diagonal-top" id="gorillas">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+    <div class="text-center mb-16 reveal">
+      <div class="section-label mb-3 text-amber-400">The Main Event</div>
+      <h2 class="serif text-white font-light" style="font-size:clamp(2rem,3.5vw,3rem);">The Complete<br><span class="italic text-amber-400">Gorilla Trekking Guide</span></h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+
+      <div class="space-y-6 reveal">
+
+        <div class="bg-white/8 border border-white/12 rounded-2xl p-6">
+          <h3 class="serif text-white text-xl font-medium mb-4">The Conservation Story</h3>
+          <p class="text-white/65 text-sm leading-relaxed">Mountain gorillas were on the edge of extinction within living memory. In 1989, fewer than 300 remained. Habitat destruction, poaching, and political instability in the Congo Basin had pushed them to the brink. Today, more than 1,000 mountain gorillas live in the wild — the only great ape whose wild population is increasing. Conservation tourism is central to this story. The $800 gorilla permit funds the rangers who protect these families every day. When you trek gorillas, you are not just having an extraordinary experience. You are contributing to the most remarkable wildlife recovery in Africa.</p>
+        </div>
+
+        <div class="bg-white/8 border border-white/12 rounded-2xl p-6">
+          <h3 class="serif text-white text-xl font-medium mb-4">Uganda vs Rwanda — The Honest Comparison</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+              <span class="text-white/60 text-sm">Gorilla permit</span>
+              <div class="flex gap-4"><span class="mono text-amber-400 text-sm font-medium">Uganda $800</span><span class="mono text-white/40 text-sm">Rwanda $1,500</span></div>
+            </div>
+            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+              <span class="text-white/60 text-sm">Gorilla families available</span>
+              <div class="flex gap-4"><span class="mono text-amber-400 text-sm">~20 groups</span><span class="mono text-white/40 text-sm">~12 groups</span></div>
+            </div>
+            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+              <span class="text-white/60 text-sm">Daily permits available</span>
+              <div class="flex gap-4"><span class="mono text-amber-400 text-sm">~150+</span><span class="mono text-white/40 text-sm">~96</span></div>
+            </div>
+            <div class="flex justify-between items-center border-b border-white/10 pb-3">
+              <span class="text-white/60 text-sm">Overall trip cost</span>
+              <div class="flex gap-4"><span class="mono text-amber-400 text-sm">Lower</span><span class="mono text-white/40 text-sm">Higher</span></div>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-white/60 text-sm">Trekking experience</span>
+              <div class="flex gap-4"><span class="mono text-amber-400 text-sm">Identical</span><span class="mono text-white/40 text-sm">Identical</span></div>
+            </div>
+          </div>
+          <p class="text-white/45 text-xs mt-4 leading-relaxed">The gorilla experience is the same mountain range, the same gorilla species, the same one-hour rule. The difference is the price you pay to do it.</p>
+        </div>
+
+      </div>
+
+      <div class="space-y-5 reveal reveal-delay-2">
+
+        <div class="bg-amber-500 rounded-2xl p-6">
+          <h3 class="serif text-forest-950 text-xl font-medium mb-4">Bwindi Sectors — Which to Choose</h3>
+          <div class="space-y-4">
+            <div class="border-b border-forest-900/20 pb-4">
+              <div class="font-semibold text-forest-950 mb-1">Buhoma (North)</div>
+              <p class="text-forest-900/70 text-sm leading-relaxed">The original sector, most established infrastructure. Best mid-range and budget lodge selection. More habituated gorilla families. Good for first-time visitors.</p>
+            </div>
+            <div class="border-b border-forest-900/20 pb-4">
+              <div class="font-semibold text-forest-950 mb-1">Rushaga (South)</div>
+              <p class="text-forest-900/70 text-sm leading-relaxed">Home of the gorilla habituation experience ($1,500 — 4 hours instead of 1). Multiple gorilla families. Growing lodge infrastructure including some luxury options.</p>
+            </div>
+            <div class="border-b border-forest-900/20 pb-4">
+              <div class="font-semibold text-forest-950 mb-1">Ruhija (East)</div>
+              <p class="text-forest-900/70 text-sm leading-relaxed">Highest altitude sector. Outstanding birding — Albertine Rift endemic species. Fewer visitors. More challenging trek often rewarded with a more immersive forest experience.</p>
+            </div>
+            <div>
+              <div class="font-semibold text-forest-950 mb-1">Nkuringo (Southwest)</div>
+              <p class="text-forest-900/70 text-sm leading-relaxed">Dramatic landscape on the edge of the Congo border. Longer trek but extraordinary scenery. Best combined with Lake Bunyonyi for a scenic multi-day itinerary.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white/8 border border-white/12 rounded-2xl p-6">
+          <h3 class="serif text-white text-lg font-medium mb-3">Key Rules — Non-Negotiable</h3>
+          <ul class="space-y-2.5">
+            <li class="flex items-start gap-3 text-white/70 text-sm"><svg class="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>Minimum age: 15 years. No exceptions under any circumstances.</li>
+            <li class="flex items-start gap-3 text-white/70 text-sm"><svg class="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>No trekking with respiratory symptoms — gorillas have no immunity to human diseases.</li>
+            <li class="flex items-start gap-3 text-white/70 text-sm"><svg class="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>Minimum distance: 7 metres from any gorilla at all times.</li>
+            <li class="flex items-start gap-3 text-white/70 text-sm"><svg class="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>Maximum time with gorillas: 1 hour (habituation experience: 4 hours).</li>
+            <li class="flex items-start gap-3 text-white/70 text-sm"><svg class="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>No flash photography. Natural light only near gorillas.</li>
+            <li class="flex items-start gap-3 text-white/70 text-sm"><svg class="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>Hire a porter at the park gate — $15, supports a local family, makes your hike easier.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ PRACTICAL INFORMATION ═══ -->
+<section class="py-24 lg:py-32 bg-cream diagonal-top" id="practical">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+    <div class="text-center mb-16 reveal">
+      <div class="section-label mb-3">Everything You Need to Know</div>
+      <h2 class="serif text-forest-900 font-light" style="font-size:clamp(2rem,3.5vw,3rem);">Practical <span class="italic text-amber-500">Uganda</span></h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+
+      <div class="bg-white border border-earth-100 rounded-2xl p-6 shadow-sm reveal reveal-delay-1">
+        <div class="text-3xl mb-3">🎒</div>
+        <h3 class="serif text-forest-900 text-xl font-medium mb-3">Packing for Uganda</h3>
+        <ul class="space-y-2 text-earth-600 text-sm">
+          <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 text-forest-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Long trousers and long-sleeved shirts (neutral colours)</li>
+          <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 text-forest-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Waterproof hiking boots with ankle support</li>
+          <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 text-forest-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Lightweight rain jacket or poncho</li>
+          <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 text-forest-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Insect repellent (DEET-based for malaria areas)</li>
+          <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 text-forest-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Reusable water bottle (no single-use plastic on Roamblr trips)</li>
+          <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 text-forest-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Gardening gloves (for gorilla trekking — forest nettles)</li>
+          <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 text-forest-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Camera without flash capability</li>
+          <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 text-forest-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Power bank (electricity unreliable at remote lodges)</li>
+          <li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 text-forest-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>USD cash in clean notes printed after 2009</li>
+        </ul>
+      </div>
+
+      <div class="bg-white border border-earth-100 rounded-2xl p-6 shadow-sm reveal reveal-delay-2">
+        <div class="text-3xl mb-3">📱</div>
+        <h3 class="serif text-forest-900 text-xl font-medium mb-3">Connectivity & SIM Cards</h3>
+        <p class="text-earth-600 text-sm leading-relaxed mb-4">Uganda has good mobile coverage in Kampala and along main highways. Coverage drops significantly in national park areas — Bwindi, Kidepo, and Murchison have very limited or no signal.</p>
+        <div class="space-y-3">
+          <div class="bg-forest-50 rounded-xl p-3">
+            <div class="mono text-forest-700 text-[9px] tracking-widest uppercase mb-1">Best for tourists</div>
+            <div class="font-medium text-forest-900 text-sm">MTN Uganda SIM</div>
+            <div class="text-earth-600 text-xs">Available at Entebbe Airport arrivals. ~UGX 3,000. Data packages from UGX 10,000. Best network coverage.</div>
+          </div>
+          <div class="bg-forest-50 rounded-xl p-3">
+            <div class="mono text-forest-700 text-[9px] tracking-widest uppercase mb-1">Alternative</div>
+            <div class="font-medium text-forest-900 text-sm">Airtel Uganda SIM</div>
+            <div class="text-earth-600 text-xs">Good coverage in Kampala. Cheaper data packages. Less reliable in remote areas.</div>
+          </div>
+          <p class="text-earth-500 text-xs leading-relaxed">Roamblr clients: your driver-guide will have a working phone at all times. You can always reach us through them if you have no signal yourself.</p>
+        </div>
+      </div>
+
+      <div class="bg-white border border-earth-100 rounded-2xl p-6 shadow-sm reveal reveal-delay-3">
+        <div class="text-3xl mb-3">🏥</div>
+        <h3 class="serif text-forest-900 text-xl font-medium mb-3">Health & Safety</h3>
+        <div class="space-y-3">
+          <div>
+            <div class="mono text-earth-500 text-[9px] tracking-widest uppercase mb-1">Mandatory</div>
+            <p class="text-earth-700 text-sm font-medium">Yellow Fever Vaccination</p>
+            <p class="text-earth-600 text-xs">Certificate required at Entebbe Airport entry. Get vaccinated at least 10 days before travel.</p>
+          </div>
+          <div class="border-t border-earth-100 pt-3">
+            <div class="mono text-earth-500 text-[9px] tracking-widest uppercase mb-1">Strongly Recommended</div>
+            <p class="text-earth-700 text-sm font-medium">Malaria Prophylaxis</p>
+            <p class="text-earth-600 text-xs">All national park areas carry malaria risk. Consult your travel health doctor for appropriate prophylaxis — Malarone, Doxycycline, or Lariam depending on your medical history.</p>
+          </div>
+          <div class="border-t border-earth-100 pt-3">
+            <div class="mono text-earth-500 text-[9px] tracking-widest uppercase mb-1">Recommended</div>
+            <p class="text-earth-700 text-sm font-medium">Hepatitis A, Typhoid</p>
+            <p class="text-earth-600 text-xs">Both transmitted through food and water. Vaccination significantly reduces risk.</p>
+          </div>
+          <div class="border-t border-earth-100 pt-3">
+            <div class="mono text-earth-500 text-[9px] tracking-widest uppercase mb-1">Emergency Medical</div>
+            <p class="text-earth-700 text-sm font-medium">International Hospital Kampala</p>
+            <p class="text-earth-600 text-xs">Best private hospital in Uganda. Full emergency care, international standard. Closest major hospital to Bwindi is Kabale (45 min). Travel insurance with evacuation cover essential.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- Article grid -->
+    <div class="reveal">
+      <div class="section-label mb-4">From the Guide</div>
+      <h2 class="serif text-forest-900 font-light mb-8" style="font-size:clamp(1.8rem,3vw,2.5rem);">In-Depth <span class="italic text-amber-500">Articles</span></h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="article-card reveal reveal-delay-1">
+        <div class="card-img" style="height:200px">
+          <img src="https://images.unsplash.com/photo-1534476391294-0a87c9f7e3db?w=600&q=80" alt="Gorilla trekking guide">
+          <div class="absolute inset-0 bg-gradient-to-t from-forest-950/60 to-transparent"></div>
+          <span class="absolute bottom-3 left-3 bg-forest-700 text-white mono text-[9px] px-2.5 py-1 rounded-full">Gorilla Trekking</span>
+        </div>
+        <div class="p-6">
+          <div class="mono text-earth-500 text-[9px] tracking-wide uppercase mb-2">12 min read</div>
+          <h3 class="serif text-forest-900 text-xl font-medium mb-2 leading-tight">The Complete Guide to Gorilla Trekking in Uganda</h3>
+          <p class="text-earth-600 text-sm leading-relaxed mb-4">Everything you need to know before your gorilla trek — which sector to choose, what to expect on the day, and why this experience changes people permanently.</p>
+          <a href="contact.html" class="inline-flex items-center gap-1.5 text-forest-700 hover:text-forest-900 text-sm font-medium transition-colors">Read article <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <div class="article-card reveal reveal-delay-2">
+        <div class="card-img" style="height:200px">
+          <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80" alt="Uganda national parks">
+          <div class="absolute inset-0 bg-gradient-to-t from-forest-950/60 to-transparent"></div>
+          <span class="absolute bottom-3 left-3 bg-blue-600 text-white mono text-[9px] px-2.5 py-1 rounded-full">National Parks</span>
+        </div>
+        <div class="p-6">
+          <div class="mono text-earth-500 text-[9px] tracking-wide uppercase mb-2">15 min read</div>
+          <h3 class="serif text-forest-900 text-xl font-medium mb-2 leading-tight">Uganda's National Parks — Which to Visit and Why</h3>
+          <p class="text-earth-600 text-sm leading-relaxed mb-4">An honest comparison of Uganda's major parks — who each one is for, what makes it extraordinary, and how to combine them into a seamless itinerary.</p>
+          <a href="contact.html" class="inline-flex items-center gap-1.5 text-forest-700 hover:text-forest-900 text-sm font-medium transition-colors">Read article <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <div class="article-card reveal reveal-delay-3">
+        <div class="card-img" style="height:200px">
+          <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80" alt="Uganda birding">
+          <div class="absolute inset-0 bg-gradient-to-t from-forest-950/60 to-transparent"></div>
+          <span class="absolute bottom-3 left-3 bg-amber-600 text-white mono text-[9px] px-2.5 py-1 rounded-full">Birding</span>
+        </div>
+        <div class="p-6">
+          <div class="mono text-earth-500 text-[9px] tracking-wide uppercase mb-2">10 min read</div>
+          <h3 class="serif text-forest-900 text-xl font-medium mb-2 leading-tight">Uganda for Birders — 1,000 Species and Where to Find Them</h3>
+          <p class="text-earth-600 text-sm leading-relaxed mb-4">Uganda has more bird species than all of Europe. The shoebill, the African green broadbill, the Shelley's crimsonwing. A birder's guide to Uganda's most extraordinary sites.</p>
+          <a href="contact.html" class="inline-flex items-center gap-1.5 text-forest-700 hover:text-forest-900 text-sm font-medium transition-colors">Read article <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <div class="article-card reveal reveal-delay-1">
+        <div class="card-img" style="height:200px">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Kampala Uganda">
+          <div class="absolute inset-0 bg-gradient-to-t from-forest-950/60 to-transparent"></div>
+          <span class="absolute bottom-3 left-3 bg-purple-700 text-white mono text-[9px] px-2.5 py-1 rounded-full">Kampala</span>
+        </div>
+        <div class="p-6">
+          <div class="mono text-earth-500 text-[9px] tracking-wide uppercase mb-2">8 min read</div>
+          <h3 class="serif text-forest-900 text-xl font-medium mb-2 leading-tight">Kampala in 24 Hours — A Local's Guide to Uganda's Capital</h3>
+          <p class="text-earth-600 text-sm leading-relaxed mb-4">Most visitors rush through Kampala on the way to Bwindi. They miss one of East Africa's most vibrant, chaotic, and genuinely interesting cities. Here is what to do instead.</p>
+          <a href="contact.html" class="inline-flex items-center gap-1.5 text-forest-700 hover:text-forest-900 text-sm font-medium transition-colors">Read article <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <div class="article-card reveal reveal-delay-2">
+        <div class="card-img" style="height:200px">
+          <img src="https://images.unsplash.com/photo-1502920514313-52581002a659?w=600&q=80" alt="Uganda family safari">
+          <div class="absolute inset-0 bg-gradient-to-t from-forest-950/60 to-transparent"></div>
+          <span class="absolute bottom-3 left-3 bg-green-600 text-white mono text-[9px] px-2.5 py-1 rounded-full">Families</span>
+        </div>
+        <div class="p-6">
+          <div class="mono text-earth-500 text-[9px] tracking-wide uppercase mb-2">10 min read</div>
+          <h3 class="serif text-forest-900 text-xl font-medium mb-2 leading-tight">Uganda with Children — The Honest Family Safari Guide</h3>
+          <p class="text-earth-600 text-sm leading-relaxed mb-4">Which parks work with children, what age restrictions apply, and how to plan a family Uganda trip that the adults and children will both remember for life.</p>
+          <a href="contact.html" class="inline-flex items-center gap-1.5 text-forest-700 hover:text-forest-900 text-sm font-medium transition-colors">Read article <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+      <div class="article-card reveal reveal-delay-3">
+        <div class="card-img" style="height:200px">
+          <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&q=80" alt="Uganda budget safari">
+          <div class="absolute inset-0 bg-gradient-to-t from-forest-950/60 to-transparent"></div>
+          <span class="absolute bottom-3 left-3 bg-earth-600 text-white mono text-[9px] px-2.5 py-1 rounded-full">Budget Travel</span>
+        </div>
+        <div class="p-6">
+          <div class="mono text-earth-500 text-[9px] tracking-wide uppercase mb-2">12 min read</div>
+          <h3 class="serif text-forest-900 text-xl font-medium mb-2 leading-tight">Uganda on a Budget — Extraordinary Experiences at Ugandan Prices</h3>
+          <p class="text-earth-600 text-sm leading-relaxed mb-4">How Ugandan residents and budget-conscious international visitors can experience their own extraordinary country without the price tags that international operators charge.</p>
+          <a href="contact.html" class="inline-flex items-center gap-1.5 text-forest-700 hover:text-forest-900 text-sm font-medium transition-colors">Read article <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CTA ═══ -->
+<section class="py-20 bg-forest-950 diagonal-top">
+  <div class="max-w-3xl mx-auto px-6 lg:px-12 text-center reveal">
+    <div class="section-label mb-4 text-amber-400">Ready to Plan</div>
+    <h2 class="serif text-white font-light leading-tight mb-6" style="font-size:clamp(2rem,3.5vw,3rem);">Enough Reading.<br><span class="italic text-amber-400">Time to Plan Your Trip.</span></h2>
+    <p class="text-white/60 leading-relaxed mb-8 max-w-xl mx-auto">Tell us when you want to come, how many people, and what you want to experience. We will put together an itinerary and a quote within 24 hours.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="packages.html" class="group inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-forest-950 font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+        Browse Packages <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <a href="contact.html" class="inline-flex items-center gap-2 border border-white/25 hover:border-white/50 text-white/80 hover:text-white font-medium px-8 py-4 rounded-full transition-all duration-300">Get a Free Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-forest-950 pt-20 pb-10 diagonal-top">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid lg:grid-cols-4 gap-12 lg:gap-16 mb-16">
+      <div><div class="flex items-center gap-3 mb-5"><div class="w-10 h-10 bg-forest-700 rounded-xl flex items-center justify-center text-xl">🦍</div><div><div class="serif text-white text-xl font-medium leading-none">Roamblr</div><div class="mono text-amber-400 text-[9px] tracking-widest uppercase">Safaris</div></div></div><p class="text-white/50 text-sm leading-relaxed">Started with solo Saturdays at Kabaka's Lake. Now arranging Uganda's finest wildlife experiences worldwide.</p></div>
+      <div><div class="mono text-amber-400 text-xs tracking-widest uppercase mb-5">Packages</div><ul class="space-y-3"><li><a href="gorilla-express.html" class="text-white/55 hover:text-white text-sm transition-colors">Gorilla Express</a></li><li><a href="gorilla-chimp-combo.html" class="text-white/55 hover:text-white text-sm transition-colors">Gorilla &amp; Chimp</a></li><li><a href="murchison-falls.html" class="text-white/55 hover:text-white text-sm transition-colors">Murchison Falls</a></li><li><a href="packages.html" class="text-amber-400/80 text-sm">View all →</a></li></ul></div>
+      <div><div class="mono text-amber-400 text-xs tracking-widest uppercase mb-5">Company</div><ul class="space-y-3"><li><a href="about.html" class="text-white/55 hover:text-white text-sm transition-colors">About Us</a></li><li><a href="for-agents.html" class="text-white/55 hover:text-white text-sm transition-colors">For Agents</a></li><li><a href="uganda-guide.html" class="text-white text-sm border-b border-amber-400/40 pb-0.5">Uganda Guide</a></li><li><a href="contact.html" class="text-white/55 hover:text-white text-sm transition-colors">Contact</a></li></ul></div>
+      <div><div class="mono text-amber-400 text-xs tracking-widest uppercase mb-5">Contact</div><ul class="space-y-3"><li class="flex items-center gap-3 text-white/55 text-sm"><svg class="w-4 h-4 text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>jeff@roamblr.com</li><li class="flex items-center gap-3 text-white/55 text-sm"><svg class="w-4 h-4 text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Kampala, Uganda</li></ul></div>
+    </div>
+    <hr class="hr-amber mb-8">
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+      <div class="text-white/30 text-xs">© 2026 Roamblr Safaris </div>
+      <div class="flex gap-6"><a href="#" class="text-white/30 hover:text-white/60 text-xs">Privacy Policy</a><a href="#" class="text-white/30 hover:text-white/60 text-xs">Booking Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) { navbar.classList.add('nav-scrolled'); navbar.classList.remove('py-5'); navbar.classList.add('py-3'); }
+    else { navbar.classList.remove('nav-scrolled'); navbar.classList.remove('py-3'); navbar.classList.add('py-5'); }
+  });
+  document.getElementById('menu-btn').addEventListener('click', () => { document.getElementById('mobile-menu').classList.add('open'); document.body.style.overflow='hidden'; });
+  document.getElementById('close-menu').addEventListener('click', () => { document.getElementById('mobile-menu').classList.remove('open'); document.body.style.overflow=''; });
+  document.querySelectorAll('#mobile-menu a').forEach(l => l.addEventListener('click', () => { document.getElementById('mobile-menu').classList.remove('open'); document.body.style.overflow=''; }));
+
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin:'0px 0px -30px 0px' });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
