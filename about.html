@@ -1,441 +1,783 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — Roamblr Safaris | Uganda Safari Ground Handler</title>
+<meta name="description" content="Roamblr Safaris was born from solo Saturday adventures around Kampala. Meet Jeff Ocaya and discover the story behind Uganda's most personal safari ground handler.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          forest: { 950:'#030E04', 900:'#0A1F0C', 800:'#122B14', 700:'#1B5E20', 600:'#2E7D32', 500:'#388E3C', 400:'#4CAF50', 300:'#81C784', 200:'#C8E6C9', 100:'#E8F5E9' },
+          amber: { 900:'#E65100', 800:'#EF6C00', 700:'#F57C00', 600:'#FB8C00', 500:'#FF8F00', 400:'#FFA000', 300:'#FFB300', 200:'#FFD54F', 100:'#FFF8E1' },
+          earth: { 900:'#1C1208', 800:'#3D2B1F', 700:'#5D4037', 600:'#6D4C41', 500:'#8D6E63', 400:'#A1887F', 300:'#BCAAA4', 200:'#D7CCC8', 100:'#EFEBE9' },
+          cream: '#FAFAF5',
+          parchment: '#F5F0E8',
+        },
+        fontFamily: {
+          serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+          sans: ['Outfit', 'system-ui', 'sans-serif'],
+          mono: ['DM Mono', 'monospace'],
+        },
+      }
+    }
+  }
+</script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Outfit', sans-serif; background: #FAFAF5; color: #1C1208; overflow-x: hidden; }
+  .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+  .mono  { font-family: 'DM Mono', monospace; }
 
-    <title>About Roamblr Safaris | The Story Behind Uganda's Most Personal Safari Company</title>
-    <meta name="description" content="How Jeff Ocaya's solo Saturday micro-adventures through Kampala became Roamblr Safaris — a Uganda ground handling company built on genuine curiosity, not a business plan.">
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
 
-    <meta property="og:title" content="About Roamblr Safaris — The Jeff Ocaya Story">
-    <meta property="og:description" content="From Kitgum to Kampala. From following random roads to running a safari company. The story behind Roamblr.">
-    <meta property="og:url" content="https://roamblr.com/about.html">
+  .nav-scrolled {
+    background: rgba(10,31,12,0.95) !important;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 2px 40px rgba(0,0,0,0.3);
+  }
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'roamblr-green': {
-                            50: '#e8f5e9',
-                            100: '#c8e6c9',
-                            200: '#a5d6a7',
-                            500: '#1B5E20',
-                            600: '#164d1a',
-                            700: '#113d15',
-                            800: '#0d2e10',
-                        },
-                        'roamblr-amber': {
-                            400: '#ffca28',
-                            500: '#FF8F00',
-                        },
-                        'roamblr-earth': {
-                            50: '#faf7f4',
-                            100: '#f5f0eb',
-                            200: '#e8ddd3',
-                            500: '#8B7355',
-                            700: '#5c4a37',
-                            800: '#4A3728',
-                            900: '#2c1f15',
-                        },
-                    },
-                    fontFamily: {
-                        'display': ['"Playfair Display"', 'serif'],
-                        'body': ['"Inter"', 'sans-serif'],
-                    },
-                    animation: {
-                        'fade-up': 'fadeUp 0.8s ease-out forwards',
-                        'fade-in': 'fadeIn 1s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                    },
-                }
-            }
-        }
-    </script>
+  .hero-about {
+    background:
+      linear-gradient(135deg, rgba(3,14,4,0.92) 0%, rgba(27,94,32,0.75) 50%, rgba(3,14,4,0.9) 100%),
+      url('https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1800&q=80') center/cover no-repeat;
+    min-height: 70vh;
+  }
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #FF8F00;
+  }
 
-    <style>
-        html { scroll-behavior: smooth; }
-        .text-balance { text-wrap: balance; }
-        .pull-quote {
-            position: relative;
-        }
-        .pull-quote::before {
-            content: open-quote;
-            position: absolute;
-            top: -50px;
-            left: -30px;
-            font-size: 180px;
-            line-height: 1;
-            color: rgba(27, 94, 32, 0.06);
-            font-family: 'Playfair Display', serif;
-            pointer-events: none;
-        }
-        .story-section {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        .story-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+  .hr-amber {
+    height: 2px;
+    background: linear-gradient(90deg, #FF8F00, #FFB300, transparent);
+    border: none;
+  }
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231B5E20'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='52' font-weight='700' fill='%23FF8F00'>R</text></svg>">
+  .diagonal-top { clip-path: polygon(0 40px, 100% 0, 100% 100%, 0 100%); margin-top: -40px; }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  .wa-float {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 32px rgba(37,211,102,0.4);
+    z-index: 1000;
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  .wa-float:hover { transform: scale(1.1) !important; animation: none; }
+
+  .timeline-item { position: relative; padding-left: 40px; }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 11px; top: 28px; bottom: -24px;
+    width: 2px;
+    background: linear-gradient(to bottom, #1B5E20, transparent);
+  }
+  .timeline-item:last-child::before { display: none; }
+  .timeline-dot {
+    position: absolute;
+    left: 0; top: 6px;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: #1B5E20;
+    border: 3px solid #FAFAF5;
+    box-shadow: 0 0 0 2px #1B5E20;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .value-card {
+    border-radius: 20px;
+    padding: 32px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .value-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(27,94,32,0.12); }
+
+  .guide-card {
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  .guide-card:hover { transform: translateY(-4px); }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    line-height: 1;
+    color: #1B5E20;
+  }
+
+  #mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,31,12,0.98);
+    z-index: 500;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+  #mobile-menu.open { display: flex; }
+</style>
 </head>
-<body class="font-body antialiased text-roamblr-earth-900 bg-white">
+<body>
 
-    <!-- ===== NAVIGATION ===== -->
-    <nav class="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16 lg:h-20">
-                <a href="index.html" class="flex items-center gap-2">
-                    <div class="w-10 h-10 bg-roamblr-green-500 rounded-lg flex items-center justify-center">
-                        <span class="font-display text-2xl font-bold text-roamblr-amber-500">R</span>
-                    </div>
-                    <div class="hidden sm:block">
-                        <div class="font-display text-xl font-bold text-roamblr-green-500 leading-none">Roamblr</div>
-                        <div class="text-xs text-roamblr-earth-700 tracking-widest">SAFARIS</div>
-                    </div>
-                </a>
-                <div class="hidden lg:flex items-center gap-6">
-                    <a href="index.html" class="text-sm font-medium text-roamblr-earth-700 hover:text-roamblr-green-500 transition-colors">Home</a>
-                    <a href="about.html" class="text-sm font-medium text-roamblr-green-500 bg-roamblr-green-50 px-3 py-1.5 rounded-lg">About</a>
-                    <a href="packages.html" class="text-sm font-medium text-roamblr-earth-700 hover:text-roamblr-green-500 transition-colors">Packages</a>
-                    <a href="for-agents.html" class="text-sm font-medium text-roamblr-earth-700 hover:text-roamblr-green-500 transition-colors">For Agents</a>
-                    <a href="travel-guide.html" class="text-sm font-medium text-roamblr-earth-700 hover:text-roamblr-green-500 transition-colors">Travel Guide</a>
-                    <a href="contact.html" class="px-4 py-2 text-sm font-semibold text-white bg-roamblr-green-500 rounded-lg hover:bg-roamblr-green-600 transition-colors">Contact</a>
-                </div>
-                <button id="mobileMenuBtn" class="lg:hidden p-2" aria-label="Toggle menu">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                </button>
-            </div>
+<!-- WhatsApp Float -->
+<a href="https://wa.me/256XXXXXXXXX" class="wa-float" target="_blank" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- Navigation -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-5 px-6 lg:px-12">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3 group">
+      <div class="w-10 h-10 bg-forest-700 rounded-xl flex items-center justify-center text-xl group-hover:bg-amber-500 transition-colors duration-300">🦍</div>
+      <div>
+        <div class="serif text-white text-xl font-medium leading-none">Roamblr</div>
+        <div class="mono text-amber-400 text-[9px] tracking-widest uppercase leading-none mt-0.5">Safaris</div>
+      </div>
+    </a>
+    <div class="hidden lg:flex items-center gap-8">
+      <a href="packages.html" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Packages</a>
+      <a href="about.html" class="text-white text-sm font-medium border-b border-amber-400 pb-0.5">About</a>
+      <a href="uganda-guide.html" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Uganda Guide</a>
+      <a href="for-agents.html" class="text-white/80 hover:text-white text-sm font-medium transition-colors">For Agents</a>
+      <a href="contact.html" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Contact</a>
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="contact.html" class="hidden lg:flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-forest-950 text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/30">
+        Get a Free Quote
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <button id="menu-btn" class="lg:hidden text-white p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu">
+  <button id="close-menu" class="absolute top-6 right-6 text-white/60 hover:text-white">
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+  <a href="packages.html" class="serif text-white text-4xl hover:text-amber-400 transition-colors">Packages</a>
+  <a href="about.html" class="serif text-amber-400 text-4xl">About</a>
+  <a href="uganda-guide.html" class="serif text-white text-4xl hover:text-amber-400 transition-colors">Uganda Guide</a>
+  <a href="for-agents.html" class="serif text-white text-4xl hover:text-amber-400 transition-colors">For Agents</a>
+  <a href="contact.html" class="bg-amber-500 text-forest-950 text-xl font-semibold px-10 py-4 rounded-full">Get a Quote</a>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+  HERO
+═══════════════════════════════════════════ -->
+<section class="hero-about flex flex-col justify-end relative">
+  <div class="absolute inset-0 bg-gradient-to-b from-forest-950/20 via-transparent to-cream"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-40 pb-20 lg:pb-28">
+    <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-sm rounded-full px-4 py-1.5 mb-6">
+      <div class="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse"></div>
+      <span class="mono text-amber-300 text-xs tracking-widest uppercase">Our Story</span>
+    </div>
+    <h1 class="serif text-white font-light leading-tight mb-4" style="font-size: clamp(2.8rem, 6vw, 5.5rem);">
+      About<br><em class="text-amber-400">Roamblr Safaris</em>
+    </h1>
+    <p class="text-white/70 text-lg max-w-xl leading-relaxed">
+      Some businesses start with a business plan. Roamblr Safaris started with a Saturday.
+    </p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+  THE FULL STORY
+═══════════════════════════════════════════ -->
+<section class="py-24 lg:py-32 bg-cream" id="story">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+
+      <!-- Story text -->
+      <div class="reveal">
+        <div class="section-label mb-4">The Origin</div>
+        <h2 class="serif text-forest-900 font-light leading-tight mb-8" style="font-size: clamp(2rem, 3.5vw, 3rem);">
+          Follow the Road.<br><span class="italic text-amber-500">See What You Find.</span>
+        </h2>
+
+        <div class="space-y-6 text-earth-700 leading-relaxed text-base lg:text-lg">
+
+          <p>There is a hill in Kitgum. It is not famous. It does not appear in travel guides or on safari itineraries. But if you grew up in that small town in northern Uganda the way Jeff Ocaya did, Hilltop was the closest thing to an adventure that the world made available to you. And Jeff went. Regularly. Because even as a boy, staying still never felt quite right.</p>
+
+          <p>He walked everywhere. To school on the opposite side of town and back, every single day. On Sundays he would pass three churches closer to his home just to walk to the one that was furthest away. The specific, private pleasure of a person who thinks most clearly when his feet are moving and the world is passing slowly on either side of him.</p>
+
+          <p>He moved to Kampala as a young man, looking for opportunity in a bigger city. He worked. He found his routine. He learned the streets. But on Saturdays, he left.</p>
+
+          <div class="border-l-4 border-amber-400 pl-6 py-2">
+            <p class="serif italic text-forest-800 text-xl font-light leading-relaxed">"One Saturday I walked out of my door in central Kampala, picked a road at random, and said to myself: I am going to follow this road until I find something interesting."</p>
+            <p class="mono text-earth-500 text-xs mt-3 tracking-wide">— Jeff Ocaya, Founder</p>
+          </div>
+
+          <p>Two hours later he was standing outside Rubaga Cathedral — and thinking about his father, whose devotion to the Catholic church had defined his childhood in Kitgum. He went inside, knelt down, and prayed. Not the polished prayer of someone who does this regularly. The raw kind. Tears on his face. A son talking to God on behalf of a man he missed completely.</p>
+
+          <p>He had left home that morning looking for something interesting. He had not expected to find something true.</p>
+
+          <p>The adventures continued. Kabaka's Lake, hiding inside Kampala like a secret the city was keeping from itself. Buziga Hill, where the whole of Kampala spread out below him and looked entirely different from above. Gaba Beach, where Lake Victoria was so wide and flat it looked like the beginning of an ocean, and a fisherman pressed his contact number into Jeff's hand and told him his group price.</p>
+
+          <p>He posted the photos on his WhatsApp status. His phone started buzzing. A friend went on his own micro adventure after seeing the photos. A mother with young children asked for somewhere affordable. Another friend said simply: <em>next time you go, I am coming.</em></p>
+
+          <p class="text-forest-800 font-medium">Jeff had not started a business. He had just been following his curiosity one Saturday at a time — and without meaning to, become the person his circle trusted when they wanted to know: where should I go?</p>
+
+          <p class="text-forest-700">Roamblr Safaris is the professional answer to that question. Built on the same curiosity that took him to Kabaka's Lake on a quiet Saturday. Scaled to serve the Kampala family, the international traveler, the agency in London that needs a reliable Uganda ground partner.</p>
+
+          <p class="text-earth-600">Uganda is extraordinary. Most people — including most Ugandans — have no idea how extraordinary. We intend to fix that.</p>
         </div>
-        <div id="mobileMenu" class="lg:hidden hidden bg-white border-t shadow-lg">
-            <div class="px-4 py-3 space-y-2">
-                <a href="index.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-roamblr-earth-700 hover:bg-roamblr-earth-50">Home</a>
-                <a href="about.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium bg-roamblr-green-50 text-roamblr-green-500">About</a>
-                <a href="packages.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-roamblr-earth-700 hover:bg-roamblr-earth-50">Packages</a>
-                <a href="for-agents.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-roamblr-earth-700 hover:bg-roamblr-earth-50">For Agents</a>
-                <a href="travel-guide.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-roamblr-earth-700 hover:bg-roamblr-earth-50">Travel Guide</a>
-                <a href="contact.html" class="block px-3 py-2.5 rounded-lg text-sm font-medium text-roamblr-earth-700 hover:bg-roamblr-earth-50">Contact</a>
-            </div>
+      </div>
+
+      <!-- Story timeline + photo -->
+      <div class="space-y-8 reveal reveal-delay-2">
+
+        <!-- Jeff photo -->
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl" style="aspect-ratio: 3/4; max-height: 500px;">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80"
+            alt="Jeff Ocaya — Founder of Roamblr Safaris"
+            class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-forest-950/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <div class="serif text-white text-2xl font-medium mb-0.5">Jeff Ocaya</div>
+            <div class="mono text-amber-400 text-xs tracking-widest uppercase">Founder & Operations Director</div>
+            <div class="text-white/60 text-sm mt-1">Kampala, Uganda</div>
+          </div>
         </div>
-    </nav>
 
-    <!-- ===== HERO: The Opening Line ===== -->
-    <section class="pt-28 pb-20 lg:pt-36 lg:pb-28 bg-roamblr-green-500 text-white relative overflow-hidden">
-        <div class="absolute inset-0 opacity-5">
-            <div class="absolute top-10 right-10 w-80 h-80 border border-white rounded-full"></div>
-            <div class="absolute -bottom-20 -left-20 w-96 h-96 border border-white rounded-full"></div>
-        </div>
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <p class="text-roamblr-amber-400 font-display text-xl italic mb-6 animate-fade-in">Some businesses start with a business plan.</p>
-            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 animate-fade-in text-balance">
-                Roamblr Safaris started<br>with a Saturday.
-            </h1>
-            <p class="text-lg text-white/70 max-w-2xl mx-auto animate-fade-in">
-                One road. One afternoon. One decision to follow curiosity wherever it led.
-            </p>
-        </div>
-    </section>
+        <!-- Timeline -->
+        <div class="bg-white rounded-2xl p-7 border border-earth-100 shadow-sm">
+          <div class="section-label mb-6">The Journey</div>
+          <div class="space-y-6">
 
-    <!-- ===== CHAPTER 1: The Arrival ===== -->
-    <section class="py-20 lg:py-28 story-section" id="chapter1">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <span class="text-roamblr-amber-500 font-semibold text-sm tracking-wider uppercase">Chapter 1</span>
-            <h2 class="font-display text-3xl sm:text-4xl font-bold text-roamblr-green-500 mt-2 mb-8 text-balance">The Arrival</h2>
-            <div class="text-roamblr-earth-700 leading-relaxed space-y-6 text-lg">
-                <p>
-                    When Jeff Ocaya moved from Kitgum to Kampala, he did what most people do in a new city. 
-                    He worked. He found his routine. He learned the streets. He built a life, piece by piece, 
-                    in a city that was not yet home.
-                </p>
-                <p>
-                    Kitgum was where he grew up — a small town in northern Uganda, shaped by family, 
-                    community, and the rhythms of Acholi life. Kampala was different. Faster. Louder. 
-                    A city where everyone seemed to know exactly where they were going.
-                </p>
-                <p>
-                    But on Saturdays, he left.
-                </p>
-                <p>
-                    Not far. Not expensively. Just somewhere that was not his apartment and not his office. 
-                    A single resolution: follow a road until you find something interesting.
-                </p>
+            <div class="timeline-item">
+              <div class="timeline-dot"><div class="w-2 h-2 bg-white rounded-full"></div></div>
+              <div class="mono text-amber-500 text-xs tracking-wide uppercase mb-1">Kitgum, Northern Uganda</div>
+              <div class="serif text-forest-900 text-lg font-medium mb-1">The Boy Who Walked Everywhere</div>
+              <p class="text-earth-600 text-sm leading-relaxed">Grew up in a small northern town, developing an instinctive relationship with walking, movement, and finding extraordinary things in ordinary places.</p>
             </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"><div class="w-2 h-2 bg-white rounded-full"></div></div>
+              <div class="mono text-amber-500 text-xs tracking-wide uppercase mb-1">Kampala · The Wheel of Life</div>
+              <div class="serif text-forest-900 text-lg font-medium mb-1">One Saturday Resolution</div>
+              <p class="text-earth-600 text-sm leading-relaxed">Discovered his "fun" score was nearly zero. Resolved to go on one micro adventure every weekend — no budget required, just curiosity.</p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"><div class="w-2 h-2 bg-white rounded-full"></div></div>
+              <div class="mono text-amber-500 text-xs tracking-wide uppercase mb-1">Kampala · The WhatsApp Moment</div>
+              <div class="serif text-forest-900 text-lg font-medium mb-1">Friends Started Asking Questions</div>
+              <p class="text-earth-600 text-sm leading-relaxed">Shared the photos. The phone buzzed. Friends wanted to join. A mother needed family destinations. Someone asked for a group boat ride. The idea became clear.</p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot bg-amber-500"><div class="w-2 h-2 bg-white rounded-full"></div></div>
+              <div class="mono text-amber-500 text-xs tracking-wide uppercase mb-1">2025 · Kampala</div>
+              <div class="serif text-forest-900 text-lg font-medium mb-1">Roamblr Safaris Launches</div>
+              <p class="text-earth-600 text-sm leading-relaxed">The professional answer to the question his circle kept asking. Uganda safari ground handling for international agencies, Ugandan families, and everyone in between.</p>
+            </div>
+
+          </div>
         </div>
-    </section>
 
-    <!-- ===== CHAPTER 2: The Discovery (Pull Quote Moment) ===== -->
-    <section class="py-20 lg:py-28 bg-roamblr-earth-50 story-section" id="chapter2">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <span class="text-roamblr-amber-500 font-semibold text-sm tracking-wider uppercase">Chapter 2</span>
-            <h2 class="font-display text-3xl sm:text-4xl font-bold text-roamblr-green-500 mt-2 mb-8 text-balance">The Discovery</h2>
-            <div class="space-y-8">
-                <div class="pull-quote pl-12 py-8">
-                    <p class="font-display text-2xl sm:text-3xl italic text-roamblr-green-500 leading-relaxed text-balance">
-                        One Saturday he walked out of his door in central Kampala, picked a road at random, 
-                        and said to himself: I am going to follow this road until I find something interesting.
-                    </p>
-                </div>
-                <div class="text-roamblr-earth-700 leading-relaxed space-y-6 text-lg">
-                    <p>
-                        Two hours later he was standing outside Rubaga Cathedral.
-                    </p>
-                    <p>
-                        He had not planned to end up there. He had not even known what he was looking for. 
-                        But standing before that cathedral — the seat of the Catholic Church in Uganda — 
-                        he found himself thinking about his father, whose devotion to the church had defined 
-                        his childhood in Kitgum.
-                    </p>
-                    <p>
-                        He went inside. He knelt down. And he prayed. Tears on his face. A son talking to God 
-                        on behalf of a man he missed completely.
-                    </p>
-                    <p>
-                        He had left home looking for something interesting. He had not expected to find 
-                        something true.
-                    </p>
-                </div>
-            </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+  BY THE NUMBERS
+═══════════════════════════════════════════ -->
+<section class="py-20 bg-forest-950 diagonal-top">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      <div class="reveal">
+        <div class="stat-number text-amber-400">$800</div>
+        <div class="mono text-white/40 text-xs tracking-wide uppercase mt-2">Gorilla permit — Uganda price</div>
+        <div class="text-white/60 text-xs mt-1">Half the cost of Rwanda's $1,500</div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="stat-number text-amber-400">1,000+</div>
+        <div class="mono text-white/40 text-xs tracking-wide uppercase mt-2">Bird species in Uganda</div>
+        <div class="text-white/60 text-xs mt-1">More than the whole of Europe</div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="stat-number text-amber-400">24hr</div>
+        <div class="mono text-white/40 text-xs tracking-wide uppercase mt-2">Quote turnaround</div>
+        <div class="text-white/60 text-xs mt-1">Guaranteed — every enquiry</div>
+      </div>
+      <div class="reveal reveal-delay-3">
+        <div class="stat-number text-amber-400">100%</div>
+        <div class="mono text-white/40 text-xs tracking-wide uppercase mt-2">Community tourism inclusion</div>
+        <div class="text-white/60 text-xs mt-1">Every multi-day park package</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+  OUR VALUES
+═══════════════════════════════════════════ -->
+<section class="py-24 lg:py-32 bg-cream diagonal-top">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+    <div class="text-center mb-16 reveal">
+      <div class="section-label mb-3">What We Stand For</div>
+      <h2 class="serif text-forest-900 font-light" style="font-size: clamp(2rem, 3.5vw, 3rem);">
+        The Values That Drive<br><span class="italic text-amber-500">Every Booking</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+
+      <div class="value-card reveal reveal-delay-1 bg-white border border-earth-100">
+        <div class="w-14 h-14 bg-forest-100 text-forest-700 rounded-2xl flex items-center justify-center text-2xl mb-5">🗺</div>
+        <h3 class="serif text-forest-900 text-2xl font-medium mb-3">Genuine Local Knowledge</h3>
+        <p class="text-earth-600 leading-relaxed">We do not read about Uganda's parks. We visit them. Every famil trip, every supplier conversation, every lodge inspection adds to the firsthand knowledge we bring to your experience. We speak about Uganda from personal experience — not from a brochure.</p>
+      </div>
+
+      <div class="value-card reveal reveal-delay-2 bg-forest-950 border border-forest-800">
+        <div class="w-14 h-14 bg-forest-800 text-amber-400 rounded-2xl flex items-center justify-center text-2xl mb-5">👁</div>
+        <h3 class="serif text-white text-2xl font-medium mb-3">Radical Transparency</h3>
+        <p class="text-white/65 leading-relaxed">We tell you what a lodge is actually like, not what we wish it were. We tell you when a road is rough, when a season is better avoided, when a less-expensive option delivers more joy than the premium one. Honest advice is the only kind worth giving.</p>
+      </div>
+
+      <div class="value-card reveal reveal-delay-3 bg-white border border-earth-100">
+        <div class="w-14 h-14 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center text-2xl mb-5">⚡</div>
+        <h3 class="serif text-forest-900 text-2xl font-medium mb-3">Owner-Operated Attention</h3>
+        <p class="text-earth-600 leading-relaxed">Jeff Ocaya personally oversees every booking. No junior agents. No call centres. No layers between you and the person whose reputation depends on your experience being exactly what was promised — and then some.</p>
+      </div>
+
+      <div class="value-card reveal reveal-delay-1 bg-white border border-earth-100">
+        <div class="w-14 h-14 bg-green-50 text-green-700 rounded-2xl flex items-center justify-center text-2xl mb-5">🌿</div>
+        <h3 class="serif text-forest-900 text-2xl font-medium mb-3">Community-Positive Tourism</h3>
+        <p class="text-earth-600 leading-relaxed">Every multi-day park package includes a community element as standard. Not optional. Not a checkbox. The communities living alongside Uganda's wildlife are as much a part of the experience as the wildlife itself. We believe this and build it into every itinerary.</p>
+      </div>
+
+      <div class="value-card reveal reveal-delay-2 bg-white border border-earth-100">
+        <div class="w-14 h-14 bg-blue-50 text-blue-700 rounded-2xl flex items-center justify-center text-2xl mb-5">📞</div>
+        <h3 class="serif text-forest-900 text-2xl font-medium mb-3">We Answer the Phone</h3>
+        <p class="text-earth-600 leading-relaxed">When something goes wrong on a live trip — and occasionally something does — we answer immediately. We do not send automated responses. We do not ask you to log a support ticket. We solve the problem as quickly as it emerged.</p>
+      </div>
+
+      <div class="value-card reveal reveal-delay-3 bg-amber-500 border border-amber-400">
+        <div class="w-14 h-14 bg-amber-400 text-forest-950 rounded-2xl flex items-center justify-center text-2xl mb-5">🦍</div>
+        <h3 class="serif text-forest-950 text-2xl font-medium mb-3">Uganda First, Always</h3>
+        <p class="text-forest-900/75 leading-relaxed">Uganda's mountain gorilla population was nearly wiped out within living memory. Today it is growing — partly because of responsible tourism revenue. Every gorilla trek Roamblr arranges contributes to that story. We take that seriously.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+  GUIDE TEAM
+═══════════════════════════════════════════ -->
+<section class="py-24 lg:py-32 bg-parchment diagonal-top">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16 reveal">
+      <div>
+        <div class="section-label mb-3">Our People</div>
+        <h2 class="serif text-forest-900 font-light" style="font-size: clamp(2rem, 3.5vw, 3rem);">
+          The Guides Who<br><span class="italic text-amber-500">Deliver the Experience</span>
+        </h2>
+      </div>
+      <p class="text-earth-600 max-w-sm text-sm leading-relaxed">Every Roamblr guide is personally vetted, reference-checked, and trial-tested before they ever meet one of our clients. We do not use whoever is available. We use who we trust.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+
+      <!-- Guide 1 -->
+      <div class="guide-card reveal reveal-delay-1 bg-white shadow-sm border border-earth-100">
+        <div class="relative h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
+            alt="Guide — Gorilla Circuit Specialist"
+            class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-forest-950/70 to-transparent"></div>
+          <div class="absolute bottom-4 left-4">
+            <span class="bg-amber-500 text-forest-950 mono text-[10px] font-bold px-2.5 py-1 rounded-full tracking-wider uppercase">Gorilla Circuit</span>
+          </div>
         </div>
-    </section>
-
-    <!-- ===== CHAPTER 3: The Adventures Continue ===== -->
-    <section class="py-20 lg:py-28 story-section" id="chapter3">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <span class="text-roamblr-amber-500 font-semibold text-sm tracking-wider uppercase">Chapter 3</span>
-            <h2 class="font-display text-3xl sm:text-4xl font-bold text-roamblr-green-500 mt-2 mb-8 text-balance">The Adventures Continued</h2>
-            <div class="text-roamblr-earth-700 leading-relaxed space-y-6 text-lg">
-                <p>
-                    The Saturdays kept coming. And Jeff kept leaving.
-                </p>
-                <p>
-                    <strong>Kabaka's Lake</strong> — hiding inside Kampala like a secret the city was keeping 
-                    from itself. A man-made lake commissioned by Kabaka Mwanga in the 1880s, sitting quietly 
-                    in Ndeeba while millions of Kampala residents drove past without knowing it was there.
-                </p>
-                <p>
-                    <strong>Buziga Hill</strong> — where the whole of Kampala spread out below him and looked 
-                    entirely different from above. The noise softened. The chaos became pattern. The city 
-                    revealed itself in a way it never did at street level.
-                </p>
-                <p>
-                    <strong>Gaba Beach</strong> — where Lake Victoria stretched to a horizon so flat and wide 
-                    it looked like the beginning of an ocean. Where a fisherman pressed his contact number 
-                    into Jeff's hand and told him his group price for a boat ride. Where a micro-adventure 
-                    suddenly looked like something you could share.
-                </p>
-            </div>
+        <div class="p-6">
+          <h3 class="serif text-forest-900 text-xl font-medium mb-1">[Guide Name]</h3>
+          <div class="mono text-amber-600 text-xs tracking-wide uppercase mb-3">Gorilla Circuit Specialist</div>
+          <p class="text-earth-600 text-sm leading-relaxed mb-4">Expert guide for Bwindi Impenetrable Forest and Kibale. UWA certified. USAGA member. Over [X] years leading gorilla and chimpanzee tracking experiences.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-forest-100 text-forest-700 mono text-[10px] px-2 py-1 rounded-full">Gorilla Trekking</span>
+            <span class="bg-forest-100 text-forest-700 mono text-[10px] px-2 py-1 rounded-full">Chimp Tracking</span>
+            <span class="bg-forest-100 text-forest-700 mono text-[10px] px-2 py-1 rounded-full">English + Luganda</span>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- ===== CHAPTER 4: The Ripple ===== -->
-    <section class="py-20 lg:py-28 bg-roamblr-green-500 text-white story-section" id="chapter4">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span class="text-roamblr-amber-400 font-semibold text-sm tracking-wider uppercase">Chapter 4</span>
-            <h2 class="font-display text-3xl sm:text-4xl font-bold mt-2 mb-8 text-balance">The Ripple</h2>
-            <div class="text-white/80 leading-relaxed space-y-6 text-left text-lg">
-                <p>
-                    He posted the photos on his WhatsApp status. No strategy. No business intention. 
-                    Just sharing what he had found because it felt worth sharing.
-                </p>
-                <p>
-                    His phone started buzzing.
-                </p>
-                <p>
-                    A friend went on his own micro-adventure — followed a random road, found something 
-                    unexpected — and called Jeff to tell him about it.
-                </p>
-                <p>
-                    A mother with young children asked for somewhere affordable to take her kids. Somewhere 
-                    safe. Somewhere they could breathe.
-                </p>
-                <p>
-                    Another friend said simply: <em>next time you go, I am coming.</em>
-                </p>
-                <p>
-                    Jeff had not started a business. He had just been following his curiosity one Saturday 
-                    at a time — and without meaning to, had become the person his circle trusted with the 
-                    question: <strong>where should I go?</strong>
-                </p>
-            </div>
+      <!-- Guide 2 -->
+      <div class="guide-card reveal reveal-delay-2 bg-white shadow-sm border border-earth-100">
+        <div class="relative h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80"
+            alt="Guide — Northern Circuit Specialist"
+            class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-forest-950/70 to-transparent"></div>
+          <div class="absolute bottom-4 left-4">
+            <span class="bg-blue-600 text-white mono text-[10px] font-bold px-2.5 py-1 rounded-full tracking-wider uppercase">Northern Circuit</span>
+          </div>
         </div>
-    </section>
-
-    <!-- ===== CHAPTER 5: The Purpose ===== -->
-    <section class="py-20 lg:py-28 story-section" id="chapter5">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <span class="text-roamblr-amber-500 font-semibold text-sm tracking-wider uppercase">Chapter 5</span>
-            <h2 class="font-display text-3xl sm:text-4xl font-bold text-roamblr-green-500 mt-2 mb-8 text-balance">The Purpose</h2>
-            <div class="text-roamblr-earth-700 leading-relaxed space-y-6 text-lg">
-                <p>
-                    Roamblr Safaris is the professional answer to that question.
-                </p>
-                <p>
-                    We are a Kampala-based ground handling and safari experience company. We arrange Uganda 
-                    travel for international tour agencies — gorilla trekking permits, multi-park safari 
-                    logistics, lodge coordination, transport, and client communication. We also serve 
-                    Ugandan families, honeymooners, school groups, corporate teams, and direct travelers 
-                    from anywhere in the world.
-                </p>
-                <p>
-                    What started as solo Saturdays at Kabaka's Lake now serves travelers from London, 
-                    Berlin, Chicago, and Kampala itself. The curiosity is still there. The discipline 
-                    is new — response times, booking trackers, supplier relationships, financial systems. 
-                    But the foundation has not changed: genuine local knowledge, honest recommendations, 
-                    and the willingness to do the unglamorous work that reliable operators do.
-                </p>
-                <div class="pull-quote pl-12 py-8">
-                    <p class="font-display text-2xl sm:text-3xl italic text-roamblr-green-500 leading-relaxed text-balance">
-                        Uganda is extraordinary. Most people — including most Ugandans — have no idea 
-                        how extraordinary. We intend to fix that.
-                    </p>
-                </div>
-            </div>
+        <div class="p-6">
+          <h3 class="serif text-forest-900 text-xl font-medium mb-1">[Guide Name]</h3>
+          <div class="mono text-amber-600 text-xs tracking-wide uppercase mb-3">Northern Circuit Specialist</div>
+          <p class="text-earth-600 text-sm leading-relaxed mb-4">Expert for Murchison Falls and Kidepo Valley National Park. Deep knowledge of the Nile ecosystem, elephant migration patterns, and Karamoja culture.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-forest-100 text-forest-700 mono text-[10px] px-2 py-1 rounded-full">Murchison Falls</span>
+            <span class="bg-forest-100 text-forest-700 mono text-[10px] px-2 py-1 rounded-full">Kidepo Valley</span>
+            <span class="bg-forest-100 text-forest-700 mono text-[10px] px-2 py-1 rounded-full">English + Acholi</span>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- ===== THE PHOTO SECTION ===== -->
-    <section class="py-20 lg:py-28 bg-roamblr-earth-50 story-section" id="photos">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="font-display text-3xl sm:text-4xl font-bold text-roamblr-green-500 mb-12">The Man Behind Roamblr</h2>
-            <div class="max-w-md mx-auto">
-                <div class="bg-roamblr-earth-200 rounded-2xl aspect-[3/4] flex items-center justify-center mb-6">
-                    <div class="text-center p-8">
-                        <div class="text-7xl mb-4">📷</div>
-                        <p class="text-roamblr-earth-700 font-medium text-lg">Jeff Ocaya</p>
-                        <p class="text-sm text-roamblr-earth-500">Founder, Roamblr Safaris</p>
-                        <p class="text-xs text-roamblr-earth-500 mt-4 italic">Photo coming soon</p>
-                    </div>
-                </div>
-            </div>
-            <p class="text-roamblr-earth-700 max-w-2xl mx-auto text-lg">
-                Born in Kitgum. Built in Kampala. Building Roamblr from UGX 1,000,000 and a laptop — 
-                one booking, one relationship, one Saturday at a time.
-            </p>
+      <!-- Guide 3 -->
+      <div class="guide-card reveal reveal-delay-3 bg-white shadow-sm border border-earth-100">
+        <div class="relative h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80"
+            alt="Guide — Kampala and Day Trips"
+            class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-forest-950/70 to-transparent"></div>
+          <div class="absolute bottom-4 left-4">
+            <span class="bg-amber-600 text-white mono text-[10px] font-bold px-2.5 py-1 rounded-full tracking-wider uppercase">City & Day Trips</span>
+          </div>
         </div>
-    </section>
-
-    <!-- ===== ROAMBLR TODAY ===== -->
-    <section class="py-20 lg:py-28 story-section bg-roamblr-green-500 text-white" id="today">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="font-display text-3xl sm:text-4xl font-bold mb-8">Roamblr Today</h2>
-            <div class="grid sm:grid-cols-3 gap-8 text-center">
-                <div>
-                    <div class="text-4xl font-display font-bold text-roamblr-amber-400 mb-2">30+</div>
-                    <div class="text-white/70 text-sm">Safari Experiences</div>
-                </div>
-                <div>
-                    <div class="text-4xl font-display font-bold text-roamblr-amber-400 mb-2">100%</div>
-                    <div class="text-white/70 text-sm">Ugandan Owned & Operated</div>
-                </div>
-                <div>
-                    <div class="text-4xl font-display font-bold text-roamblr-amber-400 mb-2">24h</div>
-                    <div class="text-white/70 text-sm">Quote Turnaround</div>
-                </div>
-            </div>
-            <div class="mt-12">
-                <a href="contact.html" class="inline-block px-8 py-4 bg-roamblr-amber-500 hover:bg-roamblr-amber-600 text-white font-bold rounded-xl shadow-lg transition">
-                    Start Your Adventure
-                </a>
-            </div>
+        <div class="p-6">
+          <h3 class="serif text-forest-900 text-xl font-medium mb-1">[Guide Name]</h3>
+          <div class="mono text-amber-600 text-xs tracking-wide uppercase mb-3">Kampala City & Day Trip Guide</div>
+          <p class="text-earth-600 text-sm leading-relaxed mb-4">Born and raised in Kampala. Unparalleled knowledge of the city's history, markets, food scene, and surrounding day trip destinations including Jinja and Entebbe.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-forest-100 text-forest-700 mono text-[10px] px-2 py-1 rounded-full">Kampala Tours</span>
+            <span class="bg-forest-100 text-forest-700 mono text-[10px] px-2 py-1 rounded-full">Jinja Day Trips</span>
+            <span class="bg-forest-100 text-forest-700 mono text-[10px] px-2 py-1 rounded-full">English + Luganda</span>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="bg-roamblr-earth-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <div class="flex items-center gap-2 mb-4">
-                        <div class="w-10 h-10 bg-roamblr-amber-500 rounded-lg flex items-center justify-center font-display font-bold text-2xl">R</div>
-                        <span class="font-display text-xl font-bold">Roamblr Safaris</span>
-                    </div>
-                    <p class="text-roamblr-earth-300 text-sm">Uganda Ground Handling & Safari Experiences</p>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-3">Navigate</h4>
-                    <ul class="space-y-2 text-sm text-roamblr-earth-300">
-                        <li><a href="index.html" class="hover:text-roamblr-amber-400 transition-colors">Home</a></li>
-                        <li><a href="about.html" class="hover:text-roamblr-amber-400 transition-colors">About</a></li>
-                        <li><a href="packages.html" class="hover:text-roamblr-amber-400 transition-colors">Packages</a></li>
-                        <li><a href="for-agents.html" class="hover:text-roamblr-amber-400 transition-colors">For Agents</a></li>
-                        <li><a href="contact.html" class="hover:text-roamblr-amber-400 transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-3">Contact</h4>
-                    <ul class="space-y-2 text-sm text-roamblr-earth-300">
-                        <li>roamblrsafaris@gmail.com</li>
-                        <li>+256 774 081 092</li>
-                        <li>Kampala, Uganda</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-3">Trip Support</h4>
-                    <p class="text-sm text-roamblr-earth-300 mb-3">For active clients</p>
-                    <a href="https://wa.me/256774081092" class="inline-block px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm font-semibold transition-colors">WhatsApp</a>
-                </div>
+    </div>
+
+    <div class="mt-10 reveal">
+      <div class="bg-white border border-earth-100 rounded-2xl p-6 lg:p-8">
+        <div class="flex flex-col lg:flex-row lg:items-center gap-6">
+          <div class="text-4xl">🔍</div>
+          <div class="flex-1">
+            <h3 class="serif text-forest-900 text-xl font-medium mb-2">How We Vet Every Guide</h3>
+            <p class="text-earth-600 text-sm leading-relaxed">Every guide on the Roamblr bench has passed our six-test vetting process: documentation check (UWA certification, valid driving licence), a detailed knowledge interview, an English and communication assessment, reference checks with previous operators, a personal trial run on a day trip, and a direct conversation about our reliability standards. We do not use guides we have not personally assessed.</p>
+          </div>
+          <div class="grid grid-cols-3 gap-3 lg:w-64 flex-shrink-0">
+            <div class="text-center p-3 bg-forest-100 rounded-xl">
+              <div class="serif text-forest-700 text-2xl font-light">6</div>
+              <div class="mono text-forest-600 text-[9px] tracking-wide uppercase">Tests</div>
             </div>
-            <div class="border-t border-roamblr-earth-800 pt-6 text-center text-sm text-roamblr-earth-400">
-                <p>&copy; <span id="year"></span> Roamblr Safaris. All rights reserved.</p>
+            <div class="text-center p-3 bg-amber-100 rounded-xl">
+              <div class="serif text-amber-700 text-2xl font-light">3+</div>
+              <div class="mono text-amber-600 text-[9px] tracking-wide uppercase">Guides</div>
             </div>
+            <div class="text-center p-3 bg-forest-100 rounded-xl">
+              <div class="serif text-forest-700 text-2xl font-light">0</div>
+              <div class="mono text-forest-600 text-[9px] tracking-wide uppercase">Untested</div>
+            </div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        let menuOpen = false;
 
-        mobileMenuBtn.addEventListener('click', () => {
-            menuOpen = !menuOpen;
-            if (menuOpen) {
-                mobileMenu.classList.remove('hidden');
-            } else {
-                mobileMenu.classList.add('hidden');
-            }
-        });
+<!-- ═══════════════════════════════════════════
+  CREDENTIALS
+═══════════════════════════════════════════ -->
+<section class="py-24 lg:py-32 bg-cream diagonal-top" id="credentials">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
 
-        // Close mobile menu when any link inside it is clicked
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuOpen = false;
-            });
-        });
+    <div class="text-center mb-16 reveal">
+      <div class="section-label mb-3">Credentials</div>
+      <h2 class="serif text-forest-900 font-light" style="font-size: clamp(2rem, 3.5vw, 3rem);">
+        Licensed, Registered,<br><span class="italic text-amber-500">and Accountable</span>
+      </h2>
+    </div>
 
-        // Dynamic year
-        document.getElementById('year').textContent = new Date().getFullYear();
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="reveal reveal-delay-1 bg-white border border-earth-100 rounded-2xl p-6 text-center shadow-sm">
+        <div class="text-3xl mb-3">🏛</div>
+        <h3 class="serif text-forest-900 text-lg font-medium mb-1">UTB Licensed</h3>
+        <div class="mono text-earth-500 text-[10px] tracking-wide uppercase mb-2">Uganda Tourism Board</div>
+        <p class="text-earth-600 text-xs leading-relaxed">Official tour operator license recognising Roamblr as a legitimate Uganda tourism business.</p>
+        <div class="mt-3 mono text-forest-700 text-xs">[License Number]</div>
+      </div>
 
-        // Scroll-triggered animations for story sections
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
+      <div class="reveal reveal-delay-2 bg-white border border-earth-100 rounded-2xl p-6 text-center shadow-sm">
+        <div class="text-3xl mb-3">📋</div>
+        <h3 class="serif text-forest-900 text-lg font-medium mb-1">URSB Registered</h3>
+        <div class="mono text-earth-500 text-[10px] tracking-wide uppercase mb-2">Business Registration</div>
+        <p class="text-earth-600 text-xs leading-relaxed">Registered with Uganda Registration Services Bureau. Roamblr Safaris is a legally recognised Uganda business.</p>
+        <div class="mt-3 mono text-forest-700 text-xs">[Registration Number]</div>
+      </div>
 
-        document.querySelectorAll('.story-section').forEach(section => {
-            observer.observe(section);
-        });
-    </script>
+      <div class="reveal reveal-delay-3 bg-white border border-earth-100 rounded-2xl p-6 text-center shadow-sm">
+        <div class="text-3xl mb-3">🦁</div>
+        <h3 class="serif text-forest-900 text-lg font-medium mb-1">AUTO Member</h3>
+        <div class="mono text-earth-500 text-[10px] tracking-wide uppercase mb-2">Tour Operators Association</div>
+        <p class="text-earth-600 text-xs leading-relaxed">Member of the Association of Uganda Tour Operators — Uganda's professional tourism industry body.</p>
+        <div class="mt-3 mono text-forest-700 text-xs">Member in Good Standing</div>
+      </div>
+
+      <div class="reveal reveal-delay-1 bg-forest-700 border border-forest-600 rounded-2xl p-6 text-center shadow-sm">
+        <div class="text-3xl mb-3">🌿</div>
+        <h3 class="serif text-white text-lg font-medium mb-1">Sustainability Committed</h3>
+        <div class="mono text-amber-400 text-[10px] tracking-wide uppercase mb-2">Community Positive</div>
+        <p class="text-white/65 text-xs leading-relaxed">Community tourism in every multi-day package. Local guides only. Transparent sustainability reporting annually.</p>
+        <a href="#sustainability" class="mt-3 mono text-amber-400 text-xs hover:text-amber-300 transition-colors inline-block">Read our commitment →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+  SUSTAINABILITY SECTION
+═══════════════════════════════════════════ -->
+<section class="py-24 lg:py-32 bg-forest-950 diagonal-top" id="sustainability">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <div class="reveal">
+        <div class="section-label mb-4 text-amber-400">Sustainability</div>
+        <h2 class="serif text-white font-light leading-tight mb-6" style="font-size: clamp(2rem, 3.5vw, 3rem);">
+          Tourism That Makes<br><span class="italic text-amber-400">Uganda Better</span>
+        </h2>
+        <p class="text-white/65 leading-relaxed mb-8">Our sustainability commitment is specific, operational, and honest. It describes things we actually do — not aspirations dressed up as achievements.</p>
+
+        <div class="space-y-4">
+          <div class="flex items-start gap-4 bg-white/6 border border-white/10 rounded-xl p-4">
+            <div class="text-xl flex-shrink-0 mt-0.5">🏘</div>
+            <div>
+              <div class="text-white font-medium text-sm mb-1">Community Tourism — Standard, Not Optional</div>
+              <div class="text-white/55 text-xs leading-relaxed">Every multi-day national park package includes a community walk, Batwa cultural experience, craft cooperative visit, or similar as a built-in itinerary element.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 bg-white/6 border border-white/10 rounded-xl p-4">
+            <div class="text-xl flex-shrink-0 mt-0.5">🇺🇬</div>
+            <div>
+              <div class="text-white font-medium text-sm mb-1">Ugandan Guides. Always.</div>
+              <div class="text-white/55 text-xs leading-relaxed">Every person who works on a Roamblr trip is Ugandan. No imported guides. Local expertise, local income, local pride.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 bg-white/6 border border-white/10 rounded-xl p-4">
+            <div class="text-xl flex-shrink-0 mt-0.5">🦍</div>
+            <div>
+              <div class="text-white font-medium text-sm mb-1">Responsible Wildlife Briefing</div>
+              <div class="text-white/55 text-xs leading-relaxed">Every gorilla trekking client receives a full wildlife briefing in writing and verbally before the trek. Seven-metre minimum distance enforced. No symptomatic client enters the forest.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 bg-white/6 border border-white/10 rounded-xl p-4">
+            <div class="text-xl flex-shrink-0 mt-0.5">🚫</div>
+            <div>
+              <div class="text-white font-medium text-sm mb-1">Zero Single-Use Plastic</div>
+              <div class="text-white/55 text-xs leading-relaxed">No single-use plastic water bottles on any Roamblr trip. Every client is briefed to bring a reusable bottle. Our vehicles carry refill supplies.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2 space-y-5">
+
+        <div class="bg-amber-500 rounded-2xl p-7">
+          <div class="serif text-forest-950 text-2xl font-medium mb-3">The Gorilla Conservation Story</div>
+          <p class="text-forest-900/80 leading-relaxed text-sm">In 1989, fewer than 300 mountain gorillas remained alive in the wild. Today there are over 1,000 — making it one of the only great apes whose population is growing. Tourism revenue, directed responsibly, funds the rangers and conservation programmes that protect them.</p>
+          <p class="text-forest-900/70 leading-relaxed text-sm mt-3">Every gorilla trek Roamblr arranges contributes $800 to the Uganda Wildlife Authority — the organisation that pays for that protection. We tell every gorilla client this story. We believe it makes the experience even more meaningful.</p>
+        </div>
+
+        <div class="bg-white/8 border border-white/12 rounded-2xl p-6">
+          <div class="mono text-amber-400 text-xs tracking-widest uppercase mb-4">Our Three Annual Sustainability Targets</div>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-white text-sm">Local supplier payments</span>
+                <span class="mono text-amber-400 text-sm">Target: 80%+</span>
+              </div>
+              <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-forest-500 to-forest-400 rounded-full" style="width: 80%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-white text-sm">Community tourism inclusion</span>
+                <span class="mono text-amber-400 text-sm">Target: 100%</span>
+              </div>
+              <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-amber-500 to-amber-400 rounded-full" style="width: 100%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-white text-sm">Client sustainability satisfaction</span>
+                <span class="mono text-amber-400 text-sm">Target: 4.5/5</span>
+              </div>
+              <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-forest-500 to-amber-400 rounded-full" style="width: 90%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white/6 border border-white/10 rounded-2xl p-5">
+          <p class="text-white/50 text-xs leading-relaxed italic">"We are a new business. We do not yet have GSTC certification. What we have is a genuine commitment to building Roamblr in a way that makes Uganda better rather than worse — and a clear roadmap to the formal structures we will add as we grow. Honest progress is more valuable than perfect claims." <br><span class="text-white/35 not-italic">— Jeff Ocaya</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+  CTA
+═══════════════════════════════════════════ -->
+<section class="py-20 lg:py-24 bg-cream diagonal-top">
+  <div class="max-w-3xl mx-auto px-6 lg:px-12 text-center reveal">
+    <div class="section-label mb-4">Start Here</div>
+    <h2 class="serif text-forest-900 font-light leading-tight mb-6" style="font-size: clamp(2rem, 3.5vw, 3rem);">
+      Ready to Experience<br><span class="italic text-amber-500">Uganda Properly?</span>
+    </h2>
+    <p class="text-earth-600 leading-relaxed mb-8 text-lg">Tell us what you are looking for. We will reply within 24 hours with honest advice and a detailed quote — no pressure, no automated responses.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="packages.html" class="group inline-flex items-center gap-2 bg-forest-700 hover:bg-forest-600 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-forest-700/30 hover:-translate-y-1">
+        Browse Packages
+        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <a href="contact.html" class="group inline-flex items-center gap-2 border-2 border-forest-700 hover:bg-forest-700 text-forest-700 hover:text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-1">
+        Get a Free Quote
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+  FOOTER
+═══════════════════════════════════════════ -->
+<footer class="bg-forest-950 pt-20 pb-10 diagonal-top">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid lg:grid-cols-4 gap-12 lg:gap-16 mb-16">
+      <div class="lg:col-span-1">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-10 h-10 bg-forest-700 rounded-xl flex items-center justify-center text-xl">🦍</div>
+          <div>
+            <div class="serif text-white text-xl font-medium leading-none">Roamblr</div>
+            <div class="mono text-amber-400 text-[9px] tracking-widest uppercase">Safaris</div>
+          </div>
+        </div>
+        <p class="text-white/50 text-sm leading-relaxed">Started with solo Saturdays at Kabaka's Lake. Now arranging Uganda's finest wildlife experiences for travelers worldwide.</p>
+      </div>
+      <div>
+        <div class="mono text-amber-400 text-xs tracking-widest uppercase mb-5">Packages</div>
+        <ul class="space-y-3">
+          <li><a href="gorilla-express.html" class="text-white/55 hover:text-white text-sm transition-colors">Gorilla Express</a></li>
+          <li><a href="gorilla-chimp-combo.html" class="text-white/55 hover:text-white text-sm transition-colors">Gorilla &amp; Chimp Combo</a></li>
+          <li><a href="murchison-falls.html" class="text-white/55 hover:text-white text-sm transition-colors">Murchison Falls</a></li>
+          <li><a href="lake-mburo.html" class="text-white/55 hover:text-white text-sm transition-colors">Lake Mburo Safari</a></li>
+          <li><a href="packages.html" class="text-amber-400/80 hover:text-amber-400 text-sm transition-colors">View all →</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="mono text-amber-400 text-xs tracking-widest uppercase mb-5">Company</div>
+        <ul class="space-y-3">
+          <li><a href="about.html" class="text-white text-sm border-b border-amber-400/40 pb-0.5">About Us</a></li>
+          <li><a href="for-agents.html" class="text-white/55 hover:text-white text-sm transition-colors">For Travel Agents</a></li>
+          <li><a href="uganda-guide.html" class="text-white/55 hover:text-white text-sm transition-colors">Uganda Guide</a></li>
+          <li><a href="contact.html" class="text-white/55 hover:text-white text-sm transition-colors">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="mono text-amber-400 text-xs tracking-widest uppercase mb-5">Contact</div>
+        <ul class="space-y-4">
+          <li class="flex items-center gap-3 text-white/55 text-sm"><svg class="w-4 h-4 text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>info@roamblr.com</li>
+          <li class="flex items-center gap-3 text-white/55 text-sm"><svg class="w-4 h-4 text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Kampala, Uganda</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="hr-amber mb-8">
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+      <div class="text-white/30 text-xs">© 2025 Roamblr Safaris · URSB: [Number] · TIN: [Number] · UTB: [Number]</div>
+      <div class="flex gap-6">
+        <a href="#" class="text-white/30 hover:text-white/60 text-xs transition-colors">Privacy Policy</a>
+        <a href="#" class="text-white/30 hover:text-white/60 text-xs transition-colors">Booking Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      navbar.classList.add('nav-scrolled');
+      navbar.classList.remove('py-5');
+      navbar.classList.add('py-3');
+    } else {
+      navbar.classList.remove('nav-scrolled');
+      navbar.classList.remove('py-3');
+      navbar.classList.add('py-5');
+    }
+  });
+
+  const menuBtn = document.getElementById('menu-btn');
+  const closeBtn = document.getElementById('close-menu');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', () => { mobileMenu.classList.add('open'); document.body.style.overflow = 'hidden'; });
+  closeBtn.addEventListener('click', () => { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; });
+  mobileMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }));
+
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
