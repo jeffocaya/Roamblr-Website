@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gorilla Express — 3-Day Gorilla Trekking Uganda | Roamblr Safaris</title>
+<meta name="description" content="3-day gorilla trekking package from Kampala to Bwindi Impenetrable Forest. Gorilla permit included. Private vehicle, certified guide, lodge accommodation. From $1,650 per person.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          forest: { 950:'#030E04', 900:'#0A1F0C', 800:'#122B14', 700:'#1B5E20', 600:'#2E7D32', 500:'#388E3C', 400:'#4CAF50', 300:'#81C784', 200:'#C8E6C9', 100:'#E8F5E9' },
+          amber: { 900:'#E65100', 800:'#EF6C00', 700:'#F57C00', 600:'#FB8C00', 500:'#FF8F00', 400:'#FFA000', 300:'#FFB300', 200:'#FFD54F', 100:'#FFF8E1' },
+          earth: { 900:'#1C1208', 800:'#3D2B1F', 700:'#5D4037', 600:'#6D4C41', 500:'#8D6E63', 400:'#A1887F', 300:'#BCAAA4', 200:'#D7CCC8', 100:'#EFEBE9' },
+          cream: '#FAFAF5', parchment: '#F5F0E8',
+        },
+        fontFamily: {
+          serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+          sans: ['Outfit', 'system-ui', 'sans-serif'],
+          mono: ['DM Mono', 'monospace'],
+        },
+      }
+    }
+  }
+</script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Outfit',sans-serif; background:#FAFAF5; color:#1C1208; overflow-x:hidden; }
+  .serif { font-family:'Cormorant Garamond',Georgia,serif; }
+  .mono { font-family:'DM Mono',monospace; }
+
+  body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events:none; z-index:9999; opacity:0.4; }
+
+  .nav-scrolled { background:rgba(10,31,12,0.95) !important; backdrop-filter:blur(20px); box-shadow:0 2px 40px rgba(0,0,0,0.3); }
+
+  .hero-pkg {
+    background:
+      linear-gradient(to bottom, rgba(3,14,4,0.75) 0%, rgba(3,14,4,0.4) 40%, rgba(3,14,4,0.85) 100%),
+      url('https://images.unsplash.com/photo-1534476391294-0a87c9f7e3db?w=1800&q=80') center/cover no-repeat;
+    min-height: 85vh;
+  }
+
+  .section-label { font-family:'DM Mono',monospace; font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:#FF8F00; }
+  .hr-amber { height:2px; background:linear-gradient(90deg,#FF8F00,#FFB300,transparent); border:none; }
+  .diagonal-top { clip-path:polygon(0 40px,100% 0,100% 100%,0 100%); margin-top:-40px; }
+
+  .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease,transform 0.7s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .reveal-delay-1 { transition-delay:0.1s; }
+  .reveal-delay-2 { transition-delay:0.2s; }
+  .reveal-delay-3 { transition-delay:0.3s; }
+
+  /* Sticky booking bar */
+  .booking-bar {
+    position: sticky;
+    top: 72px;
+    z-index: 40;
+    background: rgba(250,250,245,0.97);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid #EFEBE9;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+
+  /* Day tabs */
+  .day-tab { padding:10px 20px; border-radius:100px; font-size:13px; font-weight:500; cursor:pointer; transition:all 0.25s; border:1.5px solid transparent; white-space:nowrap; }
+  .day-tab.active { background:#1B5E20; color:white; }
+  .day-tab.inactive { background:white; color:#6D4C41; border-color:#D7CCC8; }
+  .day-tab.inactive:hover { border-color:#1B5E20; color:#1B5E20; }
+
+  .day-content { display:none; }
+  .day-content.active { display:block; }
+
+  /* Accordion */
+  .acc-item { border-bottom:1px solid #EFEBE9; }
+  .acc-btn { width:100%; text-align:left; padding:18px 0; display:flex; align-items:center; justify-content:space-between; gap:16px; background:none; border:none; cursor:pointer; }
+  .acc-icon { width:28px; height:28px; border-radius:50%; background:#E8F5E9; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background 0.3s,transform 0.3s; }
+  .acc-item.open .acc-icon { background:#1B5E20; transform:rotate(45deg); }
+  .acc-icon svg { color:#1B5E20; width:14px; height:14px; }
+  .acc-item.open .acc-icon svg { color:white; }
+  .acc-body { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
+  .acc-item.open .acc-body { max-height:500px; }
+
+  /* Lodge cards */
+  .lodge-card { border-radius:16px; overflow:hidden; border:1.5px solid; transition:transform 0.3s ease,box-shadow 0.3s ease; }
+  .lodge-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(27,94,32,0.12); }
+  .lodge-card.selected { border-color:#1B5E20; box-shadow:0 0 0 3px rgba(27,94,32,0.12); }
+
+  /* Price table */
+  .price-row { display:grid; gap:0; }
+  .price-row > * { padding:14px 16px; border-bottom:1px solid #EFEBE9; }
+
+  /* Wa float */
+  .wa-float { position:fixed; bottom:28px; right:28px; width:60px; height:60px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 32px rgba(37,211,102,0.4); z-index:1000; animation:wafloat 4s ease-in-out infinite; }
+  @keyframes wafloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  .wa-float:hover { transform:scale(1.1) !important; animation:none; }
+
+  #mobile-menu { display:none; position:fixed; inset:0; background:rgba(10,31,12,0.98); z-index:500; flex-direction:column; align-items:center; justify-content:center; gap:40px; }
+  #mobile-menu.open { display:flex; }
+
+  /* Gallery */
+  .gallery-grid { display:grid; grid-template-columns:2fr 1fr 1fr; grid-template-rows:240px 240px; gap:8px; border-radius:20px; overflow:hidden; }
+  .gallery-grid > *:first-child { grid-row:1/3; }
+  @media(max-width:640px) { .gallery-grid { grid-template-columns:1fr; grid-template-rows:auto; } .gallery-grid > *:first-child { grid-row:auto; } }
+
+  .field-group label { font-family:'DM Mono',monospace; font-size:10px; font-weight:500; letter-spacing:2px; text-transform:uppercase; color:#6D4C41; display:block; margin-bottom:6px; }
+  .field-group input, .field-group select, .field-group textarea { width:100%; background:#F5F0E8; border:1.5px solid #D7CCC8; border-radius:12px; padding:12px 16px; font-family:'Outfit',sans-serif; font-size:14px; color:#1C1208; transition:border-color 0.25s; outline:none; appearance:none; }
+  .field-group input:focus, .field-group select:focus, .field-group textarea:focus { border-color:#1B5E20; box-shadow:0 0 0 3px rgba(27,94,32,0.1); }
+</style>
+</head>
+<body>
+
+<a href="https://wa.me/256XXXXXXXXX" class="wa-float" target="_blank" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- Nav -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-5 px-6 lg:px-12">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3 group">
+      <div class="w-10 h-10 bg-forest-700 rounded-xl flex items-center justify-center text-xl group-hover:bg-amber-500 transition-colors duration-300">🦍</div>
+      <div><div class="serif text-white text-xl font-medium leading-none">Roamblr</div><div class="mono text-amber-400 text-[9px] tracking-widest uppercase leading-none mt-0.5">Safaris</div></div>
+    </a>
+    <div class="hidden lg:flex items-center gap-8">
+      <a href="packages.html" class="text-white text-sm font-medium border-b border-amber-400/60 pb-0.5">Packages</a>
+      <a href="about.html" class="text-white/80 hover:text-white text-sm font-medium transition-colors">About</a>
+      <a href="uganda-guide.html" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Uganda Guide</a>
+      <a href="for-agents.html" class="text-white/80 hover:text-white text-sm font-medium transition-colors">For Agents</a>
+      <a href="contact.html" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Contact</a>
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="#book" class="hidden lg:flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-forest-950 text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-300">
+        Book This Package <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <button id="menu-btn" class="lg:hidden text-white p-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+</nav>
+
+<div id="mobile-menu">
+  <button id="close-menu" class="absolute top-6 right-6 text-white/60 hover:text-white"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+  <a href="packages.html" class="serif text-amber-400 text-4xl">Packages</a>
+  <a href="about.html" class="serif text-white text-4xl hover:text-amber-400 transition-colors">About</a>
+  <a href="for-agents.html" class="serif text-white text-4xl hover:text-amber-400 transition-colors">For Agents</a>
+  <a href="contact.html" class="serif text-white text-4xl hover:text-amber-400 transition-colors">Contact</a>
+  <a href="#book" class="bg-amber-500 text-forest-950 text-xl font-semibold px-10 py-4 rounded-full">Book Now</a>
+</div>
+
+
+<!-- ═══ HERO ═══ -->
+<section class="hero-pkg flex flex-col justify-end relative">
+  <!-- Breadcrumb -->
+  <div class="absolute top-28 left-6 lg:left-12 z-10">
+    <div class="flex items-center gap-2 text-white/60 text-xs mono">
+      <a href="index.html" class="hover:text-white transition-colors">Home</a>
+      <span>/</span>
+      <a href="packages.html" class="hover:text-white transition-colors">Packages</a>
+      <span>/</span>
+      <span class="text-amber-400">Gorilla Express</span>
+    </div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pb-16 lg:pb-24 w-full">
+    <div class="grid lg:grid-cols-2 gap-10 items-end">
+      <div>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="bg-amber-500 text-forest-950 mono text-[10px] font-bold px-3 py-1.5 rounded-full tracking-widest uppercase">🦍 Gorilla Trekking</span>
+          <span class="bg-white/15 text-white mono text-[10px] px-3 py-1.5 rounded-full backdrop-blur-sm">3 Days · 2 Nights</span>
+          <span class="bg-white/15 text-white mono text-[10px] px-3 py-1.5 rounded-full backdrop-blur-sm">Small Groups</span>
+        </div>
+        <h1 class="serif text-white font-light leading-tight mb-4" style="font-size:clamp(2.8rem,5vw,5rem);">
+          Gorilla<br><em class="text-amber-400">Express</em>
+        </h1>
+        <p class="text-white/75 text-lg leading-relaxed max-w-lg">
+          The minimum viable gorilla experience — maximum impact. Kampala to Bwindi Impenetrable Forest and back in three days. One hour with the mountain gorillas. Everything included.
+        </p>
+      </div>
+
+      <!-- Price card -->
+      <div class="bg-white/12 backdrop-blur-xl border border-white/20 rounded-3xl p-7 lg:p-8 max-w-sm ml-auto w-full">
+        <div class="mono text-white/50 text-[10px] tracking-widest uppercase mb-1">Starting from</div>
+        <div class="serif text-white font-light mb-1" style="font-size:3.5rem;line-height:1">$1,650</div>
+        <div class="text-white/60 text-sm mb-5">per person sharing · permit included</div>
+
+        <div class="space-y-2.5 mb-6">
+          <div class="flex items-center gap-2.5 text-white/75 text-sm">
+            <svg class="w-4 h-4 text-amber-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Gorilla permit ($800) included
+          </div>
+          <div class="flex items-center gap-2.5 text-white/75 text-sm">
+            <svg class="w-4 h-4 text-amber-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Private vehicle and driver-guide
+          </div>
+          <div class="flex items-center gap-2.5 text-white/75 text-sm">
+            <svg class="w-4 h-4 text-amber-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            2 nights accommodation, full board
+          </div>
+          <div class="flex items-center gap-2.5 text-white/75 text-sm">
+            <svg class="w-4 h-4 text-amber-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Community tourism element included
+          </div>
+        </div>
+
+        <a href="#book" class="block w-full text-center bg-amber-500 hover:bg-amber-400 text-forest-950 font-semibold py-4 rounded-2xl transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/30 mb-3">
+          Book This Package
+        </a>
+        <a href="https://wa.me/256XXXXXXXXX?text=Hi%20Jeff%2C%20I%27m%20interested%20in%20the%20Gorilla%20Express%20package" class="flex items-center justify-center gap-2 w-full text-center bg-white/10 hover:bg-white/20 text-white font-medium py-3.5 rounded-2xl transition-all duration-300 text-sm">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Ask a Question on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ STICKY BOOKING BAR ═══ -->
+<div class="booking-bar">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 py-3 flex items-center justify-between gap-4">
+    <div class="flex items-center gap-6">
+      <span class="serif text-forest-900 font-medium text-lg hidden sm:block">Gorilla Express</span>
+      <div class="flex items-center gap-3 text-earth-600 text-sm">
+        <span class="mono">3 days</span>
+        <span class="w-1 h-1 bg-earth-300 rounded-full"></span>
+        <span class="mono">Bwindi Forest</span>
+        <span class="w-1 h-1 bg-earth-300 rounded-full hidden sm:block"></span>
+        <span class="mono hidden sm:block">Permit included</span>
+      </div>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="text-right hidden sm:block">
+        <div class="mono text-earth-500 text-[9px] uppercase tracking-wider">From</div>
+        <div class="serif text-forest-700 text-xl font-light">$1,650 <span class="text-sm text-earth-500">/person</span></div>
+      </div>
+      <a href="#book" class="bg-amber-500 hover:bg-amber-400 text-forest-950 font-semibold px-6 py-2.5 rounded-full transition-all duration-300 text-sm whitespace-nowrap">Book Now →</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ QUICK STATS ═══ -->
+<section class="bg-cream py-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+      <div class="bg-white rounded-2xl p-4 text-center border border-earth-100 shadow-sm">
+        <div class="text-2xl mb-1">📅</div>
+        <div class="serif text-forest-900 text-xl font-medium">3</div>
+        <div class="mono text-earth-500 text-[9px] tracking-wide uppercase">Days</div>
+      </div>
+      <div class="bg-white rounded-2xl p-4 text-center border border-earth-100 shadow-sm">
+        <div class="text-2xl mb-1">🌙</div>
+        <div class="serif text-forest-900 text-xl font-medium">2</div>
+        <div class="mono text-earth-500 text-[9px] tracking-wide uppercase">Nights</div>
+      </div>
+      <div class="bg-white rounded-2xl p-4 text-center border border-earth-100 shadow-sm">
+        <div class="text-2xl mb-1">👥</div>
+        <div class="serif text-forest-900 text-xl font-medium">2–8</div>
+        <div class="mono text-earth-500 text-[9px] tracking-wide uppercase">Group Size</div>
+      </div>
+      <div class="bg-white rounded-2xl p-4 text-center border border-earth-100 shadow-sm">
+        <div class="text-2xl mb-1">🏔</div>
+        <div class="serif text-forest-900 text-xl font-medium">Moderate</div>
+        <div class="mono text-earth-500 text-[9px] tracking-wide uppercase">Difficulty</div>
+      </div>
+      <div class="bg-white rounded-2xl p-4 text-center border border-earth-100 shadow-sm">
+        <div class="text-2xl mb-1">🎂</div>
+        <div class="serif text-forest-900 text-xl font-medium">15+</div>
+        <div class="mono text-earth-500 text-[9px] tracking-wide uppercase">Min Age</div>
+      </div>
+      <div class="bg-amber-50 rounded-2xl p-4 text-center border border-amber-200">
+        <div class="text-2xl mb-1">🎫</div>
+        <div class="serif text-amber-700 text-xl font-medium">$800</div>
+        <div class="mono text-amber-600 text-[9px] tracking-wide uppercase">Permit Included</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ BODY: 2-COLUMN LAYOUT ═══ -->
+<div class="max-w-7xl mx-auto px-6 lg:px-12 py-16 lg:py-20">
+  <div class="grid lg:grid-cols-3 gap-12 lg:gap-16">
+
+    <!-- Left: Main content -->
+    <div class="lg:col-span-2 space-y-16">
+
+      <!-- Overview -->
+      <div class="reveal">
+        <div class="section-label mb-4">Overview</div>
+        <h2 class="serif text-forest-900 font-light leading-tight mb-6" style="font-size:clamp(1.8rem,3vw,2.5rem);">One Hour That Changes<br><span class="italic text-amber-500">Everything</span></h2>
+        <div class="space-y-4 text-earth-700 leading-relaxed">
+          <p>Mountain gorillas share approximately 98% of human DNA. When you sit within seven metres of a silverback — close enough to hear him breathe, to watch his family forage and play and rest around him — the intellectual knowledge of that shared ancestry becomes something physical. Something felt. Every person who has done this comes back describing it the same way: the most extraordinary hour of my life.</p>
+          <p>The Gorilla Express is designed for the traveler who knows they need to experience this but has limited time. Three days. Two nights. Kampala to Bwindi Impenetrable Forest and back. One gorilla trek in the morning mist of one of Africa's most ancient rainforests.</p>
+          <p>Everything is arranged. The permit ($800 — less than half what Rwanda charges). The private vehicle. The certified driver-guide. Two nights at a quality lodge near the park gate. All meals. A community experience with the people whose conservation stewardship makes the gorilla population possible. You simply need to arrive at your Kampala hotel at 6am on Day 1.</p>
+          <p class="font-medium text-forest-800">This is the minimum viable gorilla experience. It delivers maximum impact.</p>
+        </div>
+      </div>
+
+      <!-- Gallery -->
+      <div class="reveal">
+        <div class="gallery-grid">
+          <div class="overflow-hidden"><img src="https://images.unsplash.com/photo-1534476391294-0a87c9f7e3db?w=800&q=80" alt="Mountain gorilla Bwindi" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"></div>
+          <div class="overflow-hidden"><img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=400&q=80" alt="Bwindi forest" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"></div>
+          <div class="overflow-hidden"><img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400&q=80" alt="Uganda wildlife" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"></div>
+          <div class="overflow-hidden"><img src="https://images.unsplash.com/photo-1502920514313-52581002a659?w=400&q=80" alt="Bwindi landscape" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"></div>
+          <div class="overflow-hidden"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt="Uganda landscape" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"></div>
+        </div>
+      </div>
+
+      <!-- Itinerary -->
+      <div class="reveal">
+        <div class="section-label mb-4">Day by Day</div>
+        <h2 class="serif text-forest-900 font-light mb-6" style="font-size:clamp(1.8rem,3vw,2.5rem);">Detailed <span class="italic text-amber-500">Itinerary</span></h2>
+
+        <div class="flex gap-3 mb-6 overflow-x-auto pb-2">
+          <button class="day-tab active" data-day="1">Day 1</button>
+          <button class="day-tab inactive" data-day="2">Day 2</button>
+          <button class="day-tab inactive" data-day="3">Day 3</button>
+        </div>
+
+        <!-- Day 1 -->
+        <div class="day-content active bg-white rounded-2xl border border-earth-100 overflow-hidden shadow-sm" id="day-1">
+          <div class="bg-forest-950 px-6 py-5">
+            <div class="mono text-amber-400 text-xs tracking-widest uppercase mb-1">Day 1</div>
+            <h3 class="serif text-white text-2xl font-light">Kampala to Bwindi</h3>
+            <p class="text-white/55 text-sm mt-1">Approximately 9–10 hours driving · Arrivals dinner included</p>
+          </div>
+          <div class="p-6 space-y-5">
+            <div class="flex gap-4">
+              <div class="mono text-amber-600 text-sm font-medium w-16 flex-shrink-0 pt-0.5">06:00</div>
+              <div><div class="font-medium text-forest-900 mb-1">Pickup from your Kampala hotel</div><p class="text-earth-600 text-sm leading-relaxed">Your driver-guide collects you from your Kampala hotel. You will receive their name and vehicle details the evening before. Private vehicle — no shared transport.</p></div>
+            </div>
+            <div class="flex gap-4">
+              <div class="mono text-amber-600 text-sm font-medium w-16 flex-shrink-0 pt-0.5">07:30</div>
+              <div><div class="font-medium text-forest-900 mb-1">Equator crossing and breakfast stop</div><p class="text-earth-600 text-sm leading-relaxed">Stop at the equator monument near Masaka for breakfast and the equator crossing photo. A genuine geographic milestone that most tourists miss entirely.</p></div>
+            </div>
+            <div class="flex gap-4">
+              <div class="mono text-amber-600 text-sm font-medium w-16 flex-shrink-0 pt-0.5">12:00</div>
+              <div><div class="font-medium text-forest-900 mb-1">Kabale town lunch stop</div><p class="text-earth-600 text-sm leading-relaxed">Lunch in Kabale — Uganda's highest town, surrounded by terraced hillsides that look more like Rwanda than the Uganda most visitors know. A brief walk through the market if time and interest allow.</p></div>
+            </div>
+            <div class="flex gap-4">
+              <div class="mono text-amber-600 text-sm font-medium w-16 flex-shrink-0 pt-0.5">15:00</div>
+              <div><div class="font-medium text-forest-900 mb-1">Arrival at Bwindi</div><p class="text-earth-600 text-sm leading-relaxed">Check in at your lodge. The forest begins metres from the gate. Your room overlooks the tree canopy. You will hear the forest before you sleep.</p></div>
+            </div>
+            <div class="flex gap-4">
+              <div class="mono text-amber-600 text-sm font-medium w-16 flex-shrink-0 pt-0.5">16:00</div>
+              <div><div class="font-medium text-forest-900 mb-1">Buhoma Community Walk</div><p class="text-earth-600 text-sm leading-relaxed">A guided walk through the villages surrounding the park with a community guide. Traditional medicine plants, banana beer demonstration, interaction with families whose daily life exists alongside the gorillas. This is your community tourism element — included as standard in every Roamblr package.</p></div>
+            </div>
+            <div class="flex gap-4">
+              <div class="mono text-amber-600 text-sm font-medium w-16 flex-shrink-0 pt-0.5">19:00</div>
+              <div><div class="font-medium text-forest-900 mb-1">Dinner and briefing</div><p class="text-earth-600 text-sm leading-relaxed">Dinner at the lodge. Your driver-guide gives you the pre-trek briefing — what to expect tomorrow morning, what to wear, what to bring. Early night recommended — tomorrow begins at 7am.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="day-content bg-white rounded-2xl border border-earth-100 overflow-hidden shadow-sm" id="day-2">
+          <div class="bg-amber-500 px-6 py-5">
+            <div class="mono text-forest-950/60 text-xs tracking-widest uppercase mb-1">Day 2 — The Main Event</div>
+            <h3 class="serif text-forest-950 text-2xl font-light">Gorilla Trekking Day</h3>
+            <p class="text-forest-950/65 text-sm mt-1">The day you came to Uganda for</p>
+          </div>
+          <div class="p-6 space-y-5">
+            <div class="flex gap-4">
+              <div class="mono text-amber-600 text-sm font-medium w-16 flex-shrink-0 pt-0.5">07:00</div>
+              <div><div class="font-medium text-forest-900 mb-1">Reporting at park headquarters</div><p class="text-earth-600 text-sm leading-relaxed">All trekkers report to UWA headquarters at the park gate. You are assigned to a gorilla family group based on your fitness level and preference. Each group has a maximum of eight trekkers. A UWA ranger briefs the group on gorilla etiquette and the rules — seven-metre minimum distance, no flash photography, one hour maximum time with the family.</p></div>
+            </div>
+            <div class="flex gap-4">
+              <div class="mono text-amber-600 text-sm font-medium w-16 flex-shrink-0 pt-0.5">08:00</div>
+              <div><div class="font-medium text-forest-900 mb-1">The trek begins</div><p class="text-earth-600 text-sm leading-relaxed">The hike to find the gorilla family varies from 30 minutes to 4+ hours depending on where the trackers have located the family that morning. The forest is ancient and extraordinarily dense — tree ferns, strangler figs, giant lobelias. The sounds are entirely unlike anything you have heard before. Bring water, a snack, and your camera.</p></div>
+            </div>
+            <div class="flex gap-4">
+              <div class="mono text-amber-600 text-sm font-medium w-16 flex-shrink-0 pt-0.5">Variable</div>
+              <div><div class="font-medium text-forest-900 mb-1">One hour with the gorilla family</div><p class="text-earth-600 text-sm leading-relaxed">Your ranger signals that you have found them. The next sixty minutes are unlike anything you can prepare yourself for. A silverback weighing 180kg sitting within metres of you. Juveniles playing in the tree canopy. A mother nursing her infant. Entirely wild. Entirely habituated to human presence. Entirely extraordinary.</p></div>
+            </div>
+            <div class="flex gap-4">
+              <div class="mono text-amber-600 text-sm font-medium w-16 flex-shrink-0 pt-0.5">Afternoon</div>
+              <div><div class="font-medium text-forest-900 mb-1">Return and recovery</div><p class="text-earth-600 text-sm leading-relaxed">Return to the lodge for a late lunch and a long afternoon of doing very little — reading, sitting on the lodge veranda watching the forest, talking about what you just witnessed. This afternoon exists for processing. It earns its place in the itinerary.</p></div>
+            </div>
+            <div class="flex gap-4">
+              <div class="mono text-amber-600 text-sm font-medium w-16 flex-shrink-0 pt-0.5">19:00</div>
+              <div><div class="font-medium text-forest-900 mb-1">Dinner</div><p class="text-earth-600 text-sm leading-relaxed">Final evening at Bwindi. The conversation over dinner between people who have just shared this experience is always extraordinary. Early night — tomorrow is a long drive.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="day-content bg-white rounded-2xl border border-earth-100 overflow-hidden shadow-sm" id="day-3">
+          <div class="bg-forest-700 px-6 py-5">
+            <div class="mono text-amber-400 text-xs tracking-widest uppercase mb-1">Day 3</div>
+            <h3 class="serif text-white text-2xl font-light">Bwindi to Kampala</h3>
+            <p class="text-white/55 text-sm mt-1">Approximately 9–10 hours · Scenic return journey</p>
+          </div>
+          <div class="p-6 space-y-5">
+            <div class="flex gap-4">
+              <div class="mono text-amber-600 text-sm font-medium w-16 flex-shrink-0 pt-0.5">07:00</div>
+              <div><div class="font-medium text-forest-900 mb-1">Breakfast and checkout</div><p class="text-earth-600 text-sm leading-relaxed">Final breakfast at the lodge. Checkout by 9am. This is the unhurried morning — one last look at the forest, a final cup of coffee on the veranda, the sounds of Bwindi before the vehicle engine starts.</p></div>
+            </div>
+            <div class="flex gap-4">
+              <div class="mono text-amber-600 text-sm font-medium w-16 flex-shrink-0 pt-0.5">09:00</div>
+              <div><div class="font-medium text-forest-900 mb-1">Departure for Kampala</div><p class="text-earth-600 text-sm leading-relaxed">The return journey follows a slightly different route through the highlands — stopping at Lake Bunyonyi viewpoint (Uganda's most scenic lake, thirty small islands scattered across clear water) and at Kanungu town for the most remarkable roadside market you will see in Uganda.</p></div>
+            </div>
+            <div class="flex gap-4">
+              <div class="mono text-amber-600 text-sm font-medium w-16 flex-shrink-0 pt-0.5">12:30</div>
+              <div><div class="font-medium text-forest-900 mb-1">Lunch at Kabale</div><p class="text-earth-600 text-sm leading-relaxed">Final lunch of the trip at a good Kabale restaurant. Your driver-guide will recommend the right place based on your food preferences.</p></div>
+            </div>
+            <div class="flex gap-4">
+              <div class="mono text-amber-600 text-sm font-medium w-16 flex-shrink-0 pt-0.5">18:30</div>
+              <div><div class="font-medium text-forest-900 mb-1">Kampala hotel drop-off</div><p class="text-earth-600 text-sm leading-relaxed">Drop-off at your Kampala hotel. The trip is complete. The memory is not. You will find yourself talking about the gorillas for years.</p></div>
+            </div>
+            <div class="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-4">
+              <p class="text-amber-800 text-sm leading-relaxed"><strong>Note on timing:</strong> The return journey can be adjusted if you have a late evening flight from Entebbe. Talk to us about your flight time when booking and we will plan accordingly — an early morning flight is the only scenario that makes this a challenging tight connection.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Included / Excluded -->
+      <div class="reveal">
+        <div class="section-label mb-6">What's Covered</div>
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div class="bg-forest-50 border border-forest-200 rounded-2xl p-6">
+            <h3 class="serif text-forest-900 text-xl font-medium mb-4 flex items-center gap-2"><span class="text-forest-600">✓</span> Included</h3>
+            <ul class="space-y-2.5">
+              <li class="flex items-start gap-2.5 text-sm text-forest-800"><svg class="w-4 h-4 text-forest-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>UWA gorilla trekking permit ($800 per person)</li>
+              <li class="flex items-start gap-2.5 text-sm text-forest-800"><svg class="w-4 h-4 text-forest-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Private 4WD vehicle throughout (Kampala to Bwindi and return)</li>
+              <li class="flex items-start gap-2.5 text-sm text-forest-800"><svg class="w-4 h-4 text-forest-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Certified UWA-licensed driver-guide throughout</li>
+              <li class="flex items-start gap-2.5 text-sm text-forest-800"><svg class="w-4 h-4 text-forest-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>2 nights lodge accommodation near Bwindi park gate</li>
+              <li class="flex items-start gap-2.5 text-sm text-forest-800"><svg class="w-4 h-4 text-forest-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>All meals (2 breakfasts, 2 lunches, 2 dinners)</li>
+              <li class="flex items-start gap-2.5 text-sm text-forest-800"><svg class="w-4 h-4 text-forest-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Buhoma Community Walk (community tourism element)</li>
+              <li class="flex items-start gap-2.5 text-sm text-forest-800"><svg class="w-4 h-4 text-forest-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>All fuel, tolls, and driver accommodation</li>
+              <li class="flex items-start gap-2.5 text-sm text-forest-800"><svg class="w-4 h-4 text-forest-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>24-hour Roamblr emergency contact throughout</li>
+              <li class="flex items-start gap-2.5 text-sm text-forest-800"><svg class="w-4 h-4 text-forest-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Porter hire fee at the park gate</li>
+            </ul>
+          </div>
+          <div class="bg-earth-50 border border-earth-200 rounded-2xl p-6">
+            <h3 class="serif text-forest-900 text-xl font-medium mb-4 flex items-center gap-2"><span class="text-earth-500">✗</span> Not Included</h3>
+            <ul class="space-y-2.5">
+              <li class="flex items-start gap-2.5 text-sm text-earth-700"><svg class="w-4 h-4 text-earth-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>International flights and visas</li>
+              <li class="flex items-start gap-2.5 text-sm text-earth-700"><svg class="w-4 h-4 text-earth-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>Travel insurance (mandatory — minimum $100K medical evacuation)</li>
+              <li class="flex items-start gap-2.5 text-sm text-earth-700"><svg class="w-4 h-4 text-earth-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>Yellow fever vaccination certificate</li>
+              <li class="flex items-start gap-2.5 text-sm text-earth-700"><svg class="w-4 h-4 text-earth-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>Accommodation in Kampala before/after the trip</li>
+              <li class="flex items-start gap-2.5 text-sm text-earth-700"><svg class="w-4 h-4 text-earth-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>Personal drinks (alcoholic beverages, soft drinks beyond water)</li>
+              <li class="flex items-start gap-2.5 text-sm text-earth-700"><svg class="w-4 h-4 text-earth-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>Personal tips for guides and lodge staff (UGX 20–30K/person/day suggested)</li>
+              <li class="flex items-start gap-2.5 text-sm text-earth-700"><svg class="w-4 h-4 text-earth-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>Personal items (laundry, souvenirs, internet charges)</li>
+              <li class="flex items-start gap-2.5 text-sm text-earth-700"><svg class="w-4 h-4 text-earth-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>Anything not specified in the included list above</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accommodation -->
+      <div class="reveal">
+        <div class="section-label mb-4">Accommodation</div>
+        <h2 class="serif text-forest-900 font-light mb-2" style="font-size:clamp(1.8rem,3vw,2.5rem);">Choose Your <span class="italic text-amber-500">Lodge Level</span></h2>
+        <p class="text-earth-600 text-sm mb-6">All lodges are within 5–15 minutes of the Bwindi park gate. All rates are per person sharing. Price differences reflect accommodation quality only — the gorilla trek, guide, transport, and all other elements remain identical.</p>
+
+        <div class="grid sm:grid-cols-3 gap-4">
+
+          <div class="lodge-card border-earth-200 bg-white cursor-pointer" id="lodge-budget" onclick="selectLodge('budget')">
+            <div class="h-40 overflow-hidden"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" alt="Budget lodge Bwindi" class="w-full h-full object-cover"></div>
+            <div class="p-5">
+              <div class="mono text-earth-500 text-[9px] tracking-widest uppercase mb-1">Budget</div>
+              <h3 class="serif text-forest-900 text-lg font-medium mb-1">Bwindi Budget Lodge</h3>
+              <p class="text-earth-600 text-xs leading-relaxed mb-3">En-suite bungalows, simple but comfortable. Hot shower, good food, park-view veranda. Excellent value.</p>
+              <div class="serif text-forest-700 text-xl font-light">$1,650 <span class="text-sm text-earth-500">/person</span></div>
+            </div>
+          </div>
+
+          <div class="lodge-card border-forest-300 selected bg-white cursor-pointer" id="lodge-mid" onclick="selectLodge('mid')">
+            <div class="h-40 overflow-hidden relative"><img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400&q=80" alt="Mid-range lodge Bwindi" class="w-full h-full object-cover"><div class="absolute top-3 right-3 bg-forest-700 text-white mono text-[9px] px-2 py-1 rounded-full font-bold uppercase">Recommended</div></div>
+            <div class="p-5">
+              <div class="mono text-forest-600 text-[9px] tracking-widest uppercase mb-1">Mid-Range</div>
+              <h3 class="serif text-forest-900 text-lg font-medium mb-1">Gorilla Hills Lodge</h3>
+              <p class="text-earth-600 text-xs leading-relaxed mb-3">Comfortable cottages with forest views, fireplace evenings, excellent local cuisine. Our most popular selection.</p>
+              <div class="serif text-forest-700 text-xl font-light">$1,950 <span class="text-sm text-earth-500">/person</span></div>
+            </div>
+          </div>
+
+          <div class="lodge-card border-earth-200 bg-white cursor-pointer" id="lodge-luxury" onclick="selectLodge('luxury')">
+            <div class="h-40 overflow-hidden"><img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=400&q=80" alt="Luxury lodge Bwindi" class="w-full h-full object-cover"></div>
+            <div class="p-5">
+              <div class="mono text-amber-600 text-[9px] tracking-widest uppercase mb-1">Luxury</div>
+              <h3 class="serif text-forest-900 text-lg font-medium mb-1">Bwindi Lodge / Clouds Lodge</h3>
+              <p class="text-earth-600 text-xs leading-relaxed mb-3">Luxury tented suites with private decks overlooking the forest canopy. Butler service. Premium dining.</p>
+              <div class="serif text-forest-700 text-xl font-light">$2,800+ <span class="text-sm text-earth-500">/person</span></div>
+            </div>
+          </div>
+
+        </div>
+        <p class="text-earth-500 text-xs mt-3">Lodge availability varies by date. We confirm specific lodge at time of booking. Alternatives of equivalent standard provided if preferred lodge is fully booked.</p>
+      </div>
+
+      <!-- Pricing table -->
+      <div class="reveal">
+        <div class="section-label mb-4">Pricing</div>
+        <h2 class="serif text-forest-900 font-light mb-6" style="font-size:clamp(1.8rem,3vw,2.5rem);">Rates by <span class="italic text-amber-500">Group Size</span></h2>
+
+        <div class="bg-white border border-earth-100 rounded-2xl overflow-hidden shadow-sm">
+          <div class="grid grid-cols-4 bg-forest-950">
+            <div class="px-5 py-3 text-white mono text-[10px] tracking-wide uppercase">Group Size</div>
+            <div class="px-5 py-3 text-white mono text-[10px] tracking-wide uppercase text-center">Budget</div>
+            <div class="px-5 py-3 text-amber-400 mono text-[10px] tracking-wide uppercase text-center">Mid-Range</div>
+            <div class="px-5 py-3 text-white mono text-[10px] tracking-wide uppercase text-center">Luxury</div>
+          </div>
+          <div class="grid grid-cols-4 border-b border-earth-100 bg-forest-50">
+            <div class="px-5 py-4 text-forest-900 font-medium text-sm">Solo traveler</div>
+            <div class="px-5 py-4 text-center mono text-forest-700 text-sm">$2,150</div>
+            <div class="px-5 py-4 text-center mono text-forest-700 text-sm font-medium">$2,450</div>
+            <div class="px-5 py-4 text-center mono text-forest-700 text-sm">POA</div>
+          </div>
+          <div class="grid grid-cols-4 border-b border-earth-100">
+            <div class="px-5 py-4 text-forest-900 font-medium text-sm">2 people (per person)</div>
+            <div class="px-5 py-4 text-center mono text-forest-700 text-sm">$1,650</div>
+            <div class="px-5 py-4 text-center mono text-forest-700 text-sm font-medium">$1,950</div>
+            <div class="px-5 py-4 text-center mono text-forest-700 text-sm">$2,800+</div>
+          </div>
+          <div class="grid grid-cols-4 border-b border-earth-100 bg-forest-50">
+            <div class="px-5 py-4 text-forest-900 font-medium text-sm">3–4 people (per person)</div>
+            <div class="px-5 py-4 text-center mono text-forest-700 text-sm">$1,550</div>
+            <div class="px-5 py-4 text-center mono text-forest-700 text-sm font-medium">$1,820</div>
+            <div class="px-5 py-4 text-center mono text-forest-700 text-sm">$2,650+</div>
+          </div>
+          <div class="grid grid-cols-4 border-b border-earth-100">
+            <div class="px-5 py-4 text-forest-900 font-medium text-sm">5–6 people (per person)</div>
+            <div class="px-5 py-4 text-center mono text-forest-700 text-sm">$1,480</div>
+            <div class="px-5 py-4 text-center mono text-forest-700 text-sm font-medium">$1,750</div>
+            <div class="px-5 py-4 text-center mono text-forest-700 text-sm">$2,500+</div>
+          </div>
+          <div class="grid grid-cols-4 bg-forest-50">
+            <div class="px-5 py-4 text-forest-900 font-medium text-sm">7–8 people (per person)</div>
+            <div class="px-5 py-4 text-center mono text-forest-700 text-sm">$1,420</div>
+            <div class="px-5 py-4 text-center mono text-forest-700 text-sm font-medium">$1,680</div>
+            <div class="px-5 py-4 text-center mono text-forest-700 text-sm">$2,400+</div>
+          </div>
+        </div>
+        <p class="text-earth-500 text-xs mt-3">All prices in USD. Gorilla permit ($800) included. Rates valid for 2025/26 season. Subject to change with 60 days notice. Travel agents: contact us for net rates.</p>
+      </div>
+
+      <!-- Important information accordion -->
+      <div class="reveal">
+        <div class="section-label mb-4">Important Information</div>
+        <h2 class="serif text-forest-900 font-light mb-6" style="font-size:clamp(1.8rem,3vw,2.5rem);">Before You <span class="italic text-amber-500">Book</span></h2>
+
+        <div class="bg-white rounded-2xl border border-earth-100 overflow-hidden shadow-sm">
+
+          <div class="acc-item px-6">
+            <button class="acc-btn"><span class="font-medium text-forest-900">What fitness level is required?</span><div class="acc-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg></div></button>
+            <div class="acc-body"><p class="text-earth-600 text-sm leading-relaxed pb-5">Gorilla trekking is rated moderate to strenuous. You will be hiking on uneven, often steep terrain in a tropical rainforest. The hike to find the gorilla family can take anywhere from 30 minutes to 6 hours depending on where the trackers locate them that morning. You do not need to be an athlete, but you should be comfortable walking for several hours. If you have mobility limitations or health concerns, please discuss with us before booking — some families are easier to reach than others and we can request appropriate assignment where possible.</p></div>
+          </div>
+
+          <div class="acc-item px-6">
+            <button class="acc-btn"><span class="font-medium text-forest-900">What should I pack for the trek?</span><div class="acc-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg></div></button>
+            <div class="acc-body"><div class="pb-5"><p class="text-earth-600 text-sm leading-relaxed mb-3">We send you a complete packing list with your booking confirmation. The essentials:</p><ul class="space-y-1.5 text-earth-600 text-sm"><li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 text-forest-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Long-sleeved shirt and long trousers (dark, neutral colours — avoid bright colours and white)</li><li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 text-forest-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Sturdy waterproof boots or hiking shoes with ankle support</li><li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 text-forest-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Lightweight waterproof jacket or poncho</li><li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 text-forest-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Gardening or lightweight gloves (nettles on the forest floor)</li><li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 text-forest-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Reusable water bottle (minimum 1.5 litres — no single-use plastic on Roamblr trips)</li><li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 text-forest-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Camera without flash / smartphone with flash disabled</li><li class="flex items-start gap-2"><svg class="w-3.5 h-3.5 text-forest-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>Small snack for a potentially long hike</li></ul></div></div>
+          </div>
+
+          <div class="acc-item px-6">
+            <button class="acc-btn"><span class="font-medium text-forest-900">What if I can't complete the trek due to illness?</span><div class="acc-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg></div></button>
+            <div class="acc-body"><p class="text-earth-600 text-sm leading-relaxed pb-5">If you arrive at the park gate with respiratory symptoms (cold, flu, cough), UWA regulations require that you do not trek that day. The gorilla permit is non-refundable. This is why we require evidence of travel insurance that covers gorilla permit cancellation — some policies include this, many do not, so check your policy carefully. We will discuss this in detail during your pre-travel briefing. If you become unwell during the hike, your guide and a dedicated porter will assist you back to the trailhead safely.</p></div>
+          </div>
+
+          <div class="acc-item px-6">
+            <button class="acc-btn"><span class="font-medium text-forest-900">Can the dates be flexible?</span><div class="acc-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg></div></button>
+            <div class="acc-body"><p class="text-earth-600 text-sm leading-relaxed pb-5">Yes, with one constraint — gorilla permits are date-specific. Once a permit is issued for a specific date, it cannot be used on a different date. This means date changes after permit booking incur the cost of a new permit ($800). Changes requested more than 30 days before travel with no permit yet booked carry only a small administration fee. We always book permits as late as possible while still securing your preferred date, to preserve your flexibility.</p></div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right: Booking sidebar -->
+    <div class="space-y-6" id="book">
+
+      <!-- Booking form -->
+      <div class="bg-white border border-earth-100 rounded-2xl p-6 shadow-sm sticky top-24">
+        <div class="section-label mb-4">Book This Package</div>
+        <h3 class="serif text-forest-900 text-xl mb-5">Gorilla Express Enquiry</h3>
+
+        <form class="space-y-4" onsubmit="return false;">
+          <div class="field-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Sarah Johnson">
+          </div>
+          <div class="field-group">
+            <label>Email</label>
+            <input type="email" placeholder="sarah@email.com">
+          </div>
+          <div class="field-group">
+            <label>WhatsApp Number</label>
+            <input type="tel" placeholder="+44 7XXX XXXXXX">
+          </div>
+          <div class="field-group">
+            <label>Preferred Travel Month</label>
+            <select>
+              <option value="">Select month...</option>
+              <option>June 2025</option>
+              <option>July 2025</option>
+              <option>August 2025</option>
+              <option>September 2025</option>
+              <option>October 2025</option>
+              <option>November 2025</option>
+              <option>December 2025</option>
+              <option>January 2026</option>
+              <option>February 2026</option>
+              <option>March 2026</option>
+              <option>April 2026</option>
+              <option>May 2026</option>
+              <option>June 2026+</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>Group Size</label>
+            <select>
+              <option>Solo (1 person)</option>
+              <option selected>2 people</option>
+              <option>3–4 people</option>
+              <option>5–6 people</option>
+              <option>7–8 people</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>Lodge Preference</label>
+            <select>
+              <option>Budget ($1,650)</option>
+              <option selected>Mid-Range ($1,950) — Recommended</option>
+              <option>Luxury ($2,800+)</option>
+              <option>Guide me — I'm not sure</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>Any Questions or Notes</label>
+            <textarea rows="3" placeholder="Dietary requirements, fitness notes, anything else we should know..."></textarea>
+          </div>
+          <button type="submit" class="w-full bg-forest-700 hover:bg-forest-600 text-white font-semibold py-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-forest-700/30">
+            Send Booking Enquiry
+          </button>
+        </form>
+
+        <div class="mt-4 pt-4 border-t border-earth-100">
+          <div class="text-earth-500 text-xs text-center mb-3">Or contact us directly</div>
+          <a href="https://wa.me/256XXXXXXXXX?text=Hi%20Jeff%2C%20I%27m%20interested%20in%20booking%20the%20Gorilla%20Express%20package"
+            class="flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-green-500 text-white font-medium py-3 rounded-xl transition-all duration-300 text-sm">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp Jeff Directly
+          </a>
+        </div>
+
+        <div class="mt-4 bg-amber-50 border border-amber-200 rounded-xl p-4">
+          <div class="mono text-amber-700 text-[9px] tracking-widest uppercase mb-2">Payment Terms</div>
+          <div class="space-y-1.5">
+            <div class="flex justify-between text-sm"><span class="text-earth-600">Deposit to confirm</span><span class="font-medium text-forest-900">30%</span></div>
+            <div class="flex justify-between text-sm"><span class="text-earth-600">Balance due</span><span class="font-medium text-forest-900">30 days before travel</span></div>
+            <div class="flex justify-between text-sm"><span class="text-earth-600">Gorilla permit</span><span class="font-medium text-red-700">Non-refundable</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ RELATED PACKAGES ═══ -->
+<section class="py-20 bg-parchment diagonal-top">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="section-label mb-3 reveal">You Might Also Consider</div>
+    <h2 class="serif text-forest-900 font-light mb-10 reveal" style="font-size:clamp(1.8rem,3vw,2.5rem);">Related <span class="italic text-amber-500">Packages</span></h2>
+
+    <div class="grid sm:grid-cols-3 gap-6">
+
+      <a href="gorilla-chimp-combo.html" class="group bg-white rounded-2xl overflow-hidden border border-earth-100 hover:border-forest-300 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl reveal reveal-delay-1">
+        <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=500&q=80" alt="Gorilla Chimp Combo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+        <div class="p-5">
+          <div class="mono text-amber-600 text-[9px] tracking-wide uppercase mb-1">6 Days · Most Popular</div>
+          <h3 class="serif text-forest-900 text-xl font-medium mb-2">Gorilla &amp; Chimp Combo</h3>
+          <p class="text-earth-600 text-sm mb-3">Add chimpanzee tracking in Kibale Forest to the gorilla experience. Uganda's ultimate primate journey.</p>
+          <div class="flex justify-between items-center"><div class="serif text-forest-700 text-xl">From $2,400</div><span class="text-forest-700 text-sm group-hover:translate-x-1 transition-transform">→</span></div>
+        </div>
+      </a>
+
+      <a href="murchison-falls.html" class="group bg-white rounded-2xl overflow-hidden border border-earth-100 hover:border-forest-300 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl reveal reveal-delay-2">
+        <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=500&q=80" alt="Murchison Falls" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+        <div class="p-5">
+          <div class="mono text-amber-600 text-[9px] tracking-wide uppercase mb-1">5 Days · Safari</div>
+          <h3 class="serif text-forest-900 text-xl font-medium mb-2">Murchison Falls Classic</h3>
+          <p class="text-earth-600 text-sm mb-3">Game drives and Nile boat cruise at Uganda's most dramatic national park. Add before or after gorillas.</p>
+          <div class="flex justify-between items-center"><div class="serif text-forest-700 text-xl">From $1,100</div><span class="text-forest-700 text-sm group-hover:translate-x-1 transition-transform">→</span></div>
+        </div>
+      </a>
+
+      <a href="lake-mburo.html" class="group bg-white rounded-2xl overflow-hidden border border-earth-100 hover:border-forest-300 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl reveal reveal-delay-3">
+        <div class="h-48 overflow-hidden"><img src="https://images.unsplash.com/photo-1502920514313-52581002a659?w=500&q=80" alt="Lake Mburo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>
+        <div class="p-5">
+          <div class="mono text-amber-600 text-[9px] tracking-wide uppercase mb-1">2 Nights · Weekend</div>
+          <h3 class="serif text-forest-900 text-xl font-medium mb-2">Lake Mburo Safari</h3>
+          <p class="text-earth-600 text-sm mb-3">Combine with the Gorilla Express for a 5-day itinerary visiting two parks. Stop at Lake Mburo en route to Bwindi.</p>
+          <div class="flex justify-between items-center"><div class="serif text-forest-700 text-xl">From UGX 900K</div><span class="text-forest-700 text-sm group-hover:translate-x-1 transition-transform">→</span></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="bg-forest-950 pt-20 pb-10 diagonal-top">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid lg:grid-cols-4 gap-12 lg:gap-16 mb-16">
+      <div><div class="flex items-center gap-3 mb-5"><div class="w-10 h-10 bg-forest-700 rounded-xl flex items-center justify-center text-xl">🦍</div><div><div class="serif text-white text-xl font-medium leading-none">Roamblr</div><div class="mono text-amber-400 text-[9px] tracking-widest uppercase">Safaris</div></div></div><p class="text-white/50 text-sm leading-relaxed">Started with solo Saturdays at Kabaka's Lake. Now arranging Uganda's finest wildlife experiences worldwide.</p></div>
+      <div><div class="mono text-amber-400 text-xs tracking-widest uppercase mb-5">Packages</div><ul class="space-y-3"><li><a href="gorilla-express.html" class="text-white text-sm border-b border-amber-400/40 pb-0.5">Gorilla Express</a></li><li><a href="gorilla-chimp-combo.html" class="text-white/55 hover:text-white text-sm transition-colors">Gorilla &amp; Chimp</a></li><li><a href="murchison-falls.html" class="text-white/55 hover:text-white text-sm transition-colors">Murchison Falls</a></li><li><a href="packages.html" class="text-amber-400/80 text-sm">View all →</a></li></ul></div>
+      <div><div class="mono text-amber-400 text-xs tracking-widest uppercase mb-5">Company</div><ul class="space-y-3"><li><a href="about.html" class="text-white/55 hover:text-white text-sm transition-colors">About Us</a></li><li><a href="for-agents.html" class="text-white/55 hover:text-white text-sm transition-colors">For Agents</a></li><li><a href="contact.html" class="text-white/55 hover:text-white text-sm transition-colors">Contact</a></li></ul></div>
+      <div><div class="mono text-amber-400 text-xs tracking-widest uppercase mb-5">Contact</div><ul class="space-y-3"><li class="flex items-center gap-3 text-white/55 text-sm"><svg class="w-4 h-4 text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>jeff@roamblr.com</li><li class="flex items-center gap-3 text-white/55 text-sm"><svg class="w-4 h-4 text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Kampala, Uganda</li></ul></div>
+    </div>
+    <hr class="hr-amber mb-8">
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+      <div class="text-white/30 text-xs">© 2026 Roamblr Safaris </div>
+      <div class="flex gap-6"><a href="#" class="text-white/30 hover:text-white/60 text-xs">Privacy Policy</a><a href="#" class="text-white/30 hover:text-white/60 text-xs">Booking Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) { navbar.classList.add('nav-scrolled'); navbar.classList.remove('py-5'); navbar.classList.add('py-3'); }
+    else { navbar.classList.remove('nav-scrolled'); navbar.classList.remove('py-3'); navbar.classList.add('py-5'); }
+  });
+  document.getElementById('menu-btn').addEventListener('click', () => { document.getElementById('mobile-menu').classList.add('open'); document.body.style.overflow='hidden'; });
+  document.getElementById('close-menu').addEventListener('click', () => { document.getElementById('mobile-menu').classList.remove('open'); document.body.style.overflow=''; });
+  document.querySelectorAll('#mobile-menu a').forEach(l => l.addEventListener('click', () => { document.getElementById('mobile-menu').classList.remove('open'); document.body.style.overflow=''; }));
+
+  // Day tabs
+  document.querySelectorAll('.day-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.day-tab').forEach(t => { t.classList.remove('active'); t.classList.add('inactive'); });
+      document.querySelectorAll('.day-content').forEach(c => c.classList.remove('active'));
+      tab.classList.add('active'); tab.classList.remove('inactive');
+      document.getElementById('day-' + tab.dataset.day).classList.add('active');
+    });
+  });
+
+  // Accordion
+  document.querySelectorAll('.acc-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Lodge selection
+  function selectLodge(type) {
+    ['budget','mid','luxury'].forEach(t => {
+      const card = document.getElementById('lodge-' + t);
+      card.classList.remove('selected', 'border-forest-300');
+      card.classList.add('border-earth-200');
+    });
+    const selected = document.getElementById('lodge-' + type);
+    selected.classList.add('selected', 'border-forest-300');
+    selected.classList.remove('border-earth-200');
+  }
+
+  // Reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin:'0px 0px -30px 0px' });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
