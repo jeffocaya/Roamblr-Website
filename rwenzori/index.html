@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Rwenzori Roll — Roamblr Safaris</title>
+  <style>
+    :root {
+      --ink: #0E2A20;
+      --forest: #153524;
+      --cream: #F6EFE1;
+      --cream-2: #EFE6D2;
+      --rust: #D8762F;
+      --gold: #C9A15A;
+      --charcoal: #20261F;
+      --line: rgba(246, 239, 225, 0.18);
+      --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', serif;
+      --mono: ui-monospace, 'SF Mono', 'Cascadia Mono', 'Roboto Mono', Menlo, Consolas, monospace;
+      --sans: -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--charcoal);
+      font-family: var(--serif);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---------- utility ---------- */
+    .eyebrow {
+      font-family: var(--mono);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 12px;
+      opacity: 0.75;
+    }
+
+    .display {
+      font-family: var(--sans);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      line-height: 0.98;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-weight: 700;
+      text-decoration: none;
+      padding: 16px 28px;
+      border-radius: 999px;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      background: var(--rust);
+      color: var(--ink);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(216, 118, 47, 0.35);
+      background: #e88a45;
+      /* Slightly lighter on hover */
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--cream);
+      border-color: rgba(246, 239, 225, 0.5);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--cream);
+      transform: translateY(-2px);
+      background: rgba(246, 239, 225, 0.05);
+    }
+
+    .btn-dark {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .btn-dark:hover {
+      background: #1c3a2b;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(14, 42, 32, 0.3);
+    }
+
+    section {
+      position: relative;
+    }
+
+    .band-dark {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .band-forest {
+      background: var(--forest);
+      color: var(--cream);
+    }
+
+    .band-cream {
+      background: var(--cream);
+    }
+
+    .band-cream-2 {
+      background: var(--cream-2);
+    }
+
+    /* ---------- reveal ---------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      background: radial-gradient(1200px 700px at 50% -10%, #1c4a34 0%, var(--ink) 60%);
+      padding: 36px 0 0;
+      overflow: hidden;
+    }
+
+    .hero-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0 40px;
+    }
+
+    .hero-logo {
+      width: 140px;
+      opacity: 0.95;
+    }
+
+    .hero-badge {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      border: 1px solid rgba(201, 161, 90, 0.5);
+      padding: 6px 14px;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    .hero-body {
+      padding-bottom: 10px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(44px, 10vw, 96px);
+      margin: 14px 0 6px;
+      color: var(--cream);
+    }
+
+    .hero h1 span {
+      color: var(--rust);
+    }
+
+    .hero-sub {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(17px, 2.6vw, 22px);
+      max-width: 620px;
+      margin: 0 auto 30px;
+      color: rgba(246, 239, 225, 0.88);
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .hero-fine {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: rgba(246, 239, 225, 0.6);
+      margin-bottom: 30px;
+    }
+
+    /* elevation skyline signature */
+    .skyline {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 10px;
+    }
+
+    .skyline .peak-ghost {
+      fill: rgba(201, 161, 90, 0.10);
+    }
+
+    .skyline .line {
+      fill: none;
+      stroke: var(--rust);
+      stroke-width: 3;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+    }
+
+    .skyline .dot {
+      fill: var(--cream);
+      stroke: var(--ink);
+      stroke-width: 2;
+    }
+
+    .skyline .townlabel {
+      font-family: var(--mono);
+      font-size: 13px;
+      fill: rgba(246, 239, 225, 0.75);
+      letter-spacing: 0.02em;
+    }
+
+    .skyline .elevlabel {
+      font-family: var(--mono);
+      font-size: 11px;
+      fill: rgba(201, 161, 90, 0.85);
+    }
+
+    .route-caption {
+      display: none;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.02em;
+      color: rgba(246, 239, 225, 0.65);
+      text-align: center;
+      margin-top: 14px;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 600px) {
+      .skyline .townlabel,
+      .skyline .elevlabel {
+        display: none;
+      }
+      .route-caption {
+        display: block;
+      }
+    }
+
+    /* ---------- STATS BAR ---------- */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-top: 1px solid rgba(20, 30, 25, 0.1);
+    }
+
+    .stat {
+      padding: 26px 14px;
+      text-align: center;
+      border-right: 1px solid rgba(20, 30, 25, 0.1);
+    }
+
+    .stat:last-child {
+      border-right: none;
+    }
+
+    .stat .num {
+      font-family: var(--mono);
+      font-size: clamp(20px, 3.2vw, 30px);
+      font-weight: 700;
+      color: var(--forest);
+    }
+
+    .stat .lbl {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 720px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stat:nth-child(2n) {
+        border-right: none;
+      }
+    }
+
+    /* ---------- ROUTE / TIMELINE ---------- */
+    .section-head {
+      padding: 64px 0 24px;
+    }
+
+    .section-head .eyebrow {
+      color: var(--rust);
+    }
+
+    .section-head h2 {
+      font-size: clamp(30px, 5vw, 46px);
+      margin: 8px 0 0;
+    }
+
+    .timeline {
+      padding-bottom: 56px;
+    }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 64px 1fr auto;
+      gap: 18px;
+      align-items: start;
+      padding: 20px 0;
+      border-top: 1px solid rgba(20, 30, 25, 0.12);
+    }
+
+    .tl-item:last-child {
+      border-bottom: 1px solid rgba(20, 30, 25, 0.12);
+    }
+
+    .tl-day {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--rust);
+      padding-top: 3px;
+    }
+
+    .tl-main h3 {
+      margin: 0 0 4px;
+      font-family: var(--sans);
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .tl-main p {
+      margin: 0;
+      font-size: 15px;
+      color: rgba(32, 38, 31, 0.75);
+    }
+
+    .tl-dist {
+      font-family: var(--mono);
+      font-size: 13px;
+      text-align: right;
+      white-space: nowrap;
+      color: var(--forest);
+      padding-top: 3px;
+    }
+
+    @media (max-width: 600px) {
+      .tl-item {
+        grid-template-columns: 44px 1fr;
+      }
+      .tl-dist {
+        grid-column: 2;
+        text-align: left;
+        margin-top: 4px;
+      }
+    }
+
+    /* ---------- INCLUDED / NOT ---------- */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .split-col {
+      padding: 44px 32px;
+    }
+
+    .split-col ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .split-col li {
+      padding: 12px 0 12px 24px;
+      position: relative;
+      font-size: 15.5px;
+      border-top: 1px solid rgba(246, 239, 225, 0.1);
+    }
+
+    .split-col li:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 20px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--rust);
+    }
+
+    .split-col.yes {
+      background: var(--forest);
+      color: var(--cream);
+    }
+
+    .split-col.no {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .split-col h3 {
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 13px;
+      color: var(--gold);
+      margin: 0 0 18px;
+    }
+
+    @media (max-width: 720px) {
+      .split {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ---------- WHO ---------- */
+    .who {
+      padding: 64px 0;
+      max-width: 720px;
+    }
+
+    .who p {
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .meter {
+      margin-top: 28px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(20, 30, 25, 0.1);
+      overflow: hidden;
+    }
+
+    .meter-fill {
+      height: 100%;
+      width: 72%;
+      background: linear-gradient(90deg, var(--gold), var(--rust));
+    }
+
+    .meter-labels {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-top: 8px;
+    }
+
+    /* ---------- JOIN / PRICING ---------- */
+    .join {
+      background: linear-gradient(180deg, var(--forest), var(--ink));
+      padding: 70px 0;
+      color: var(--cream);
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-family: var(--sans);
+      font-weight: 900;
+      font-size: clamp(38px, 6vw, 56px);
+      color: var(--rust);
+    }
+
+    .price-note {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: rgba(246, 239, 225, 0.65);
+    }
+
+    .excl {
+      font-size: 14.5px;
+      color: rgba(246, 239, 225, 0.7);
+      margin: 6px 0 34px;
+      max-width: 560px;
+    }
+
+    .steps {
+      list-style: none;
+      margin: 0 0 36px;
+      padding: 0;
+      counter-reset: step;
+    }
+
+    .steps li {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 14px;
+      padding: 14px 0;
+      border-top: 1px solid rgba(246, 239, 225, 0.14);
+    }
+
+    .steps li:last-child {
+      border-bottom: 1px solid rgba(246, 239, 225, 0.14);
+    }
+
+    .steps li:before {
+      content: counter(step);
+      font-family: var(--mono);
+      font-weight: 700;
+      color: var(--ink);
+      background: var(--gold);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+    }
+
+    .steps h4 {
+      margin: 0 0 3px;
+      font-family: var(--sans);
+      font-size: 15.5px;
+      font-weight: 700;
+    }
+
+    .steps p {
+      margin: 0;
+      font-size: 14px;
+      color: rgba(246, 239, 225, 0.72);
+    }
+
+    .contact-block {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+      padding-top: 10px;
+    }
+
+    .contact-block .btn-primary {
+      font-size: 16px;
+      padding: 18px 32px;
+    }
+
+    .contact-block .btn-ghost {
+      border-color: rgba(246, 239, 225, 0.3);
+    }
+
+    .contact-block .btn-ghost:hover {
+      border-color: var(--cream);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: var(--ink);
+      padding: 40px 0 30px;
+      border-top: 1px solid rgba(246, 239, 225, 0.1);
+      color: var(--cream);
+    }
+
+    .foot-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .foot-logo {
+      width: 110px;
+      opacity: 0.9;
+    }
+
+    .foot-note {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: rgba(246, 239, 225, 0.55);
+      max-width: 460px;
+      line-height: 1.6;
+    }
+
+    .foot-contact {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: rgba(246, 239, 225, 0.8);
+      text-align: right;
+      font-style: normal;
+    }
+
+    .foot-contact a {
+      text-decoration: none;
+    }
+
+    .foot-contact a:hover {
+      text-decoration: underline;
+      color: var(--gold);
+    }
+
+    @media (max-width: 600px) {
+      .foot-grid {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .foot-contact {
+        text-align: left;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-top reveal">
+        <img class="hero-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%23F6EFE1'/%3E%3Ctext x='10' y='38' font-family='Georgia, serif' font-size='28' font-weight='bold' fill='%230E2A20'%3ERoamblr%3C/text%3E%3Ctext x='120' y='38' font-family='Georgia, serif' font-size='16' font-weight='normal' fill='%23D8762F'%3ESafaris%3C/text%3E%3C/svg%3E" alt="Roamblr Safaris">
+        <span class="hero-badge">Pilot Tour · Aug 2026</span>
+      </div>
+      <div class="hero-body reveal">
+        <div class="eyebrow" style="color:rgba(246,239,225,0.7)">ROAMBLR SAFARIS PRESENTS</div>
+        <h1 class="display">THE RWENZORI<br><span>ROLL</span></h1>
+        <p class="hero-sub">Kampala/Entebbe to Kasese, by bike — camping the whole way, finishing at the start line of the Tusker Lite Mt Rwenzori Marathon.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="https://wa.me/256774081092?text=Hi%20Roamblr%2C%20I%27d%20like%20to%20join%20The%20Rwenzori%20Roll" target="_blank" rel="noopener">Reserve on WhatsApp →</a>
+          <a class="btn btn-ghost" href="tel:+256774081092">Call +256 774 081 092</a>
+        </div>
+        <div class="hero-fine">ONLY 12 SPOTS · UGANDAN CYCLISTS &amp; RUNNERS ONLY</div>
+      </div>
+
+      <svg class="skyline reveal" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
+        <polygon class="peak-ghost" points="900,300 970,40 1015,140 1060,10 1110,150 1160,60 1200,300"></polygon>
+        <polyline class="line" points="60,168.9 270,165.7 480,71.4 690,102.9 900,71.4 1140,241.1"></polyline>
+        <g>
+          <circle class="dot" cx="60" cy="168.9" r="5"></circle>
+          <circle class="dot" cx="270" cy="165.7" r="5"></circle>
+          <circle class="dot" cx="480" cy="71.4" r="5"></circle>
+          <circle class="dot" cx="690" cy="102.9" r="5"></circle>
+          <circle class="dot" cx="900" cy="71.4" r="5"></circle>
+          <circle class="dot" cx="1140" cy="241.1" r="5"></circle>
+        </g>
+        <text class="townlabel" x="60" y="192" text-anchor="middle">KLA/ENTEBBE</text>
+        <text class="townlabel" x="270" y="189" text-anchor="middle">MPIGI</text>
+        <text class="townlabel" x="480" y="95" text-anchor="middle">MUBENDE</text>
+        <text class="townlabel" x="690" y="126" text-anchor="middle">KYEGEGWA</text>
+        <text class="townlabel" x="900" y="95" text-anchor="middle">FORT PORTAL</text>
+        <text class="townlabel" x="1140" y="264" text-anchor="middle">KASESE</text>
+        <text class="elevlabel" x="480" y="58" text-anchor="middle">~1500m</text>
+        <text class="elevlabel" x="1140" y="228" text-anchor="middle">~960m</text>
+      </svg>
+      <p class="route-caption">Kampala/Entebbe → Mpigi → Mubende → Kyegegwa → Fort Portal → Kasese</p>
+    </div>
+  </section>
+
+  <section class="band-cream">
+    <div class="wrap stats reveal">
+      <div class="stat"><div class="num">~300</div><div class="lbl">Kilometers</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">Riding days</div></div>
+      <div class="stat"><div class="num">2</div><div class="lbl">Rest days</div></div>
+      <div class="stat"><div class="num">8</div><div class="lbl">Camping nights</div></div>
+      <div class="stat"><div class="num">380K</div><div class="lbl">UGX / person</div></div>
+    </div>
+  </section>
+
+  <section class="band-cream-2">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Aug 15 – 23, 2026</div>
+        <h2>The Route</h2>
+      </div>
+      <div class="timeline reveal">
+
+        <div class="tl-item">
+          <div class="tl-day">DAY 1</div>
+          <div class="tl-main"><h3>Kampala/Entebbe → Mpigi/Buwama</h3><p>Ferry shortcut past Kampala traffic, then quiet back roads to camp.</p></div>
+          <div class="tl-dist">~70 km</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-day">DAY 2</div>
+          <div class="tl-main"><h3>→ Mubende</h3><p>The longest day. Early start, steady pace, mechanical check at lunch.</p></div>
+          <div class="tl-dist">~95 km</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-day">DAY 3</div>
+          <div class="tl-main"><h3>→ Kyegegwa</h3><p>Fewer towns, so we carry extra water. Rolling terrain.</p></div>
+          <div class="tl-dist">~100 km</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-day">DAY 4</div>
+          <div class="tl-main"><h3>→ Fort Portal</h3><p>Shorter day — arrive with light to spare, resupply in town.</p></div>
+          <div class="tl-dist">~75 km</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-day">DAY 5</div>
+          <div class="tl-main"><h3>Rest day — Fort Portal area</h3><p>Legs up. Optional easy spin, bike maintenance afternoon.</p></div>
+          <div class="tl-dist">Rest</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-day">DAY 6</div>
+          <div class="tl-main"><h3>→ Kasese</h3><p>Final riding day — the Rwenzoris come into view.</p></div>
+          <div class="tl-dist">~75 km</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-day">DAY 7</div>
+          <div class="tl-main"><h3>Rest day — Kasese</h3><p>Race pack pickup, carb-loading, early night.</p></div>
+          <div class="tl-dist">Rest</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-day">DAY 8</div>
+          <div class="tl-main"><h3>Race day</h3><p>Tusker Lite Mt Rwenzori Marathon — cross the Equator on foot.</p></div>
+          <div class="tl-dist">Aug 22</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="split">
+    <div class="split-col yes reveal">
+      <div class="wrap" style="padding:0;">
+        <h3>What's included</h3>
+        <ul>
+          <li>Camping / basic lodging, every night on route</li>
+          <li>3 basic meals a day along the way</li>
+          <li>Shared luggage transport &amp; mechanical backup</li>
+          <li>A scouted route, ridden with an experienced guide</li>
+        </ul>
+      </div>
+    </div>
+    <div class="split-col no reveal">
+      <div class="wrap" style="padding:0;">
+        <h3>Not included</h3>
+        <ul>
+          <li>Marathon registration — UGX 60,000, register yourself at rwenzorimarathon.com</li>
+          <li>Return transport, Kasese → Kampala/Entebbe</li>
+          <li>Your own bike, tent, and riding gear</li>
+          <li>Personal spending money</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="band-cream">
+    <div class="wrap who reveal">
+      <div class="eyebrow" style="color:var(--rust);">Who this is for</div>
+      <p>Ugandan cyclists and runners who can comfortably ride 70–100&nbsp;km a day, several days in a row, on a loaded bike — tarmac and rough back roads both. This is steady, sociable riding, not a race. But it is genuinely physical, and if you're also lining up for the marathon, you should already be running regularly.</p>
+      <div class="meter"><div class="meter-fill"></div></div>
+      <div class="meter-labels"><span>Casual ride</span><span>This trip</span><span>Expedition</span></div>
+    </div>
+  </section>
+
+  <section class="join">
+    <div class="wrap reveal">
+      <div class="eyebrow" style="color:var(--gold);">Reserve your spot</div>
+      <div class="price-row">
+        <div class="price">UGX 380,000</div>
+        <div class="price-note">per person · all-in</div>
+      </div>
+      <p class="excl">Doesn't include marathon registration or return transport from Kasese — see above. A deposit holds your place; the balance is due 2–3 weeks before departure.</p>
+
+      <ul class="steps">
+        <li>
+          <div>
+            <h4>Message or call us</h4>
+            <p>WhatsApp is fastest — tell us you want in on The Rwenzori Roll.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h4>Pay your deposit via Mobile Money</h4>
+            <p>MTN or Airtel Money, to the number below. We'll confirm by text.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h4>Pack your bike, tent, and gear</h4>
+            <p>We'll send the full kit list once you're confirmed.</p>
+          </div>
+        </li>
+      </ul>
+
+      <div class="contact-block">
+        <a class="btn btn-primary" href="https://wa.me/256774081092?text=Hi%20Roamblr%2C%20I%27d%20like%20to%20join%20The%20Rwenzori%20Roll" target="_blank" rel="noopener">Message us on WhatsApp →</a>
+        <a class="btn btn-ghost" href="tel:+256774081092">Call +256 774 081 092</a>
+        <a class="btn btn-ghost" href="mailto:info@roamblr.com">Email Us</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot-grid">
+      <img class="foot-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%23F6EFE1'/%3E%3Ctext x='10' y='38' font-family='Georgia, serif' font-size='28' font-weight='bold' fill='%230E2A20'%3ERoamblr%3C/text%3E%3Ctext x='120' y='38' font-family='Georgia, serif' font-size='16' font-weight='normal' fill='%23D8762F'%3ESafaris%3C/text%3E%3C/svg%3E" alt="Roamblr Safaris">
+      <div class="foot-note">Roamblr Safaris Limited runs small, local group cycling trips for Ugandan riders. This tour is timed to finish at the Tusker Lite Mt Rwenzori Marathon, Kasese — Aug 22, 2026. Marathon registration is separate and handled directly with the race organizers.</div>
+      <address class="foot-contact">
+        <div><a href="tel:+256774081092">+256 774 081 092</a></div>
+        <div><a href="mailto:info@roamblr.com">info@roamblr.com</a></div>
+      </address>
+    </div>
+  </footer>
+
+  <script>
+    var els = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(function(el) { io.observe(el); });
+    } else {
+      els.forEach(function(el) { el.classList.add('in'); });
+    }
+  </script>
+
+</body>
+</html>
