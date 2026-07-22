@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/rwenzori",
+      "destination": "/rwenzori/index.html"
+    },
+    {
+      "source": "/rwenzori/(.*)",
+      "destination": "/rwenzori/$1"
+    }
+  ]
+}
